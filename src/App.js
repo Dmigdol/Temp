@@ -1,7 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient("https://lgfhzumbxexugypmmnew.supabase.co/",
+ "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnZmh6dW1ieGV4dWd5cG1tbmV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDcxNzI2NTQsImV4cCI6MjAyMjc0ODY1NH0.zCHDum90o-4d6OkehiIqIhfgoZzuSL9VNBDGGPXdJ30");
+
 
 function App() {
+
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    getCountries();
+  }, []);
+
+  async function getCountries() {
+    const { data } = await supabase.from("countries").select();
+    setCountries(data);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +35,11 @@ function App() {
         >
           Learn React
         </a>
+        <ul>
+        {countries.map((country) => (
+          <li key={country.name}>{country.name}</li>
+        ))}
+      </ul>
       </header>
     </div>
   );

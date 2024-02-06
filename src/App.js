@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from "react";
+import axios from 'axios';
+
+
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +22,26 @@ function App() {
         >
           Learn React
         </a>
+        <div>
+          <button
+          onClick={() => {
+            axios.get(`http://localhost:5000/test`)
+              .then(function (response) {
+                //handle success
+                console.log(response);
+              })
+              .catch(function (error) {
+                //handle error
+                console.log('***ERROR*** ',error)
+              })
+              .finally(() => {
+                console.log('request finished')
+              });
+          }}
+          >
+            Test
+          </button>
+        </div>
       </header>
     </div>
   );

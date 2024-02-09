@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap');
+
+@font-face {
+  font-family: 'Kalam', cursive;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 77vh;
+  min-width: 48vw;
+  margin-top:6vh;
+}
+
+@mixin framing {
+  border-style: solid;
+  border-radius: 25%;
+}
+
+.App {
+  @include flex;
+}
+
+.Landing-Frame {
+  @include flex;
+  @include framing;
+}
+
+// Text
+
+.Heading {
+  font-family: 'Kalam';
+}

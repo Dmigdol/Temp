@@ -39,10 +39,9 @@ function Landing() {
         <button class="button login"
           onClick={()=>{ alert(`Login Clicked
           Email is ${email}.
-          Password is ${password}.
-          `); }}
+          Password is ${password}.`); }}
         >Login</button>
-        <div className="forgot"
+        <div className="forgotText"
           onClick={()=>{ alert('Forgot Login Clicked'); }}
         >Forgot Login?</div>
       </div>

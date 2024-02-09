@@ -67,13 +67,23 @@ $vectorLightBlue: #335C9A;
     border-radius: 0px;
     border-width: 0px;
   }
+  &.forgot {
+    border-width: 2px;
+    width: 100%;
+    padding: auto;
+  }
 }
 
 // Text
 
-.forgot {
+.forgotText {
   font-size: large;
-  color:#335C9A
+  color:#335C9A;
+  position: relative;
+  &:hover {
+    transition: all 300ms;
+    transform:scale(1.2);
+  }
 }
 
 .Heading {

@@ -6,8 +6,8 @@ import axios from 'axios';
 
 function Landing() {
 
-  const [email, setEmail] = useState('Email...');
-  const [password, setPassword] = useState('Password...');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <div className="App">

@@ -1,0 +1,20 @@
+
+// MIXING
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 77vh;
+  min-width: 48vw;
+  margin-top:6vh;
+}
+
+@mixin framing {
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 13%;
+  border-color: $vectorBlue;
+  overflow:auto;
+}

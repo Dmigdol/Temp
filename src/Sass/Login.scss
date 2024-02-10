@@ -30,13 +30,16 @@ $vectorLightBlue: #335C9A;
   @include flex;
 }
 
-.Login-Frame {
+.frame {
   @include flex;
   @include framing;
-  position: absolute;
-  background-color: white;
-  flex-direction: column;
-  justify-content:space-around;
+
+  &.Login {
+    position: absolute;
+    background-color: white;
+    flex-direction: column;
+    justify-content:space-around;
+  }
 }
 
 .email {
@@ -69,6 +72,7 @@ $vectorLightBlue: #335C9A;
     border-radius: 0px;
     border-width: 0px;
   }
+
   &.forgot {
     border-width: 2px;
     width: 100%;

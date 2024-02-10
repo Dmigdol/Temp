@@ -11,7 +11,7 @@ function Login() {
 
   return (
     <div className="App">
-      <div className="Login-Frame">
+      <div className="Login frame">
         <div className="Container Logo">
           <img className="Logoimg" src='VFlogo.png'/>
         </div>

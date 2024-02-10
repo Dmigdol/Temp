@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import '../Sass/Landing.scss'
+import '../Sass/Login.scss'
 import axios from 'axios';
 
 
 
-function Landing() {
+function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <div className="App">
-      <div className="Landing-Frame">
+      <div className="Login-Frame">
         <div className="Container Logo">
           <img className="Logoimg" src='VFlogo.png'/>
         </div>
@@ -49,7 +49,7 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default Login;
 
 {/* <button className='test'
           onClick={() => {

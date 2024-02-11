@@ -1,5 +1,4 @@
-
-// MIXING
+// MIXINS
 
 @mixin flex {
   display: flex;
@@ -18,3 +17,71 @@
   border-color: $vectorBlue;
   overflow:auto;
 }
+
+// Variables
+
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
+
+
+.landing {
+  border-radius: 3%;
+  min-width: 75vw;
+  white-space: pre-wrap;
+  justify-content: baseline;
+  align-items: baseline;
+}
+
+.headbar {
+  min-width: 100%;
+  display: grid;
+  flex-wrap: wrap;
+}
+
+.Landing-Logo {
+  padding-left: 5%;
+  margin-top: 3vh;
+  text-align: Left;
+}
+
+.Landing-Header {
+  float: left;
+  text-align: Left;
+  min-width: 100%;
+  padding-left: 8%;
+  border-top: hidden;
+  border-left: hidden;
+  border-right: hidden;
+  border-radius: 0;
+  border-width: 2px;
+}
+
+
+// TEXT
+
+.logout {
+  margin-bottom: -25px;
+  margin-top: 1%;
+  margin-right: 5%;
+  justify-self: right;
+  font-size: 24px;
+  color: $vectorBlue;
+  cursor: pointer;
+  &:hover {
+    transition: all 300ms;
+    transform:scale(1.2);
+  }
+}
+.Landing-Heading {
+  font-family: Kalam;
+  font-size: 30px;
+  font-weight: 600;
+  color: $vectorBlue;
+}
+
+
+
+
+
+
+

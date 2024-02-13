@@ -37,7 +37,7 @@ $vectorLightBlue: #335C9A;
 .frame {
   @include flex;
   @include framing;
-
+  flex-wrap: wrap;
   &.Login {
     position: absolute;
     background-color: white;

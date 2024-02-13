@@ -19,12 +19,12 @@ function Landing({setCurrentPage}) {
             <span className="Landing-Heading">Welcome Back!</span>
           </div>
         </div>
-        <div className="landing-Center">
-          <div className="recent quotes">
+        <div className="landing Center">
+          <div className="quotes">
             <Box context={'Quote'}/>
           </div>
-          <div className="recent orders">
-
+          <div className="orders">
+            <Box context={'Order'}/>
           </div>
         </div>
       </div>

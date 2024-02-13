@@ -25,11 +25,6 @@ ul {
   overflow:auto;
 }
 
-.recent {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 .headbar {
   width: 12vw;
@@ -43,11 +38,25 @@ ul {
   }
 }
 
+.recent {
+  border: 1px solid $vectorLightBlue;
+  width: 50%;
+}
+
 .info-box {
   display: flex;
   margin: 10%;
+  justify-content: space-evenly;
 }
 
 .headbar-text {
   margin: 5%;
+}
+
+.number-list,.name-list {
+  padding-left: 0;
+}
+
+.name-list {
+  width: 50%;
 }

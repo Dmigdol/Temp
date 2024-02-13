@@ -55,9 +55,19 @@ $vectorLightBlue: #335C9A;
   border-radius: 0;
   border-width: 2px;
 }
-.recent {
-  border: 1px solid $vectorLightBlue;
 
+.Center {
+  justify-content: space-evenly;
+  width: 100%;
+  display: flex;
+}
+
+.quotes, .orders {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50%;
+  height: 33vh;
 }
 
 

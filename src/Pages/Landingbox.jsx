@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import '../Sass/Landingbox.scss';
+import RenderRecent from './Components/RenderRecent'
 import axios from 'axios';
 
 function box({context}) {
@@ -7,6 +8,24 @@ function box({context}) {
   return (
     <div className='recent'>
       <div className='headbar box'>
+        <p className='headbar-text'>Recent {context}s</p>
+      </div>
+      <div className='info-box'>
+        <div className='Name-container'>
+          <RenderRecent context={context}/>
+        </div>
+      </div>
+      <div className='bottombar box'>
+        <span className='Viewmore'>View more</span>
+      </div>
+    </div>
+  )
+}
+
+export default box;
+
+/*
+<div className='headbar box'>
         <p className='headbar-text'>Recent {context}s</p>
       </div>
       <div className='info-box'>
@@ -32,8 +51,4 @@ function box({context}) {
       <div className='bottombar box'>
         <span className='Viewmore'>View more</span>
       </div>
-    </div>
-  )
-}
-
-export default box;
+*/

@@ -43,23 +43,19 @@ ul {
   }
 }
 
-.list-entry {
-  border: 2px solid $vectorLightBlue;
-  border-top: hidden;
-  border-left: hidden;
-  border-right: hidden;
+.entry-container {
+  min-width: 30vw;
 }
 
 .recent {
   border: 1px solid $vectorLightBlue;
-  width: 50%;
 }
 
 .list-entry {
   font-size: 18px;
 }
 
-.info-box {
+.large-box {
   display: flex;
   margin: 10%;
   justify-content: space-evenly;

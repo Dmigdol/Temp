@@ -3,6 +3,7 @@ import './infobox.scss'
 
 function renderRecent({context}) {
 
+
   return (
     <div className='Entry'>
       {Object.entries(testData).map((entry) => (

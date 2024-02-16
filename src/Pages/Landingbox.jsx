@@ -10,8 +10,8 @@ function box({context}) {
       <div className='headbar box'>
         <p className='headbar-text'>Recent {context}s</p>
       </div>
-      <div className='info-box'>
-        <div className='Name-container'>
+      <div className='large-box'>
+        <div className='entry-container'>
           <RenderRecent context={context}/>
         </div>
       </div>

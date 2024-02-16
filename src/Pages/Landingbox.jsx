@@ -29,8 +29,8 @@ function box({context}) {
         </ul>
       </div>
       </div>
-      <div className='bottombar'>
-        <span className='Viewmore'></span>
+      <div className='bottombar box'>
+        <span className='Viewmore'>View more</span>
       </div>
     </div>
   )

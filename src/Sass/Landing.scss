@@ -59,6 +59,7 @@ $vectorLightBlue: #335C9A;
 .Center {
   width: 66%;
   display: flex;
+  justify-content: space-evenly;
 }
 
 .quotes, .orders {
@@ -66,6 +67,14 @@ $vectorLightBlue: #335C9A;
   flex-wrap: wrap;
   justify-content: center;
   width: 50%;
+}
+
+.quotes {
+  margin-right: 2.5%;
+}
+
+.orders {
+  margin-left: 2.5%;
 }
 
 

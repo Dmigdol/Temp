@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import '../Sass/Landingbox.scss';
 import RenderRecent from './Components/RenderRecent'
 import axios from 'axios';
+import testData from './Components/testData.js'
 
 function box({context}) {
 
@@ -12,7 +13,7 @@ function box({context}) {
       </div>
       <div className='large-box'>
         <div className='entry-container'>
-          <RenderRecent context={context}/>
+          <RenderRecent id={context} context={context} testData={testData}/>
         </div>
       </div>
       <div className='bottombar box'>

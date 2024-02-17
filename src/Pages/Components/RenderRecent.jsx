@@ -6,6 +6,10 @@ function renderRecent({context}) {
 
   return (
     <div className='Entry'>
+      <div className='info-top'>
+        <span className='Idbox'>{context} ID</span>
+        <span className='Namebox'>Name</span>
+      </div>
       {Object.entries(testData).map((entry) => (
         <div key={entry.Idnum} className='info-box'>
           <span className='Idnum'>{entry[1].reference}</span>

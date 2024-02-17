@@ -6,11 +6,24 @@ $vectorLightBlue: #335C9A;
 
 
 .info-box {
-  border: 2px solid #948f8fd3;
-  border-top: hidden;
-  border-left: hidden;
-  border-right: hidden;
+  border-bottom: 2px solid #948f8fd3;
   display: flex;
   margin: 10%;
   justify-content: space-evenly;
+}
+
+.Idbox {
+  margin-left: -30px;
+}
+
+.info-top {
+  border-bottom: 2px solid #948f8fd3;
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Idnum,.customer {
+  font-size: 20px;
 }

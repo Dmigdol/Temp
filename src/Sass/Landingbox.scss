@@ -28,10 +28,7 @@ ul {
 
 .headbar, .bottombar {
   width: 12vw;
-  border: 2px solid $vectorLightBlue;
-  border-top: hidden;
-  border-left: hidden;
-  border-right: hidden;
+  border-bottom: 2px solid $vectorLightBlue;
 
   &.box {
     background-color: #e9e3e3d3;

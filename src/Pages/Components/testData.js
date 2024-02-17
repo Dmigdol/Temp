@@ -1,6 +1,6 @@
 let placeholder = {
   '12345' : {
-    'name' : 'Dillon Migdol',
+    'name' : 'Migdol',
     'reference' : '12345'
   },
   '54321' : {

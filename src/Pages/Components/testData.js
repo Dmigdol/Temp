@@ -11,6 +11,14 @@ let placeholder = {
     'name' : 'Levi Brimm',
     'reference' : '32451'
   },
+  '52413' : {
+    'name' : 'Jada Aguirre',
+    'reference' : '52413'
+  },
+  '34251' : {
+    'name' : 'Paul Allor',
+    'reference' : '34251'
+  },
 }
 
 export default placeholder;

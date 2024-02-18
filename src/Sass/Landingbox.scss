@@ -1,0 +1,64 @@
+// MIXINS
+
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
+
+ul {
+  list-style-type: none;
+}
+
+.headbar, .bottombar {
+  width: 12vw;
+  &.box {
+    border-bottom: 1px solid #948f8fd3;
+    background-color: #e9e3e3d3;
+  }
+  &.bottombar {
+    border-bottom: hidden;
+    width: 100%;
+    border-top: 1px solid #948f8fd3;
+  }
+}
+
+.entry-container {
+  min-width: 30vw;
+}
+
+.recent {
+  border: 1px solid #948f8fd3;
+}
+
+.list-entry {
+  font-size: 18px;
+}
+
+
+.large-box {
+  display: flex;
+  margin: 10%;
+  justify-content: space-evenly;
+}
+
+.Viewmore {
+  font-size: 18px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.headbar-text,.Viewmore {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.headbar-text {
+  font-size: 22px;
+  margin: 3%;
+}
+
+.number-list,.name-list {
+  padding-left: 0;
+}
+
+.name-list {
+  width: 50%;
+}

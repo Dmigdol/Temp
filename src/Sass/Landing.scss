@@ -26,7 +26,7 @@ $vectorLightBlue: #335C9A;
 
 .landing {
   border-radius: 3%;
-  min-width: 75vw;
+  min-width: 60vw;
   white-space: pre-wrap;
   justify-content: baseline;
   align-items: baseline;
@@ -54,6 +54,27 @@ $vectorLightBlue: #335C9A;
   border-right: hidden;
   border-radius: 0;
   border-width: 2px;
+}
+
+.Center {
+  width: 66%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.quotes, .orders {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50%;
+}
+
+.quotes {
+  margin-right: 2.5%;
+}
+
+.orders {
+  margin-left: 2.5%;
 }
 
 

@@ -7,36 +7,16 @@ ul {
   list-style-type: none;
 }
 
-@mixin flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 77vh;
-  min-width: 48vw;
-  margin-top:6vh;
-}
-
-@mixin framing {
-  border-style: solid;
-  border-width: 4px;
-  border-radius: 13%;
-  border-color: $vectorBlue;
-  overflow:auto;
-}
-
-
 .headbar, .bottombar {
   width: 12vw;
-  border-bottom: 2px solid $vectorLightBlue;
-
   &.box {
+    border-bottom: 1px solid #948f8fd3;
     background-color: #e9e3e3d3;
   }
   &.bottombar {
     border-bottom: hidden;
     width: 100%;
-    border-top: 2px solid $vectorLightBlue;
+    border-top: 1px solid #948f8fd3;
   }
 }
 
@@ -45,7 +25,7 @@ ul {
 }
 
 .recent {
-  border: 1px solid $vectorLightBlue;
+  border: 1px solid #948f8fd3;
 }
 
 .list-entry {
@@ -60,11 +40,19 @@ ul {
 }
 
 .Viewmore {
-  font-size: 17px;
+  font-size: 18px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.headbar-text,.Viewmore {
+  font-family: 'DM Sans', sans-serif;
 }
 
 .headbar-text {
-  margin: 5%;
+  font-size: 22px;
+  margin: 3%;
 }
 
 .number-list,.name-list {

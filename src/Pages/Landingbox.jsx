@@ -17,7 +17,11 @@ function box({context}) {
         </div>
       </div>
       <div className='bottombar box'>
-        <span className='Viewmore'>View more</span>
+        <span className='Viewmore'
+        onClick={() => {
+          alert(`View more ${context}s clicked`)
+        }}
+        >View more</span>
       </div>
     </div>
   )

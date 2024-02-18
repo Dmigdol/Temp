@@ -4,12 +4,24 @@ import RenderRecent from './Components/RenderRecent'
 import axios from 'axios';
 import testData from './Components/testData.js'
 
+
+/*
+  Next step is to set up viewmore button to send a request to route, and return
+  the testdata
+*/
+
 function box({context}) {
 
   return (
     <div className='recent'>
       <div className='headbar box'>
         <p className='headbar-text'>Recent {context}s</p>
+      </div>
+      <span className='Add-Tooltip'>Create new {context}</span>
+      <div className='Add button'
+      onClick={() => alert(`New ${context} button clicked.`)}
+      >
+        <span className='Add-text'>+</span>
       </div>
       <div className='large-box'>
         <div className='entry-container'>

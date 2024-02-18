@@ -2,6 +2,7 @@
 
 $vectorBlue: #224E90;
 $vectorLightBlue: #335C9A;
+$bgGray: #e9e3e3d3;
 
 ul {
   list-style-type: none;
@@ -24,8 +25,39 @@ ul {
   min-width: 30vw;
 }
 
+.Add {
+  border: 1px solid #948f8fd3;
+  border-radius: 0;
+  float: right;
+  margin-right: 3%;
+  margin-top: 3%;
+}
+
+.Add-text {
+  font-size: 40px;
+  font-weight: 600;
+  color: #948f8fd3;
+}
+
+
+
+.Add-Tooltip:before {
+
+  opacity:0;
+  transition:.3s opacity;
+}
+
+.Add-Tooltip:hover:before {
+  display:block;
+}
+
 .recent {
   border: 1px solid #948f8fd3;
+  &:has(.Add:hover) {
+    .Add-Tooltip {
+      visibility: visible;
+    }
+  }
 }
 
 .list-entry {
@@ -61,4 +93,85 @@ ul {
 
 .name-list {
   width: 50%;
+}
+
+// Add Tooltip
+
+.Add-Tooltip {
+  position: relative;
+  scale: 0;
+  left: 25%;
+  top: 6%;
+  width:200px;
+  padding:10px;
+  border: 2px;
+  visibility: hidden;
+  font-family: 'DM Sans', sans-serif;
+  background-color: $bgGray;
+  color: black;
+  &:hover {
+      text-decoration: none;
+      visibility: visible;
+  }
+  &:after {
+    content: " ";
+    height: 10%;
+    position: absolute;
+    top: 50%;
+    left:100%; /* To the right of the tooltip */
+    margin-top: -7px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent $bgGray;
+  }
+}
+
+
+// Add Button
+.Add {
+  background-image: linear-gradient(#f7f8fa ,#e7e9ec);
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  box-shadow: rgba(255,255,255,.6) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",Arial,sans-serif;
+  font-size: 14px;
+  height: 10%;
+  font-size: 13px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 11px;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.Add:active {
+  border-bottom-color: #a2a6ac;
+}
+
+.Add:active:hover {
+  border-bottom-color: #a2a6ac;
+}
+
+.Add:hover {
+  border-color: #a2a6ac #979aa1 #82858a;
+  &.Add-Tooltip {
+    visibility: visible;
+  }
+}
+
+.Add:focus {
+  border-color: #e77600;
+  box-shadow: rgba(228, 121, 17, .5) 0 0 3px 2px;
+  outline: 0;
 }

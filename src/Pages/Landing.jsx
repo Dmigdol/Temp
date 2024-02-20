@@ -12,9 +12,6 @@ function Landing({setCurrentPage}) {
           <span className="logout"
           onClick={() => setCurrentPage('Login')}
           >Logout</span>
-          <div className="Container Landing-Logo">
-          <img className="Logoimg" src='VFlogo.png'/>
-          </div>
           <div class="Container Landing-Header">
             <span className="Landing-Heading">Welcome Back!</span>
           </div>

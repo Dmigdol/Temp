@@ -5,6 +5,22 @@ import Box from './Landingbox'
 
 function Landing({setCurrentPage}) {
 
+  const [recent, setRecent] = useState([]);
+
+  const fetchData = () => {
+    axios.get(`http://localhost:3000/api/test`)
+      .then(response => {
+        setRecent(response.data)
+      })
+      .catch((err) => {
+        console.log('error retrieving recents ', err)
+      })
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
   return (
     <div className="App">
       <div className="landing frame">
@@ -18,10 +34,10 @@ function Landing({setCurrentPage}) {
         </div>
         <div className="landing Center">
           <div className="quotes">
-            <Box context={'Quote'}/>
+            <Box context={'Quote'} recent={recent}/>
           </div>
           <div className="orders">
-            <Box context={'Order'}/>
+            <Box context={'Order'} recent={recent}/>
           </div>
         </div>
       </div>

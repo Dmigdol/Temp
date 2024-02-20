@@ -1,6 +1,6 @@
 import './infobox.scss'
 
-function renderRecent({context, testData}) {
+function renderRecent({context, recent}) {
 
 
   return (
@@ -9,13 +9,13 @@ function renderRecent({context, testData}) {
         <span className='Idbox'>{context} ID</span>
         <span className='Namebox'>Name</span>
       </div>
-      {Object.entries(testData).map((entry) => (
+      {Object.entries(recent).map((entry) => (
         <div key={entry.Idnum} className='info-box'
         onClick={() => {
-          alert(`${context} ID #${entry[1].reference}, name is ${entry[1].name}`);
+          alert(`${context} ID #${entry[1].reference_id}, name is ${entry[1].name}`);
         }}
         >
-          <span className='Idnum'>{entry[1].reference}</span>
+          <span className='Idnum'>{entry[1].reference_id}</span>
           <span className='customer'>{entry[1].name}</span>
         </div>
       ))

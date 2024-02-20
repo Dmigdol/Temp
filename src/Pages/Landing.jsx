@@ -5,6 +5,22 @@ import Box from './Landingbox'
 
 function Landing({setCurrentPage}) {
 
+  const [recent, setRecent] = useState([]);
+
+  const fetchData = () => {
+    axios.get(`http://localhost:3000/api/test`)
+      .then(response => {
+        setRecent(response.data)
+      })
+      .catch((err) => {
+        console.log('error retrieving recents ', err)
+      })
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
   return (
     <div className="App">
       <div className="landing frame">
@@ -12,19 +28,16 @@ function Landing({setCurrentPage}) {
           <span className="logout"
           onClick={() => setCurrentPage('Login')}
           >Logout</span>
-          <div className="Container Landing-Logo">
-          <img className="Logoimg" src='VFlogo.png'/>
-          </div>
           <div class="Container Landing-Header">
             <span className="Landing-Heading">Welcome Back!</span>
           </div>
         </div>
         <div className="landing Center">
           <div className="quotes">
-            <Box context={'Quote'}/>
+            <Box context={'Quote'} recent={recent}/>
           </div>
           <div className="orders">
-            <Box context={'Order'}/>
+            <Box context={'Order'} recent={recent}/>
           </div>
         </div>
       </div>

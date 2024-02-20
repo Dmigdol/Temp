@@ -45,13 +45,10 @@ $vectorLightBlue: #335C9A;
 }
 
 .Landing-Header {
-  float: left;
-  text-align: Left;
+  text-align: center;
+  margin-top: 3vh;
   min-width: 100%;
-  padding-left: 8%;
-  border-top: hidden;
-  border-left: hidden;
-  border-right: hidden;
+  border: hidden;
   border-radius: 0;
   border-width: 2px;
 }
@@ -95,7 +92,7 @@ $vectorLightBlue: #335C9A;
 }
 .Landing-Heading {
   font-family: Kalam;
-  font-size: 30px;
+  font-size: 55px;
   font-weight: 600;
   color: $vectorBlue;
 }

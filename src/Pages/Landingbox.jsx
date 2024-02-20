@@ -10,7 +10,18 @@ import testData from './Components/testData.js'
   the testdata
 */
 
-function box({context}) {
+function box({context, recent}) {
+
+  const viewMore = () => {
+    axios.get(`http://localhost:3000/api/test`)
+    .then(response => {
+      console.log(response)
+      return (response);
+    })
+    .catch((err) => {
+      console.log('error in axios get ', err)
+    })
+  }
 
   return (
     <div className='recent'>
@@ -25,13 +36,13 @@ function box({context}) {
       </div>
       <div className='large-box'>
         <div className='entry-container'>
-          <RenderRecent id={context} context={context} testData={testData}/>
+          <RenderRecent id={context} context={context} testData={testData} recent={recent}/>
         </div>
       </div>
       <div className='bottombar box'>
         <span className='Viewmore'
         onClick={() => {
-          alert(`View more ${context}s clicked`)
+          viewMore()
         }}
         >View more</span>
       </div>
@@ -42,6 +53,7 @@ function box({context}) {
 export default box;
 
 /*
+alert(`View more ${context}s clicked`)
 <div className='headbar box'>
         <p className='headbar-text'>Recent {context}s</p>
       </div>

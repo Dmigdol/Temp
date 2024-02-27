@@ -34,10 +34,10 @@ function Landing({setCurrentPage}) {
         </div>
         <div className="landing Center">
           <div className="quotes">
-            <Box context={'Quote'} recent={recent}/>
+            <Box context={'Quote'} setCurrentPage={setCurrentPage} recent={recent}/>
           </div>
           <div className="orders">
-            <Box context={'Order'} recent={recent}/>
+            <Box context={'Order'} setCurrentPage={setCurrentPage} recent={recent}/>
           </div>
         </div>
       </div>

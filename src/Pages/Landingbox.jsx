@@ -10,7 +10,7 @@ import testData from './Components/testData.js'
   the testdata
 */
 
-function box({context, recent}) {
+function box({context, recent, setCurrentPage}) {
 
   // might not need due to fetch function in parent
   const viewMore = () => {
@@ -31,7 +31,7 @@ function box({context, recent}) {
       </div>
       <span className='Add-Tooltip'>Create new {context}</span>
       <div className='Add button'
-      onClick={() => alert(`New ${context} button clicked.`)}
+      onClick={() => {setCurrentPage('QuoteBuilder')}}
       >
         <span className='Add-text'>+</span>
       </div>

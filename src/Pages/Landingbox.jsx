@@ -12,6 +12,7 @@ import testData from './Components/testData.js'
 
 function box({context, recent}) {
 
+  // might not need due to fetch function in parent
   const viewMore = () => {
     axios.get(`http://localhost:3000/api/test`)
     .then(response => {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import '../Sass/QuoteBuilder.scss'
 
 function QuoteBuilder({setCurrentPage}) {
 

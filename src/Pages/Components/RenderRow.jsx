@@ -1,6 +1,8 @@
 
 
-function RenderRow() {
+function RenderRow({rows}) {
+
+  console.log('rows***',rows)
 
 
   return (

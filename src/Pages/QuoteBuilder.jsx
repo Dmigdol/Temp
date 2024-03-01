@@ -4,11 +4,21 @@ import RenderRow from './Components/RenderRow'
 
 function QuoteBuilder({setCurrentPage}) {
 
-  const [Quoteinfo, setQuoteInfo] = useState({})
+  const [Quoterows, setQuoteRows] = useState([])
+
+
+  const test = {
+    num: 1,
+    id: 1001,
+    frame: 'Standard',
+    hinge: '(3) Tectus 340 3D',
+    desc: `36"x96" T-Strike @ 35" up`,
+    qty: 1
+  }
 
   class Row {
     constructor(num, id, frame, hinge, desc, qty) {
-      this.num = num;
+      this.num = Quoterows.length + 1;
       this.id = id;
       this.frame = frame;
       this.hinge = hinge;
@@ -19,8 +29,8 @@ function QuoteBuilder({setCurrentPage}) {
 
 
   const newRow = (obj) => {
-    const num = new Row(obj.num, obj.id, obj.frame, obj.hinge, obj.desc, obj.qty)
-
+    const num = new Row(obj.num, obj.id, obj.frame, obj.hinge, obj.desc, obj.qty);
+    Quoterows.length > 0 ? setQuoteRows([...Quoterows, num]) : setQuoteRows([num]);
   }
 
 
@@ -38,12 +48,13 @@ function QuoteBuilder({setCurrentPage}) {
           <span className='Qty quote-top'>Qty</span>
         </div>
       <div className='rows-container'>
-          <RenderRow />
+          <RenderRow rows={Quoterows}/>
       </div>
       </div>
       <div className='NewRow button'
       onClick={()=> {
-
+        newRow(test)
+        console.log(Quoterows)
       }}
       >
         Add Row

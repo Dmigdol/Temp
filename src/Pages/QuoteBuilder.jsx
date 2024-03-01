@@ -6,6 +6,14 @@ function QuoteBuilder({setCurrentPage}) {
 
   const [Quoterows, setQuoteRows] = useState([])
 
+  /*
+      NEXT STEP AFTER RETURNING FROM 2/29
+      SET UP BASIC INCREMENTING SYSTEM WHERE EVERY CLICK OF ADD ROW
+      WILL INCREASE NUMBER AND CREATE A NEW ROW IN THE QUOTEROWS STATE
+
+      LINE 59 WILL NEED TO BE CHANGED TO A FOR EACH FUNCTION
+  */
+
 
   const test = {
     num: 1,

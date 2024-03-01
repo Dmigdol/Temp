@@ -1,0 +1,40 @@
+
+$borderGray: #948f8fd3;
+$bgGray: #e9e3e3d3;
+
+.quote-row-container {
+  display: flex;
+  width: 100%;
+}
+
+.individual-row {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid $borderGray;
+}
+
+.quote-row {
+  background-color: white;
+  text-align: center;
+  padding-top: 3px;
+  border-left: 1px solid $borderGray;
+  &.Line-num {
+    border-left: 0px solid $borderGray;
+    width: 5%;
+  }
+  &.Item-ID {
+    width: 15%;
+  }
+  &.Frame-type{
+    width: 11%;
+  }
+  &.Hinge{
+    width: 11%;
+  }
+  &.Item-Description{
+    width: 53%;
+  }
+  &.Qty{
+    width: 5%;
+  }
+}

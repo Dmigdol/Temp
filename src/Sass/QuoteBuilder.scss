@@ -47,7 +47,7 @@ $bgGray: #e9e3e3d3;
   border-left: 1px solid $borderGray;
   &.Line-num {
     border-left: 0px solid $borderGray;
-    width: 12%;
+    width: 5%;
   }
   &.Item-ID {
     width: 15%;
@@ -59,10 +59,10 @@ $bgGray: #e9e3e3d3;
     width: 11%;
   }
   &.Item-Description{
-    width: 45%;
+    width: 53%;
   }
   &.Qty{
-    width: 10%;
+    width: 5%;
   }
 }
 

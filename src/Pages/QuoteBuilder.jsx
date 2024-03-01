@@ -1,11 +1,28 @@
 import { useEffect, useState } from "react";
 import '../Sass/QuoteBuilder.scss'
+import RenderRow from './Components/RenderRow'
 
 function QuoteBuilder({setCurrentPage}) {
 
-  let context = {
+  const [Quoteinfo, setQuoteInfo] = useState({})
+
+  class Row {
+    constructor(num, id, frame, hinge, desc, qty) {
+      this.num = num;
+      this.id = id;
+      this.frame = frame;
+      this.hinge = hinge;
+      this.desc = desc;
+      this.qty = qty;
+    }
+  }
+
+
+  const newRow = (obj) => {
+    const num = new Row(obj.num, obj.id, obj.frame, obj.hinge, obj.desc, obj.qty)
 
   }
+
 
   return(
     <div className='quote framing'>
@@ -20,13 +37,16 @@ function QuoteBuilder({setCurrentPage}) {
           <span className='Item-Description quote-top'>Description</span>
           <span className='Qty quote-top'>Qty</span>
         </div>
-      </div>
       <div className='rows-container'>
-        <div className='rows header'>
-          {/* Each Row Rendered Here as its own div*/}
-        </div>
+          <RenderRow />
       </div>
-      <div className='NewRow buttonn'>
+      </div>
+      <div className='NewRow button'
+      onClick={()=> {
+
+      }}
+      >
+        Add Row
       </div>
     </div>
   )

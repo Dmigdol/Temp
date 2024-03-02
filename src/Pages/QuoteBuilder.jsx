@@ -20,7 +20,7 @@ function QuoteBuilder({setCurrentPage}) {
     id: 1001,
     frame: 'Standard',
     hinge: '(3) Tectus 340 3D',
-    desc: `36"x96" T-Strike @ 35" up`,
+    desc: `36"x96" T-Strike @ 35" up No Prep No Fire Rating RH`,
     qty: 1
   }
 
@@ -56,7 +56,12 @@ function QuoteBuilder({setCurrentPage}) {
           <span className='Qty quote-top'>Qty</span>
         </div>
         <div className='rows-container'>
-            <RenderRow rows={Quoterows}/>
+          {Quoterows.map((current) => {
+            console.log('****current', current)
+            return(
+              <RenderRow rows={Quoterows} curr={current}/>
+            )
+          })}
         </div>
       </div>
       <div className='NewRow button'

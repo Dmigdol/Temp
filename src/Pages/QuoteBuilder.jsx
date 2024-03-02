@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import '../Sass/QuoteBuilder.scss'
 import RenderRow from './Components/RenderRow'
+import QuoteTop from './QuoteTop'
 
 function QuoteBuilder({setCurrentPage}) {
 
@@ -45,6 +46,7 @@ function QuoteBuilder({setCurrentPage}) {
   return(
     <div className='quote framing'>
       <div className='quote-header'>
+        <QuoteTop />
       </div>
       <div className='quote-info'>
         <div className='quote-info-header'>

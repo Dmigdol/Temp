@@ -1,0 +1,63 @@
+
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
+$bgGray: #e9e3e3d3;
+$borderGray: #948f8fd3;
+
+span {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.Quote-top {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Company-info {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 10%;
+  margin-left: 2%;
+  margin-top: 2%;
+  margin-right: 5%;
+}
+
+.Quote-header {
+  float: right;
+  margin-top: 2%;
+}
+
+.Quote-Header-Text {
+  font-size: xx-large;
+  font-family: 'DM Sans', sans-serif;
+  color: $vectorBlue;
+}
+
+.Pricing {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 30%;
+  border: 1px solid black;
+  margin-left: 65%;
+}
+
+.Sub-Total,.Sales-Tax,.Total {
+  width: 50%;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.Sub-Total-Text,.Sales-Tax-Text,.Total-Text {
+  width: 49%;
+  border-bottom: 1px solid black;
+}
+
+.Total {
+  border-bottom: 0;
+}
+
+.Total-Text {
+  border-bottom: 0;
+}

@@ -31,7 +31,7 @@ function box({context, recent, setCurrentPage}) {
       </div>
       <span className='Add-Tooltip'>Create new {context}</span>
       <div className='Add button'
-      onClick={() => {setCurrentPage('QuoteBuilder')}}
+      onClick={() => setCurrentPage('QuoteBuilder')}
       >
         <span className='Add-text'>+</span>
       </div>

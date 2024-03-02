@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import '../Sass/QuoteBuilder.scss'
 import RenderRow from './Components/RenderRow'
+import QuoteTop from './QuoteTop'
 
 function QuoteBuilder({setCurrentPage}) {
 
@@ -20,7 +21,7 @@ function QuoteBuilder({setCurrentPage}) {
     id: 1001,
     frame: 'Standard',
     hinge: '(3) Tectus 340 3D',
-    desc: `36"x96" T-Strike @ 35" up`,
+    desc: `36"x96" T-Strike @ 35" up No Prep No Fire Rating RH`,
     qty: 1
   }
 
@@ -45,6 +46,7 @@ function QuoteBuilder({setCurrentPage}) {
   return(
     <div className='quote framing'>
       <div className='quote-header'>
+        <QuoteTop />
       </div>
       <div className='quote-info'>
         <div className='quote-info-header'>
@@ -56,7 +58,12 @@ function QuoteBuilder({setCurrentPage}) {
           <span className='Qty quote-top'>Qty</span>
         </div>
         <div className='rows-container'>
-            <RenderRow rows={Quoterows}/>
+          {Quoterows.map((current) => {
+            console.log('****current', current)
+            return(
+              <RenderRow rows={Quoterows} curr={current}/>
+            )
+          })}
         </div>
       </div>
       <div className='NewRow button'

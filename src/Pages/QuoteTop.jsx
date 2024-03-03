@@ -16,12 +16,14 @@ function QuoteTop() {
         <span className='Quote-Header-Text'>Big Top Company Quote 12345</span>
       </div>
       <div className='Pricing'>
-        <div className='Sub-Total'>Sub-Total</div>
-        <div className='Sub-Total-Text'>$100.00</div>
-        <div className='Sales-Tax'>Sales-Tax</div>
-        <div className='Sales-Tax-Text'>$30.00</div>
-        <div className='Total'>Total</div>
-        <div className='Total-Text'>$130.00</div>
+        <span className='Sub-Total'>Sub-Total</span>
+        <span className='Sub-Total-Text'>$100.00</span>
+        <span className='Sales-Tax'>Sales-Tax</span>
+        <span className='Sales-Tax-Text'>$30.00</span>
+      </div>
+      <div className='Total-Container'>
+        <span className='Total'>Total</span>
+        <span className='Total-Text'>$130.00</span>
       </div>
     </div>
   )

@@ -5,7 +5,8 @@ import QuoteTop from './QuoteTop'
 
 function QuoteBuilder({setCurrentPage}) {
 
-  const [Quoterows, setQuoteRows] = useState([])
+  const [quoterows, setQuoteRows] = useState([])
+  const [slide, setSlide] = useState(0)
 
   /*
       NEXT STEP AFTER RETURNING FROM 2/29
@@ -27,7 +28,7 @@ function QuoteBuilder({setCurrentPage}) {
 
   class Row {
     constructor(num, id, frame, hinge, desc, qty) {
-      this.num = Quoterows.length + 1;
+      this.num = quoterows.length + 1;
       this.id = id;
       this.frame = frame;
       this.hinge = hinge;
@@ -39,12 +40,11 @@ function QuoteBuilder({setCurrentPage}) {
 
   const newRow = (obj) => {
     const num = new Row(obj.num, obj.id, obj.frame, obj.hinge, obj.desc, obj.qty);
-    Quoterows.length > 0 ? setQuoteRows([...Quoterows, num]) : setQuoteRows([num]);
+    quoterows.length > 0 ? setQuoteRows([...quoterows, num]) : setQuoteRows([num]);
   }
 
-
   return(
-    <div className='quote framing'>
+    <div className={slide ? 'quote init' : 'quote'}>
       <div className='quote-header'>
         <QuoteTop />
       </div>
@@ -58,22 +58,21 @@ function QuoteBuilder({setCurrentPage}) {
           <span className='Qty quote-top'>Qty</span>
         </div>
         <div className='rows-container'>
-          {Quoterows.map((current) => {
+          {quoterows.map((current) => {
             console.log('****current', current)
             return(
-              <RenderRow rows={Quoterows} curr={current}/>
+              <RenderRow rows={quoterows} curr={current}/>
             )
           })}
         </div>
       </div>
       <div className='NewRow button'
       onClick={()=> {
+        setSlide(!slide)
         newRow(test)
-        console.log(Quoterows)
+        console.log(quoterows)
       }}
-      >
-        Add Row
-      </div>
+      >New Row</div>
     </div>
   )
 }

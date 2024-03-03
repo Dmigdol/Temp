@@ -33,7 +33,7 @@ function box({context, recent, setCurrentPage}) {
       <div className='Add button'
       onClick={() => setCurrentPage('QuoteBuilder')}
       >
-        <span className='Add-text'>+</span>
+        <div className='Add-text'>+</div>
       </div>
       <div className='large-box'>
         <div className='entry-container'>

@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import Login from './Login';
 import Landing from './Landing';
 import QuoteBuilder from './QuoteBuilder'
+import NewRow from './NewRow'
+import '../Sass/App.scss'
 
 function App() {
 
   const [currentPage, setCurrentPage] = useState('Login');
+  const [slide, setSlide] = useState(0)
 
   console.log(currentPage)
 
@@ -19,7 +22,7 @@ function App() {
         return <Landing setCurrentPage={setCurrentPage}/> ;
         break;
       case 'QuoteBuilder' :
-        return <QuoteBuilder setCurrentPage={setCurrentPage}/> ;
+        return <QuoteBuilder setCurrentPage={setCurrentPage}/>;
         break;
       default: return <div>{`Error in Switch Statement: Trying to load ` + param}</div>
         break;
@@ -28,7 +31,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className='app'>
       {renderSwitch(currentPage)}
     </div>
   )

@@ -40,6 +40,7 @@ span {
   position: relative;
   width: 30%;
   border: 1px solid black;
+  border-bottom: 0;
   margin-left: 65%;
 }
 
@@ -50,12 +51,25 @@ span {
 }
 
 .Sub-Total-Text,.Sales-Tax-Text,.Total-Text {
+  padding-left: 1px;
   width: 49%;
   border-bottom: 1px solid black;
 }
 
+.Total-Container {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 30%;
+  border: 1px solid black;
+  margin-left: 65%;
+  margin-top: 1%;
+}
+
 .Total {
   border-bottom: 0;
+  background-color: #6688bb;
+  color: white;
 }
 
 .Total-Text {

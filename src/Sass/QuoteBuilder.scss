@@ -5,13 +5,26 @@ $bgGray: #e9e3e3d3;
 
 // ****** Framing ******
 
+.QuotePage {
+  margin: 0;
+}
+
+.NR {
+  width: fit-content;
+}
+
 .quote {
-  float: right;
+  float:right;
   margin-right: 25vw;
   margin-top: 3vh;
   border: 1px solid black;
   width: 50vw;
   height: 90vh;
+  transition: all 700ms;
+  &.init {
+    margin-right: 1vw;
+    transition: all 700ms;
+  }
 }
 
 // ****** Containers ******
@@ -96,6 +109,7 @@ $bgGray: #e9e3e3d3;
   touch-action: manipulation;
   vertical-align: top;
   white-space: nowrap;
+  margin-left: 1.2%;
 }
 
 .NewRow:active {

@@ -46,7 +46,7 @@ function QuoteBuilder({setCurrentPage}) {
 
   const slideCheck = () => {
     if(slide) {
-      return <NewRow/>
+      return <NewRow className='NR'/>
     }
   }
 

@@ -1,10 +1,9 @@
-import '../NewRow.scss'
+import '../Sass/NewRow.scss'
 
 function newRow() {
 
 
   return (
-
     <div className='Entry-frame'>
       <div className='Input-container'>
         <div className='Label input'>

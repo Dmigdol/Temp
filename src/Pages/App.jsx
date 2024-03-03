@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Login from './Login';
 import Landing from './Landing';
 import QuoteBuilder from './QuoteBuilder'
+import '../Sass/App.scss'
 
 function App() {
 
@@ -28,7 +29,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className='app'>
       {renderSwitch(currentPage)}
     </div>
   )

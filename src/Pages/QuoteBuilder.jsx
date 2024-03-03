@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import '../Sass/QuoteBuilder.scss'
 import RenderRow from './Components/RenderRow'
 import QuoteTop from './QuoteTop'
+import NewRow from './NewRow'
 
 function QuoteBuilder({setCurrentPage}) {
 
@@ -43,36 +44,45 @@ function QuoteBuilder({setCurrentPage}) {
     quoterows.length > 0 ? setQuoteRows([...quoterows, num]) : setQuoteRows([num]);
   }
 
+  const slideCheck = () => {
+    if(slide) {
+      return <NewRow/>
+    }
+  }
+
   return(
-    <div className={slide ? 'quote init' : 'quote'}>
-      <div className='quote-header'>
-        <QuoteTop />
-      </div>
-      <div className='quote-info'>
-        <div className='quote-info-header'>
-          <span className='Line-num quote-top'>#</span>
-          <span className='Item-ID quote-top'>Item ID</span>
-          <span className='Frame-type quote-top'>Frame</span>
-          <span className='Hinge quote-top'>Hinge</span>
-          <span className='Item-Description quote-top'>Description</span>
-          <span className='Qty quote-top'>Qty</span>
+    <div className='QuotePage'>
+      {slideCheck()}
+      <div className={slide ? 'quote init' : 'quote'}>
+        <div className='quote-header'>
+          <QuoteTop className='QT'/>
         </div>
-        <div className='rows-container'>
-          {quoterows.map((current) => {
-            console.log('****current', current)
-            return(
-              <RenderRow rows={quoterows} curr={current}/>
-            )
-          })}
+        <div className='quote-info'>
+          <div className='quote-info-header'>
+            <span className='Line-num quote-top'>#</span>
+            <span className='Item-ID quote-top'>Item ID</span>
+            <span className='Frame-type quote-top'>Frame</span>
+            <span className='Hinge quote-top'>Hinge</span>
+            <span className='Item-Description quote-top'>Description</span>
+            <span className='Qty quote-top'>Qty</span>
+          </div>
+          <div className='rows-container'>
+            {quoterows.map((current) => {
+              console.log('****current', current)
+              return(
+                <RenderRow rows={quoterows} curr={current}/>
+              )
+            })}
+          </div>
         </div>
+        <div className='NewRow button'
+        onClick={()=> {
+          setSlide(!slide)
+          newRow(test)
+          console.log(quoterows)
+        }}
+        >New Row</div>
       </div>
-      <div className='NewRow button'
-      onClick={()=> {
-        setSlide(!slide)
-        newRow(test)
-        console.log(quoterows)
-      }}
-      >New Row</div>
     </div>
   )
 }

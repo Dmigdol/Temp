@@ -5,11 +5,20 @@ $bgGray: #e9e3e3d3;
 $borderGray: #948f8fd3;
 
 .Entry-frame {
-  display: inline-flex;
-  width: 40vw;
+  display: none;
   margin-left: 3vw;
-  height: 90vh;
   border: 1px solid black;
   margin-top: 3vh;
-
+  transition: all 700ms;
+  &.init {
+    display: inline-flex;
+    width: 40vw;
+    height: 90vh;
+    transition: all 700ms
+  }
+  // animation: fadeIn 1s;
+  // @keyframes fadeIn {
+  //   0% { opacity: 0; }
+  //   100% { opacity: 1; }
+  // }
 }

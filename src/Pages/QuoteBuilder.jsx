@@ -21,35 +21,34 @@ function QuoteBuilder({setCurrentPage}) {
   const test = {
     num: 1,
     id: 1001,
+    height: 96,
+    width: 36,
     frame: 'Standard',
     hinge: '(3) Tectus 340 3D',
-    desc: `36"x96" T-Strike @ 35" up No Prep No Fire Rating RH`,
     qty: 1
   }
 
   class Row {
-    constructor(num, id, frame, hinge, desc, qty) {
+    constructor(num, id, height, width, frame, hinge, qty) {
       this.num = quoterows.length + 1;
       this.id = id;
+      this.height = height;
+      this.width = width;
       this.frame = frame;
       this.hinge = hinge;
-      this.desc = desc;
       this.qty = qty;
     }
   }
 
 
   const newRow = (obj) => {
-    const num = new Row(obj.num, obj.id, obj.frame, obj.hinge, obj.desc, obj.qty);
+    const num = new Row(obj.num, obj.id, obj.height,obj.width, obj.frame, obj.hinge, obj.qty);
     quoterows.length > 0 ? setQuoteRows([...quoterows, num]) : setQuoteRows([num]);
   }
 
   const slideCheck = () => {
-    setTimeout(() => {
-      console.log('Delayed')
-    }, 2000)
     if(slide) {
-      return <NewRow slide={slide}/>
+      return <NewRow slide={slide} />
     }
   }
 
@@ -80,8 +79,8 @@ function QuoteBuilder({setCurrentPage}) {
         </div>
         <div className='NewRow button'
         onClick={()=> {
-          setSlide(!slide)
           newRow(test)
+          setSlide(!slide)
           console.log(quoterows)
         }}
         >New Row</div>

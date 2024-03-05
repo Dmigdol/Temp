@@ -45,6 +45,9 @@ function QuoteBuilder({setCurrentPage}) {
   }
 
   const slideCheck = () => {
+    setTimeout(() => {
+      console.log('Delayed')
+    }, 2000)
     if(slide) {
       return <NewRow slide={slide}/>
     }

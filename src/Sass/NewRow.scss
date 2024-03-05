@@ -7,14 +7,26 @@ $borderGray: #948f8fd3;
 .Entry-frame {
   display: none;
   margin-left: 3vw;
+  width: 1vw;
   border: 1px solid black;
   margin-top: 3vh;
   transition: all 700ms;
   &.init {
     display: inline-flex;
+    position: absolute;
     width: 40vw;
     height: 90vh;
-    transition: all 700ms
+    animation: fade-in-right ease 1000ms forwards;
+  }
+  @keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
   // animation: fadeIn 1s;
   // @keyframes fadeIn {

@@ -116,8 +116,11 @@ $borderGray: #948f8fd3;
   padding-top: 1%;
   padding-bottom: 1%;
   font-size: 30px;
-  border: 1px solid $borderGray;
-  background-color: white;
+  margin-top: 10px;
+  color: #224E90;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .orders-headbar {
@@ -125,10 +128,24 @@ $borderGray: #948f8fd3;
   padding-top: 1%;
   padding-bottom: 1%;
   font-size: 30px;
-  border: 1px solid $borderGray;
-  background-color: white;
+  color: #224E90;
+  margin-top: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+
 }
 
+// Conditional css
+
+.active {
+  background-color: white;
+  border: 1px solid $borderGray;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom: 0;
+  min-height: 10%;
+}
 
 
 

@@ -6,6 +6,7 @@ import Box from './Landingbox'
 function Landing({setCurrentPage}) {
 
   const [recent, setRecent] = useState([]);
+  const [current, setCurrent] = useState('Orders')
 
   const fetchData = () => {
     axios.get(`http://localhost:3000/api/test`)
@@ -34,11 +35,19 @@ function Landing({setCurrentPage}) {
         </div>
         <div className="landing Center">
           <div className="landing-headbar">
-            <div className="quotes-headbar">
+            <div className={current === 'Quotes' ? "quotes-headbar active" : "quotes-headbar"}
+            onClick={(() => {
+              setCurrent('Quotes')
+            })}
+            >
               Quotes
               {/* <Box context={'Quote'} setCurrentPage={setCurrentPage} recent={recent}/> */}
             </div>
-            <div className="orders-headbar">
+            <div className={current === 'Orders' ? "orders-headbar active" : "orders-headbar"}
+            onClick={(() => {
+              setCurrent('Orders')
+            })}
+            >
               Orders
               {/* <Box context={'Order'} setCurrentPage={setCurrentPage} recent={recent}/> */}
             </div>

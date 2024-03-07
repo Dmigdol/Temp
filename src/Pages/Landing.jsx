@@ -23,7 +23,7 @@ function Landing({setCurrentPage}) {
 
   return (
     <div className="App">
-      <div className="landing frame">
+      <div className="landing">
         <div className="headbar">
           <span className="logout"
           onClick={() => setCurrentPage('Login')}
@@ -33,11 +33,15 @@ function Landing({setCurrentPage}) {
           </div>
         </div>
         <div className="landing Center">
-          <div className="quotes">
-            <Box context={'Quote'} setCurrentPage={setCurrentPage} recent={recent}/>
-          </div>
-          <div className="orders">
-            <Box context={'Order'} setCurrentPage={setCurrentPage} recent={recent}/>
+          <div className="landing-headbar">
+            <div className="quotes-headbar">
+              Quotes
+              {/* <Box context={'Quote'} setCurrentPage={setCurrentPage} recent={recent}/> */}
+            </div>
+            <div className="orders-headbar">
+              Orders
+              {/* <Box context={'Order'} setCurrentPage={setCurrentPage} recent={recent}/> */}
+            </div>
           </div>
         </div>
       </div>

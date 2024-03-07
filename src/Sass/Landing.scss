@@ -1,5 +1,10 @@
 // MIXINS
 
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
+$bgGray: #e9e3e3d3;
+$borderGray: #948f8fd3;
+
 @mixin flex {
   display: flex;
   justify-content: center;
@@ -7,7 +12,6 @@
   text-align: center;
   min-height: 77vh;
   min-width: 48vw;
-  margin-top:6vh;
 }
 
 @mixin framing {
@@ -20,13 +24,9 @@
 
 // Variables
 
-$vectorBlue: #224E90;
-$vectorLightBlue: #335C9A;
-
 
 .landing {
-  border-radius: 3%;
-  min-width: 60vw;
+  border: 0;
   white-space: pre-wrap;
   justify-content: baseline;
   align-items: baseline;
@@ -36,6 +36,7 @@ $vectorLightBlue: #335C9A;
   min-width: 100%;
   display: grid;
   flex-wrap: wrap;
+  margin-top: 0;
 }
 
 .Landing-Logo {
@@ -46,7 +47,6 @@ $vectorLightBlue: #335C9A;
 
 .Landing-Header {
   text-align: center;
-  margin-top: 3vh;
   min-width: 100%;
   border: hidden;
   border-radius: 0;
@@ -54,9 +54,12 @@ $vectorLightBlue: #335C9A;
 }
 
 .Center {
-  width: 66%;
-  display: flex;
+  min-width: 75vw;
+  min-height: 75vh;
+  display: block;
   justify-content: space-evenly;
+  border: 1px solid $borderGray;
+  height: 100%;
 }
 
 .quotes, .orders {
@@ -78,6 +81,7 @@ $vectorLightBlue: #335C9A;
 // TEXT
 
 .logout {
+  right: 100%;
   margin-bottom: -25px;
   margin-top: 1%;
   margin-right: 5%;
@@ -97,8 +101,33 @@ $vectorLightBlue: #335C9A;
   color: $vectorBlue;
 }
 
+// HeadBar
 
+.landing-headbar {
+  min-width: 100%;
+  display: inline-flex;
+  height: 5%;
+  border-bottom: 1px solid $borderGray;
+  background-color: $bgGray;
+}
 
+.quotes-headbar {
+  width: 10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-size: 30px;
+  border: 1px solid $borderGray;
+  background-color: white;
+}
+
+.orders-headbar {
+  width: 10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-size: 30px;
+  border: 1px solid $borderGray;
+  background-color: white;
+}
 
 
 

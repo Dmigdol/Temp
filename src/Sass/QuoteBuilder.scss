@@ -9,9 +9,7 @@ $bgGray: #e9e3e3d3;
   margin: 0;
 }
 
-.NR {
-  width: fit-content;
-}
+
 
 .quote {
   float:right;
@@ -23,7 +21,7 @@ $bgGray: #e9e3e3d3;
   transition: all 700ms;
   &.init {
     margin-right: 1vw;
-    transition: all 700ms;
+    transition: all 300ms;
   }
 }
 

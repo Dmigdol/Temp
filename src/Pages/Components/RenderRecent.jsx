@@ -13,10 +13,10 @@ function renderRecent({context, recent}) {
           alert(`${context} ID #${entry[1].reference_id}, name is ${entry[1].name}`);
         }}
         >
-          <span className='Number'>{entry[1].reference_id}</span>
-          <span className='Name'>{entry[1].employee}</span>
-          <span className='Client'>{entry[1].name}</span>
-          <span className='Date'>{entry[1].date}</span>
+          <span className='Number hb'>{entry[1].reference_id}</span>
+          <span className='Name hb'>{entry[1].employee}</span>
+          <span className='Client hb'>{entry[1].name}</span>
+          <span className='Date hb'>{entry[1].date}</span>
         </div>
       ))
       }

@@ -5,11 +5,32 @@ $bgGray: #e9e3e3d3;
 $borderGray: #948f8fd3;
 
 .Entry-frame {
-  display: inline-flex;
-  width: 40vw;
+  display: none;
   margin-left: 3vw;
-  height: 90vh;
+  width: 1vw;
   border: 1px solid black;
   margin-top: 3vh;
-
+  transition: all 700ms;
+  &.init {
+    display: inline-flex;
+    position: absolute;
+    width: 40vw;
+    height: 90vh;
+    animation: fade-in-right ease 1000ms forwards;
+  }
+  @keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  // animation: fadeIn 1s;
+  // @keyframes fadeIn {
+  //   0% { opacity: 0; }
+  //   100% { opacity: 1; }
+  // }
 }

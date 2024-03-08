@@ -72,6 +72,9 @@ function Landing({setCurrentPage}) {
             <div className='search-container'>
               <div className={searchState}></div>
             </div>
+            <div className='NewRow  button'
+              onClick={() => setCurrentPage('QuoteBuilder')}
+              >+</div>
           </div>
           <div className='categories'>
             <span className='Number hb'>
@@ -88,7 +91,6 @@ function Landing({setCurrentPage}) {
             </span>
           </div>
           <Row context={'Quote'} setCurrentPage={setCurrentPage} recent={recent}/>
-
         </div>
       </div>
     </div>

@@ -168,6 +168,21 @@ $borderGray: #948f8fd3;
   }
 }
 
+// Categories
+
+.categories {
+  width: 97%;
+  display: inline-flex;
+  border-bottom: 2px solid black;
+  margin-top: 2%;
+  padding-bottom: 1%;
+}
+
+.hb {
+  font-size: 20px;
+  margin-left: auto;
+}
+
 // Conditional css
 
 .active {

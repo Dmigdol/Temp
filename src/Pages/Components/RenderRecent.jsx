@@ -2,21 +2,21 @@ import './infobox.scss'
 
 function renderRecent({context, recent}) {
 
+  console.log(recent)
+
 
   return (
     <div className='Entry'>
-      <div className='info-top'>
-        <span className='Idbox'>{context} ID</span>
-        <span className='Namebox'>Name</span>
-      </div>
       {Object.entries(recent).map((entry) => (
         <div key={entry.Idnum} className='info-box'
         onClick={() => {
           alert(`${context} ID #${entry[1].reference_id}, name is ${entry[1].name}`);
         }}
         >
-          <span className='Idnum'>{entry[1].reference_id}</span>
-          <span className='customer'>{entry[1].name}</span>
+          <span className='Number'>{entry[1].reference_id}</span>
+          <span className='Name'>{entry[1].employee}</span>
+          <span className='Client'>{entry[1].name}</span>
+          <span className='Date'>{entry[1].date}</span>
         </div>
       ))
       }

@@ -44,23 +44,11 @@ ul {
 
 
 
-.Add-Tooltip:before {
 
-  opacity:0;
-  transition:.3s opacity;
-}
-
-.Add-Tooltip:hover:before {
-  display:block;
-}
 
 .recent {
   border: 1px solid #948f8fd3;
-  &:has(.Add:hover) {
-    .Add-Tooltip {
-      visibility: visible;
-    }
-  }
+
 }
 
 .list-entry {
@@ -100,34 +88,7 @@ ul {
 
 // Add Tooltip
 
-.Add-Tooltip {
-  position: relative;
-  scale: 0;
-  left: 25%;
-  top: 6%;
-  width:200px;
-  padding:10px;
-  border: 2px;
-  visibility: hidden;
-  font-family: 'DM Sans', sans-serif;
-  background-color: $bgGray;
-  color: black;
-  &:hover {
-      text-decoration: none;
-      visibility: visible;
-  }
-  &:after {
-    content: " ";
-    height: 10%;
-    position: absolute;
-    top: 50%;
-    left:100%; /* To the right of the tooltip */
-    margin-top: -7px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent transparent $bgGray;
-  }
-}
+
 
 
 // Add Button

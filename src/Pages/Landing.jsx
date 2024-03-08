@@ -6,7 +6,8 @@ import Box from './Landingbox'
 function Landing({setCurrentPage}) {
 
   const [recent, setRecent] = useState([]);
-  const [current, setCurrent] = useState('Orders')
+  const [current, setCurrent] = useState('Orders');
+  const [searchState, setSearchState] = useState('search-input first');
 
   const fetchData = () => {
     axios.get(`http://localhost:3000/api/test`)
@@ -16,6 +17,16 @@ function Landing({setCurrentPage}) {
       .catch((err) => {
         console.log('error retrieving recents ', err)
       })
+  }
+
+  const firstCheck = () => {
+    if (searchState === 'search-input first' || 'search-input hide') {
+      setSearchState('search-input show');
+    }
+    if (searchState === 'search-input show'){
+      setSearchState('search-input hide')
+    }
+    console.log(searchState)
   }
 
   useEffect(() => {
@@ -50,6 +61,16 @@ function Landing({setCurrentPage}) {
             >
               Orders
               {/* <Box context={'Order'} setCurrentPage={setCurrentPage} recent={recent}/> */}
+            </div>
+            <div className='search-btn-container'>
+              <button className='search-btn'
+              onClick={(() => {
+                firstCheck()
+              })}
+              >Q</button>
+            </div>
+            <div className='search-container'>
+              <div className={searchState}></div>
             </div>
           </div>
         </div>

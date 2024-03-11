@@ -26,7 +26,10 @@ function RenderRow({rows, curr}) {
       <span className='Hinge quote-row'>{curr.hinge}</span>
       <span className='Item-Description quote-row'>{curr.desc}</span>
       <span className='Qty quote-row'>{curr.qty}</span>
+
+      {/* DELETE THIS AFTER */}
       </div>
+
     )
     }
   </div>

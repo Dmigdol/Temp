@@ -55,8 +55,8 @@ $borderGray: #948f8fd3;
 
 .Center {
   min-width: 75vw;
-  min-height: 75vh;
   display: block;
+  overflow-y: auto;
   justify-content: space-evenly;
   border: 1px solid $borderGray;
   height: 100%;
@@ -79,6 +79,19 @@ $borderGray: #948f8fd3;
 
 
 // TEXT
+
+.pagenum {
+  margin-left: 3%;
+  font-size: 18px;
+  width: fit-content;
+  text-align: left;
+}
+
+.leftarrow,.rightarrow {
+  font-size: 30px;
+  font-weight: 400;
+  font-family: 'DM Sans', sans-serif;
+}
 
 .logout {
   right: 100%;
@@ -178,8 +191,52 @@ $borderGray: #948f8fd3;
   padding-bottom: 1%;
 }
 
+.row-container {
+  max-height: 55vh;
+  min-height: 55vh;
+  overflow-y: scroll;
+}
+
 .hb {
   margin-left: auto;
+}
+
+// Footer
+
+.landing-footer {
+  display: inline-flex;
+  min-width: 100%;
+  height: 5vh;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.pagechange  {
+  padding-top: 4px;
+  display: flex;
+  margin: auto;
+  margin-left: 60%;
+  height: 100%;
+  width: 30%;
+}
+
+.leftarrow {
+  margin-left: 25%;
+}
+
+.rightarrow {
+
+}
+
+.leftarrow,.rightarrow,.firstpage,.secondpage,.thirdpage,.fourthpage {
+  display: flex;
+  border-radius: 7px;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 10%;
+  border: 1px solid $borderGray;
 }
 
 // Conditional css

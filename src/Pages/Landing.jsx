@@ -92,7 +92,23 @@ function Landing({setCurrentPage}) {
               Date
             </span>
           </div>
-          <Row context={current} setCurrentPage={setCurrentPage} recent={recent}/>
+          <div className='row-container'>
+            <Row context={current} setCurrentPage={setCurrentPage} recent={recent}/>
+          </div>
+
+          <div className='landing-footer'>
+            <div className='pagenum'>
+              Page #
+            </div>
+              <div className='pagechange'>
+                  <div className='leftarrow'>{'<'}</div>
+                  <div className='firstpage'>1</div>
+                  <div className='secondpage'>2</div>
+                  <div className='thirdpage'>3</div>
+                  <div className='fourthpage'>4</div>
+                  <div className='rightarrow'>{'>'}</div>
+              </div>
+          </div>
         </div>
       </div>
     </div>

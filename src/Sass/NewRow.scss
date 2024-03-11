@@ -35,6 +35,10 @@ $borderGray: #948f8fd3;
   // }
 }
 
+.frame-dd {
+  flex-direction: row;
+}
+
 .Form-container {
   width: 100%;
 
@@ -42,8 +46,7 @@ $borderGray: #948f8fd3;
 
 .Input-container {
   width: 100%;
-  display: inline-flex;
-  margin-top: 5%;
+  display: inline-block;
   margin-left: 10%;
 }
 
@@ -56,7 +59,7 @@ $borderGray: #948f8fd3;
 }
 
 label {
-  font-size: 24px;
+  font-size: 22px;
   font-family: 'DM Sans', sans-serif;
   margin-top: 5%;
 }
@@ -65,10 +68,33 @@ label {
 
 .Height-input, .Label-input, .Width-input {
   float: right;
-  margin-right: 40%;
+  margin-right: 35%;
 }
 
 
 .form-submit {
   max-width: 20%;
+}
+
+// Dropdowns
+
+.frame-dropdown {
+  float: right;
+  margin-right: 35%;
+}
+
+// Button
+
+.selection-container {
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+}
+
+.selector {
+  width: 10%;
+  font-size: 40px;
+  &.double {
+    margin-left: 10%;
+  }
 }

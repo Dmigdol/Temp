@@ -7,7 +7,8 @@ import Row from './LandingRow'
 function Landing({setCurrentPage}) {
 
   const [recent, setRecent] = useState([]);
-  const [current, setCurrent] = useState('Quotes  ');
+  const [current, setCurrent] = useState('quote');
+  const [filtered, setFiltered] = useState([])
   const [searchState, setSearchState] = useState('search-input first');
   const [order, setOrder] = useState('date');
 
@@ -31,6 +32,9 @@ function Landing({setCurrentPage}) {
     console.log(searchState)
   }
 
+  const filterRecent = () => {
+  }
+
   useEffect(() => {
     fetchData();
   }, [])
@@ -48,29 +52,27 @@ function Landing({setCurrentPage}) {
         </div>
         <div className="landing Center">
           <div className="landing-headbar">
-            <div className={current === 'Quotes' ? "quotes-headbar active" : "quotes-headbar"}
-            onClick={(() => {
-              setCurrent('Quotes')
-            })}
-            >Quotes
-              {/* <Box context={'Quote'} setCurrentPage={setCurrentPage} recent={recent}/> */}
-            </div>
-            <div className={current === 'Orders' ? "orders-headbar active" : "orders-headbar"}
-            onClick={(() => {
-              setCurrent('Orders')
-            })}
-            >Orders
-              {/* <Box context={'Order'} setCurrentPage={setCurrentPage} recent={recent}/> */}
-            </div>
-            <div className='search-btn-container'>
+          <div className='search-btn-container'>
               <button className='search-btn'
               onClick={(() => {
                 firstCheck()
               })}
               >Q</button>
-            </div>
-            <div className='search-container'>
+          </div>
+          <div className='search-container'>
               <div className={searchState}></div>
+          </div>
+            <div className={current === 'quote' ? "quotes-headbar active" : "quotes-headbar"}
+            onClick={(() => {
+              setCurrent('quote')
+            })}
+            >Quotes
+            </div>
+            <div className={current === 'order' ? "orders-headbar active" : "orders-headbar"}
+            onClick={(() => {
+              setCurrent('order')
+            })}
+            >Orders
             </div>
             <div className='NewRow  button'
               onClick={() => setCurrentPage('QuoteBuilder')}
@@ -90,7 +92,7 @@ function Landing({setCurrentPage}) {
               Date
             </span>
           </div>
-          <Row context={'Quote'} setCurrentPage={setCurrentPage} recent={recent}/>
+          <Row context={current} setCurrentPage={setCurrentPage} recent={recent}/>
         </div>
       </div>
     </div>

@@ -21,9 +21,10 @@ function NewRow({slide, rowObj}) {
     <div className={slide ? 'Entry-frame init' : 'Entry-frame'}>
       <div className='Input-container'>
         <div className='Form-container'>
-          <form className='form input' submit={handleSubmit}>
-            <label> {`Label : `}
+          <form className='form-input' submit={handleSubmit}>
+            <label> {`Item ID : `}
               <input
+              className='Label-input'
               name='id'
               type='text'
               value={row.id || ''}
@@ -48,7 +49,7 @@ function NewRow({slide, rowObj}) {
               onChange={handleInput}
               />
             </label>
-      <button type='submit' submit={handleSubmit}>submit</button>
+          <button className='form-submit' type='submit' submit={handleSubmit}>submit</button>
           </form>
         </div>
       </div>

@@ -2,9 +2,6 @@ import './Rows.scss'
 
 function RenderRow({rows, curr}) {
 
-  console.log('****rows render', rows)
-
-  console.log('****curr render', curr)
 
 
   return (
@@ -26,7 +23,9 @@ function RenderRow({rows, curr}) {
       <span className='Hinge quote-row'>{curr.hinge}</span>
       <span className='Item-Description quote-row'>{curr.desc}</span>
       <span className='Qty quote-row'>{curr.qty}</span>
+
       </div>
+
     )
     }
   </div>

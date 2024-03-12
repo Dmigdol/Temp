@@ -34,3 +34,67 @@ $borderGray: #948f8fd3;
   //   100% { opacity: 1; }
   // }
 }
+
+.frame-dd {
+  flex-direction: row;
+}
+
+.Form-container {
+  width: 100%;
+
+}
+
+.Input-container {
+  width: 100%;
+  display: inline-block;
+  margin-left: 10%;
+}
+
+.form-input {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 22px;
+  font-family: 'DM Sans', sans-serif;
+  margin-top: 5%;
+}
+
+// Input boxes
+
+.Height-input, .Label-input, .Width-input {
+  float: right;
+  margin-right: 35%;
+}
+
+
+.form-submit {
+  max-width: 20%;
+}
+
+// Dropdowns
+
+.frame-dropdown {
+  float: right;
+  margin-right: 35%;
+}
+
+// Button
+
+.selection-container {
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+}
+
+.selector {
+  width: 10%;
+  font-size: 40px;
+  &.double {
+    margin-left: 10%;
+  }
+}

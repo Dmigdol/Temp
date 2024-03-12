@@ -9,9 +9,6 @@ function landingRow({context, recent, setCurrentPage}) {
   return (
     <div className='row-container'>
       <RenderRecent id={context} context={context} testData={testData} recent={recent}/>
-      <RenderRecent id={context} context={context} testData={testData} recent={recent}/>
-      <RenderRecent id={context} context={context} testData={testData} recent={recent}/>
-      <RenderRecent id={context} context={context} testData={testData} recent={recent}/>
     </div>
   )
 }

@@ -2,10 +2,8 @@ import './infobox.scss'
 
 function renderRecent({context, recent}) {
 
-  console.log('recent ****', recent)
 
   const check = (entry) => {
-    console.log('entry***', entry)
     if (entry[1].type === context) {
       return (
         <div key={entry.Idnum} className='info-box'

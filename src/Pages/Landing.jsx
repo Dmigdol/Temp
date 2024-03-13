@@ -6,6 +6,8 @@ import Row from './LandingRow'
 
 function Landing({setCurrentPage}) {
 
+  const [renderCounter, setRenderCount] = useState(0)
+
   const [recent, setRecent] = useState([]);
   const [data, setData] = useState([]);
   const [current, setCurrent] = useState('quote');
@@ -28,28 +30,26 @@ function Landing({setCurrentPage}) {
 
   const changePage = () => {
     setByPage(recent.slice(filtered[0], filtered[1]))
-    console.log('BY PAGE', byPage)
   }
 
   const handlePageSwitch = (context) => {
+    console.log('CONTEXT ', context)
     if (context === '+') {
       setFiltered([filtered[0]+9,filtered[1]+9])
-      console.log(filtered)
       setPage(page + 1)
-    } else if (context === '-' && filtered[0] !== '0') {
+      console.log('page, ', page)
+    } else if (context === '-' && filtered[0] !== '0' && filtered[0] >= 9) {
       setFiltered([filtered[0]-9,filtered[1]-9])
-      console.log(filtered)
       setPage(page - 1)
+      console.log('page, ', page)
     } else if(context === 1){
       setFiltered([0,9])
-      console.log(filtered)
       setPage(context)
+      console.log('page, ', page)
     } else {
-      if (page !== 1) {
-        setFiltered([(filtered[0]*page)-9,page*9])
-        console.log(filtered)
+        setFiltered([(page*9)-9,page*9])
         setPage(context)
-      }
+      console.log('page, ', page)
     }
   }
 
@@ -63,21 +63,20 @@ function Landing({setCurrentPage}) {
   }
 
   const filterByType = () => {
-    let temp = data.filter((item) => {
+    const  temp = data.filter((item) => {
         if (item.type !== current ) {
           return false
         }
         return true;
     })
     setRecent(temp);
+    console.log('recent', recent)
   }
 
 
   useEffect(() => {
-    fetchData();
-    console.log('FULL', data);
+    console.log('full data', data)
     filterByType()
-    console.log('FILTERED', recent)
     changePage()
   }, [page, current])
 
@@ -145,9 +144,22 @@ function Landing({setCurrentPage}) {
                     handlePageSwitch(1)
                   })}
                   >1</div>
-                  <div className='secondpage'>2</div>
-                  <div className='thirdpage'>3</div>
-                  <div className='fourthpage'>4</div>
+                  <div className='secondpage'
+                  onClick={(() => {
+                    handlePageSwitch('2')
+                    console.log(page)
+                  })}
+                  >2</div>
+                  <div className='thirdpage'
+                  onClick={(() => {
+                    handlePageSwitch('3')
+                    console.log(page)
+                  })}>3</div>
+                  <div className='fourthpage'
+                  onClick={(() => {
+                    handlePageSwitch('4')
+                    console.log(page)
+                  })}>4</div>
                   <div className='rightarrow'
                   onClick={(() => {
                     handlePageSwitch('+')

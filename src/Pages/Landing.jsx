@@ -22,6 +22,8 @@ function Landing({setCurrentPage}) {
     axios.get(`http://localhost:3000/api/test`)
       .then(response => {
         setData(response.data)
+        filterByType()
+        changePage()
       })
       .catch((err) => {
         console.log('error retrieving recents ', err)
@@ -32,26 +34,34 @@ function Landing({setCurrentPage}) {
     setByPage(recent.slice(filtered[0], filtered[1]))
   }
 
-  const handlePageSwitch = (context) => {
-    console.log('CONTEXT ', context)
-    if (context === '+') {
-      setFiltered([filtered[0]+9,filtered[1]+9])
-      setPage(page + 1)
-      console.log('page, ', page)
-    } else if (context === '-' && filtered[0] !== '0' && filtered[0] >= 9) {
-      setFiltered([filtered[0]-9,filtered[1]-9])
-      setPage(page - 1)
-      console.log('page, ', page)
-    } else if(context === 1){
-      setFiltered([0,9])
-      setPage(context)
-      console.log('page, ', page)
-    } else {
-        setFiltered([(page*9)-9,page*9])
+  /* page switch
+      four cases
+
+      left arrow:
+        If current page number -1 is not zero, decrement page number
+      right arrow:
+        If the total length of all data reaches beyond currently showed; ie theres
+        another page after the current one, incriment page
+      number > 1:
+        set page to number clicked on
+      number 1: set page to 1
+
+  */
+
+  const pageButtons = (context) => {
+    switch(context) {
+      case '<' :
+        page - 1 === 0 ? setPage(page) : setPage(page - 1);
+        break;
+      case '>' :
+        setPage(page + 1)
+        break;
+      default :
         setPage(context)
-      console.log('page, ', page)
+        break;
     }
   }
+
 
   const firstCheck = () => {
     if (searchState === 'search-input first' || 'search-input hide') {
@@ -62,23 +72,23 @@ function Landing({setCurrentPage}) {
     }
   }
 
+
+
   const filterByType = () => {
-    const  temp = data.filter((item) => {
-        if (item.type !== current ) {
-          return false
-        }
-        return true;
-    })
-    setRecent(temp);
+    setRecent(data.filter((item) => {
+      if (item.type !== current ) {
+        return false
+      }
+      return true;
+  }));
     console.log('recent', recent)
   }
 
 
   useEffect(() => {
+    fetchData()
     console.log('full data', data)
-    filterByType()
-    changePage()
-  }, [page, current])
+  }, [page])
 
   return (
     <div className="App">
@@ -126,43 +136,40 @@ function Landing({setCurrentPage}) {
             </span>
           </div>
           <div className='row-container'>
-            <Row context={current} setCurrentPage={setCurrentPage} recent={byPage}/>
+            <Row context={current} setCurrentPage={setCurrentPage} recent={data}/>
           </div>
           <div className='landing-footer'>
             <div className='pagenum'>
-              Page #
+              Page {page}
             </div>
               <div className='pagechange'>
                   <div className='leftarrow'
                   onClick={(() => {
-                    handlePageSwitch('-')
+                    pageButtons('<')
                   })}
                   >{'<'}</div>
 
                   <div className='firstpage'
                   onClick={(() => {
-                    handlePageSwitch(1)
+                    pageButtons(1)
                   })}
                   >1</div>
                   <div className='secondpage'
                   onClick={(() => {
-                    handlePageSwitch('2')
-                    console.log(page)
+                    pageButtons('2')
                   })}
                   >2</div>
                   <div className='thirdpage'
                   onClick={(() => {
-                    handlePageSwitch('3')
-                    console.log(page)
+                    pageButtons('3')
                   })}>3</div>
                   <div className='fourthpage'
                   onClick={(() => {
-                    handlePageSwitch('4')
-                    console.log(page)
+                    pageButtons('4')
                   })}>4</div>
                   <div className='rightarrow'
                   onClick={(() => {
-                    handlePageSwitch('+')
+                    pageButtons('>')
                   })}
                   >{'>'}</div>
               </div>

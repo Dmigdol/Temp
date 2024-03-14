@@ -7,46 +7,29 @@ import Row from './LandingRow'
 function Landing({setCurrentPage}) {
 
   const [renderCounter, setRenderCount] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   const [recent, setRecent] = useState([]);
   const [data, setData] = useState([]);
   const [current, setCurrent] = useState('quote');
-  const [byPage, setByPage] = useState([])
-  const [filtered, setFiltered] = useState([0,9])
   const [searchState, setSearchState] = useState('search-input first');
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState('date');
 
 
   const fetchData = () => {
-    axios.get(`http://localhost:3000/api/test`)
+    setIsLoading(true);
+    axios.get(`http://localhost:3000/api/${current}`)
       .then(response => {
         setData(response.data)
-        filterByType()
-        changePage()
+        setIsLoading(false)
+        // filterByType()
+        // changePage()
       })
       .catch((err) => {
         console.log('error retrieving recents ', err)
       })
   }
-
-  const changePage = () => {
-    setByPage(recent.slice(filtered[0], filtered[1]))
-  }
-
-  /* page switch
-      four cases
-
-      left arrow:
-        If current page number -1 is not zero, decrement page number
-      right arrow:
-        If the total length of all data reaches beyond currently showed; ie theres
-        another page after the current one, incriment page
-      number > 1:
-        set page to number clicked on
-      number 1: set page to 1
-
-  */
 
   const pageButtons = (context) => {
     switch(context) {
@@ -61,6 +44,10 @@ function Landing({setCurrentPage}) {
         break;
     }
   }
+
+  /*
+      Cut list down to 9
+  */
 
 
   const firstCheck = () => {
@@ -88,10 +75,11 @@ function Landing({setCurrentPage}) {
   useEffect(() => {
     fetchData()
     console.log('full data', data)
-  }, [page])
+  }, [page, current])
 
   return (
     <div className="App">
+      {/* {isLoading ? <div>Loading</div> : */}
       <div className="landing">
         <div className="landing Center">
           <div className="landing-headbar">
@@ -136,7 +124,7 @@ function Landing({setCurrentPage}) {
             </span>
           </div>
           <div className='row-container'>
-            <Row context={current} setCurrentPage={setCurrentPage} recent={data}/>
+            <Row context={current} setCurrentPage={setCurrentPage} data={data}/>
           </div>
           <div className='landing-footer'>
             <div className='pagenum'>
@@ -176,6 +164,8 @@ function Landing({setCurrentPage}) {
           </div>
         </div>
       </div>
+
+      {/* } */}
     </div>
   )
 }

@@ -4,11 +4,13 @@ import RenderRecent from './Components/RenderRecent'
 import axios from 'axios';
 import testData from './Components/testData.js'
 
-function landingRow({context, recent, setCurrentPage}) {
+function landingRow({current, data}) {
+
+  console.log('dater', data)
 
   return (
     <div className='row-container'>
-      <RenderRecent id={context} context={context} testData={testData} recent={recent}/>
+      <RenderRecent id={current} current={current} data={data}/>
     </div>
   )
 }

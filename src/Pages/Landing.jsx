@@ -6,12 +6,12 @@ import Row from './LandingRow'
 
 function Landing({setCurrentPage}) {
 
-  const [renderCounter, setRenderCount] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
 
   const [recent, setRecent] = useState([]);
   const [data, setData] = useState([]);
   const [current, setCurrent] = useState('quote');
+  const [filter, setFilter] = useState([0,9]);
   const [searchState, setSearchState] = useState('search-input first');
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState('date');
@@ -23,8 +23,6 @@ function Landing({setCurrentPage}) {
       .then(response => {
         setData(response.data)
         setIsLoading(false)
-        // filterByType()
-        // changePage()
       })
       .catch((err) => {
         console.log('error retrieving recents ', err)
@@ -32,22 +30,49 @@ function Landing({setCurrentPage}) {
   }
 
   const pageButtons = (context) => {
+    console.log(context)
     switch(context) {
       case '<' :
-        page - 1 === 0 ? setPage(page) : setPage(page - 1);
+        if (page === 1) {
+          setPage(1);
+          setFilter([0,9]);
+        } else {
+          setPage(page-1);
+          setFilter([filter[0]-9, filter[1]-9])
+        }
         break;
       case '>' :
         setPage(page + 1)
+        setFilter([filter[0]+9, filter[1]+9])
         break;
       default :
         setPage(context)
+        setFilter([(context-1)*9, context*9])
         break;
     }
   }
 
   /*
       Cut list down to 9
+      start at [0,9]
+        if page is 1, set filter [0,9]
+        otherwise set filter [page-1 * 9, page * 9]
   */
+
+  const cutList = () => {
+    if (page === 1) {
+      // setFilter([0,9]);
+      return(
+        data.slice(0,9)
+      )
+    } else {
+      console.log('filter', filter)
+      return(
+        data.slice(filter[0], filter[1])
+      )
+      // setFilter([(page-1)*9, page*9])
+    }
+  }
 
 
   const firstCheck = () => {
@@ -61,15 +86,15 @@ function Landing({setCurrentPage}) {
 
 
 
-  const filterByType = () => {
-    setRecent(data.filter((item) => {
-      if (item.type !== current ) {
-        return false
-      }
-      return true;
-  }));
-    console.log('recent', recent)
-  }
+  // const filterByType = () => {
+  //   setRecent(data.filter((item) => {
+  //     if (item.type !== current ) {
+  //       return false
+  //     }
+  //     return true;
+  // }));
+  //   console.log('recent', recent)
+  // }
 
 
   useEffect(() => {
@@ -124,19 +149,20 @@ function Landing({setCurrentPage}) {
             </span>
           </div>
           <div className='row-container'>
-            <Row context={current} setCurrentPage={setCurrentPage} data={data}/>
+            {isLoading ? <div className='loading'>Gathering Data, Please wait</div> :
+            <Row context={current} setCurrentPage={setCurrentPage} data={cutList(data)}/>}
           </div>
           <div className='landing-footer'>
             <div className='pagenum'>
               Page {page}
             </div>
+            {/* eventually change this to conditionally render based off list size / 9 */}
               <div className='pagechange'>
                   <div className='leftarrow'
                   onClick={(() => {
                     pageButtons('<')
                   })}
                   >{'<'}</div>
-
                   <div className='firstpage'
                   onClick={(() => {
                     pageButtons(1)
@@ -144,16 +170,16 @@ function Landing({setCurrentPage}) {
                   >1</div>
                   <div className='secondpage'
                   onClick={(() => {
-                    pageButtons('2')
+                    pageButtons(2)
                   })}
                   >2</div>
                   <div className='thirdpage'
                   onClick={(() => {
-                    pageButtons('3')
+                    pageButtons(3)
                   })}>3</div>
                   <div className='fourthpage'
                   onClick={(() => {
-                    pageButtons('4')
+                    pageButtons(4)
                   })}>4</div>
                   <div className='rightarrow'
                   onClick={(() => {

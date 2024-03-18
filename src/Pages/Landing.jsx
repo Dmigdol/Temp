@@ -33,8 +33,13 @@ function Landing({setCurrentPage}) {
     console.log(context)
     switch(context) {
       case '<' :
-        page === 1 ? setPage(1) : setPage(page - 1);
-        setFilter([0,9])
+        if (page === 1) {
+          setPage(1);
+          setFilter([0,9]);
+        } else {
+          setPage(page-1);
+          setFilter([filter[0]-9, filter[1]-9])
+        }
         break;
       case '>' :
         setPage(page + 1)

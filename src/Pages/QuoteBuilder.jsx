@@ -40,15 +40,20 @@ function QuoteBuilder({setCurrentPage}) {
     }
   }
 
-
   const newRow = (obj) => {
+    const num = new Row(0, 0, 0, 0, 'Standard', '', 1);
+    return num;
+  }
+
+
+  const addRow = (obj) => {
     const num = new Row(obj.num, obj.id, obj.height,obj.width, obj.frame, obj.hinge, obj.qty);
     quoterows.length > 0 ? setQuoteRows([...quoterows, num]) : setQuoteRows([num]);
   }
 
   const slideCheck = () => {
     if(slide) {
-      return <NewRow slide={slide} />
+      return <NewRow slide={slide} rowObj={newRow()}/>
     }
   }
 
@@ -70,18 +75,17 @@ function QuoteBuilder({setCurrentPage}) {
           </div>
           <div className='rows-container'>
             {quoterows.map((current) => {
-              console.log('****current', current)
               return(
-                <RenderRow rows={quoterows} curr={current}/>
+                <RenderRow rows={quoterows} key={current.num} curr={current}/>
               )
             })}
           </div>
         </div>
         <div className='NewRow button'
         onClick={()=> {
-          newRow(test)
+          addRow(test)
           setSlide(!slide)
-          console.log(quoterows)
+          console.log('Current Quote Rows', quoterows)
         }}
         >New Row</div>
       </div>

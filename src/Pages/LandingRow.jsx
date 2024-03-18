@@ -6,7 +6,6 @@ import testData from './Components/testData.js'
 
 function landingRow({current, data}) {
 
-  console.log('dater', data)
 
   return (
     <div className='row-container'>

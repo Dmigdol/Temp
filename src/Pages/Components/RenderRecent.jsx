@@ -3,7 +3,6 @@ import './infobox.scss'
 
 function renderRecent({context, data}) {
 
-  console.log('data ****', data)
 
 
   return (
@@ -15,7 +14,7 @@ function renderRecent({context, data}) {
             alert(`${context} ID #${entry.reference_id}, name is ${entry.name}`);
           }}
           >
-            h
+
             <span className='Number hb'>{entry.reference_id}</span>
             <span className='Name hb'>{entry.employee}</span>
             <span className='Client hb'>{entry.name}</span>

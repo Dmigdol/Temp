@@ -31,9 +31,11 @@ function Landing({setCurrentPage}) {
   }
 
   const pageButtons = (context) => {
+    console.log(context)
     switch(context) {
       case '<' :
         page === 1 ? setPage(1) : setPage(page - 1);
+        break;
       case '>' :
         setPage(page + 1)
         break;

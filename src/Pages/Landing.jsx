@@ -22,8 +22,7 @@ function Landing({setCurrentPage}) {
     setIsLoading(true);
     axios.get(`http://localhost:3000/api/${current}`)
       .then(response => {
-        setData(response.data.slice(0,9))
-        setIsLoading(false)
+        setData(response.data)
       })
       .catch((err) => {
         console.log('error retrieving recents ', err)
@@ -35,12 +34,15 @@ function Landing({setCurrentPage}) {
     switch(context) {
       case '<' :
         page === 1 ? setPage(1) : setPage(page - 1);
+        setFilter([0,9])
         break;
       case '>' :
         setPage(page + 1)
+        setFilter([filter[0]+9, filter[1]+9])
         break;
       default :
         setPage(context)
+        setFilter([(context-1)*9, context*9])
         break;
     }
   }
@@ -59,9 +61,9 @@ function Landing({setCurrentPage}) {
         data.slice(0,9)
       )
     } else {
-      console.log('[',(page-1)*9,',',page*9,']')
+      console.log('filter', filter)
       return(
-        data.slice((page-1)*9, page*9)
+        data.slice(filter[0], filter[1])
       )
       // setFilter([(page-1)*9, page*9])
     }
@@ -92,7 +94,6 @@ function Landing({setCurrentPage}) {
 
   useEffect(() => {
     fetchData()
-    console.log('cutList', cutList(data))
     console.log('full data', data)
   }, [page, current])
 
@@ -143,7 +144,7 @@ function Landing({setCurrentPage}) {
             </span>
           </div>
           <div className='row-container'>
-            <Row context={current} setCurrentPage={setCurrentPage} data={data}/>
+            <Row context={current} setCurrentPage={setCurrentPage} data={cutList(data)}/>
           </div>
           <div className='landing-footer'>
             <div className='pagenum'>

@@ -80,6 +80,12 @@ $borderGray: #948f8fd3;
 
 // TEXT
 
+.loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 20%;
+}
+
 .pagenum {
   margin-left: 3%;
   font-size: 18px;

@@ -6,7 +6,6 @@ import Row from './LandingRow'
 
 function Landing({setCurrentPage}) {
 
-  const [renderCounter, setRenderCount] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
 
   const [recent, setRecent] = useState([]);
@@ -23,6 +22,7 @@ function Landing({setCurrentPage}) {
     axios.get(`http://localhost:3000/api/${current}`)
       .then(response => {
         setData(response.data)
+        setIsLoading(false)
       })
       .catch((err) => {
         console.log('error retrieving recents ', err)
@@ -149,7 +149,8 @@ function Landing({setCurrentPage}) {
             </span>
           </div>
           <div className='row-container'>
-            <Row context={current} setCurrentPage={setCurrentPage} data={cutList(data)}/>
+            {isLoading ? <div className='loading'>Gathering Data, Please wait</div> :
+            <Row context={current} setCurrentPage={setCurrentPage} data={cutList(data)}/>}
           </div>
           <div className='landing-footer'>
             <div className='pagenum'>

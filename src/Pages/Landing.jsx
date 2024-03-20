@@ -100,7 +100,7 @@ function Landing({setCurrentPage}) {
   useEffect(() => {
     fetchData()
     console.log('full data', data)
-  }, [page, current])
+  }, [current])
 
   return (
     <div className="App">
@@ -147,6 +147,9 @@ function Landing({setCurrentPage}) {
             <span className='Date hb'>
               Date
             </span>
+            <div className='options-box headbar-box'>
+              <img className="list-img" src='list.png' width='100%' />
+            </div>
           </div>
           <div className='row-container'>
             {isLoading ? <div className='loading'>Gathering Data, Please wait</div> :

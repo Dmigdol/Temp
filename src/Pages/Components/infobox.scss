@@ -11,16 +11,9 @@ $vectorLightBlue: #335C9A;
   white-space: nowrap;
   border-bottom: 2px solid #948f8fd3;
   width: 97%;
-  padding-top: 1.5%;
-  padding-bottom: 1.5%;
-  &:hover {
-    cursor: pointer;
-    transition: all 300ms;
-    transform:scaleY(1.05);
-    transform:scaleX(1.03);
-  }
-  transition: all 300ms;
-  transform: scale(1);
+  padding-top: 1%;
+  padding-bottom: 1%;
+
 }
 
 .hb {
@@ -46,4 +39,24 @@ $vectorLightBlue: #335C9A;
     margin-left: 10%;
   }
 }
+
+.options-box {
+  display: flex;
+  width: 4%;
+  justify-content: center;
+  border-radius: 5px;
+  margin-right: 2%;
+  &:hover {
+    cursor: pointer;
+    transition: all 300ms;
+    transform:scale(1.2);
+  }
+  transition: all 300ms;
+  transform: scale(1);
+  &.headbar-box {
+    visibility: hidden;
+  }
+}
+
+
 

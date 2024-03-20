@@ -52,16 +52,8 @@ function Landing({setCurrentPage}) {
     }
   }
 
-  /*
-      Cut list down to 9
-      start at [0,9]
-        if page is 1, set filter [0,9]
-        otherwise set filter [page-1 * 9, page * 9]
-  */
-
   const cutList = () => {
     if (page === 1) {
-      // setFilter([0,9]);
       return(
         data.slice(0,9)
       )
@@ -70,7 +62,6 @@ function Landing({setCurrentPage}) {
       return(
         data.slice(filter[0], filter[1])
       )
-      // setFilter([(page-1)*9, page*9])
     }
   }
 
@@ -84,23 +75,10 @@ function Landing({setCurrentPage}) {
     }
   }
 
-
-
-  // const filterByType = () => {
-  //   setRecent(data.filter((item) => {
-  //     if (item.type !== current ) {
-  //       return false
-  //     }
-  //     return true;
-  // }));
-  //   console.log('recent', recent)
-  // }
-
-
   useEffect(() => {
     fetchData()
     console.log('full data', data)
-  }, [page, current])
+  }, [current])
 
   return (
     <div className="App">
@@ -147,6 +125,9 @@ function Landing({setCurrentPage}) {
             <span className='Date hb'>
               Date
             </span>
+            <div className='options-box headbar-box'>
+              <img className="list-img" src='list.png' width='100%' />
+            </div>
           </div>
           <div className='row-container'>
             {isLoading ? <div className='loading'>Gathering Data, Please wait</div> :

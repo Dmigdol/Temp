@@ -58,5 +58,33 @@ $vectorLightBlue: #335C9A;
   }
 }
 
+.options-list {
+  position: absolute;
+  background-color: white;
+  visibility: hidden;
+  display: flex;
+  left: 74%;
+  flex-direction: column;
+  width: 8%;
+  height: 10%;
+  border: 1px solid black;
+  font-size: 17px;
+  text-align: left;
+  &#show {
+    visibility: visible;
+  }
+  &.options-delete{
+    border: 0px;
+  }
+}
+
+.options-view {
+  border-bottom: 1px solid black;
+}
+
+.options-edit {
+  border-bottom: 1px solid black;
+
+}
 
 

@@ -70,12 +70,16 @@ $vectorLightBlue: #335C9A;
   border: 1px solid black;
   font-size: 17px;
   text-align: left;
-  &#show {
+  &.show {
     visibility: visible;
   }
   &.options-delete{
     border: 0px;
   }
+}
+
+.show {
+  visibility: visible;
 }
 
 .options-view {

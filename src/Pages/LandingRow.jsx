@@ -4,7 +4,8 @@ import RenderRecent from './Components/RenderRecent'
 import axios from 'axios';
 import testData from './Components/testData.js'
 
-function landingRow({current, data}) {
+function LandingRow({current, data}) {
+
 
 
   return (
@@ -14,4 +15,4 @@ function landingRow({current, data}) {
   )
 }
 
-export default landingRow
+export default LandingRow

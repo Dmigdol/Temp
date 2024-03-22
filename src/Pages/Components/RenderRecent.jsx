@@ -1,60 +1,48 @@
 import './infobox.scss'
-import { useState } from "react";
+import OptionsBox from './OptionsBox.jsx'
+import { useRef, useEffect, useState } from "react";
 
 
 
 function RenderRecent({current, data}) {
 
-  const [optShow, setOptShow] = useState(0);
-  const [focus, setFocus] = useState('')
+  const [optShow, setOptShow] = useState(false);
+  const [focus, setFocus] = useState();
 
-  /*
-    TO ADD
-    Each row gets a small box
-      on click >>
-        small drop down appears
-          • View Quote/Order
-          • Edit Quote **NOT ORDER**
-          • Delete **With Confirmation**
 
-    Next
-    Create Hidden absolute div to left of box
-      On click render it
 
-    LEFT OFF ***
-      Render specific option box based off ID of entry
 
-    On click >
-      Helper function that takes current entry id and change that specific one
-  */
+  function toggleOptions(id) {
+    if (optShow === false) {
+      setOptShow(true);
+    } else if (focus === id) {
+      setFocus()
+      document.getElementById(id).className = 'options-list'
+    } else if (focus !== id && focus) {
+      document.getElementById(focus).className = 'options-list'
+      document.getElementById(id).className = 'options-list show'
+      setFocus(id)
+    }
+    if (focus === undefined) {
+      setFocus(id)
+      document.getElementById(id).className = 'options-list show'
+    }
+  }
 
-      function toggleOptions(id) {
-        optShow ? document.getElementById(id).className = 'options-list'
-        : document.getElementById(id).className = 'options-list show';
-        setOptShow(!optShow)
-      }
 
 
   return (
     <div className='Entry'>
     {data.map((entry) => {
-      console.log(entry.id)
-      console.log(optShow)
       return (
         <div key={entry.id} className='info-box'>
             <span className='Number hb'>{entry.reference_id}</span>
             <span className='Name hb'>{entry.employee}</span>
             <span className='Client hb'>{entry.name}</span>
             <span className='Date hb'>{entry.date}</span>
-            <div id={entry.id} className={'options-list'}
-            >
-              <span className='options-view'>View {entry.type}</span>
-              <span className='options-edit'>Edit {entry.type}</span>
-              <span className='options-delete'>Delete {entry.type}</span>
-            </div>
+            <OptionsBox entry={entry} optShow={optShow} setOptShow={setOptShow}/>
             <div className='options-box'
-            onClick={() => {toggleOptions(entry.id)}}
-            >
+            onClick={() => {toggleOptions(entry.id)}}>
               <img className="list-img" src='list.png' width='100%'/>
             </div>
           </div>
@@ -65,3 +53,30 @@ function RenderRecent({current, data}) {
 }
 
 export default RenderRecent;
+
+//    EXPERIMENTAL HIDING WHEN CLICK OUT
+
+// const wrapperRef = useRef(null);
+
+// function useOutsideAlerter(ref) {
+//   useEffect(() => {
+//     /**
+//      * Alert if clicked on outside of element
+//      */
+//     function handleClickOutside(event) {
+//       if (ref.current && !ref.current.contains(event.target)) {
+//         setOptShow(false)
+//         console.log(optShow)
+//       }
+//     }
+//     // Bind the event listener
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       // Unbind the event listener on clean up
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [ref]);
+// }
+
+
+// useOutsideAlerter(wrapperRef);

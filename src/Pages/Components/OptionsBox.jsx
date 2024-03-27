@@ -5,10 +5,9 @@ import { useRef, useEffect, useState } from "react";
 function OptionsBox({entry, optShow, setOptShow}) {
 
 
-
   return (
     <div>
-      <div id={entry.id} className={'options-list'}>
+      <div id={entry.id} className={'options-list'} >
         <div className='options-view spacing'>
           <img className="eye-img" src='visible-64.png' width='20%'/>
           <span className='options-view-text'>View {entry.type}</span>
@@ -27,3 +26,10 @@ function OptionsBox({entry, optShow, setOptShow}) {
 }
 
 export default OptionsBox;
+
+/*
+
+
+
+
+*/

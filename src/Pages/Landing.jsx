@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import '../Sass/Landing.scss'
 import axios from 'axios';
-import Box from './Landingbox'
 import Row from './LandingRow'
 
-function Landing({setCurrentPage}) {
+function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -131,7 +130,7 @@ function Landing({setCurrentPage}) {
           </div>
           <div className='row-container'>
             {isLoading ? <div className='loading'>Gathering Data, Please wait</div> :
-            <Row context={current} setCurrentPage={setCurrentPage} data={cutList(data)}/>}
+            <Row wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}
           </div>
           <div className='landing-footer'>
             <div className='pagenum'>

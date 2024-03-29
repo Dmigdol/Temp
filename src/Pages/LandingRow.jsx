@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import '../Sass/Landingbox.scss';
 import RenderRecent from './Components/RenderRecent'
 import axios from 'axios';
-import testData from './Components/testData.js'
 
-function landingRow({current, data}) {
+function LandingRow({current, data, optShow, setOptShow, wrapperRef}) {
+
 
 
   return (
     <div className='row-container'>
-      <RenderRecent id={current} current={current} data={data}/>
+      <RenderRecent wrapperRef={wrapperRef} id={current} current={current} data={data} setOptShow={setOptShow} optShow={optShow}/>
     </div>
   )
 }
 
-export default landingRow
+export default LandingRow

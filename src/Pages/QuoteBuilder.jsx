@@ -17,31 +17,48 @@ function QuoteBuilder({setCurrentPage}) {
       LINE 59 WILL NEED TO BE CHANGED TO A FOR EACH FUNCTION
   */
 
+ const test = {
+   num: 1,
+   id: 1001,
+   height: 96,
+   width: 36,
+   frame: 'Standard',
+   strike: [4, 2],
+   hinge: [4, 2],
+   qty: 1
+ }
 
-  const test = {
-    num: 1,
-    id: 1001,
-    height: 96,
-    width: 36,
-    frame: 'Standard',
-    hinge: '(3) Tectus 340 3D',
-    qty: 1
-  }
 
-  class Row {
-    constructor(num, id, height, width, frame, hinge, qty) {
-      this.num = quoterows.length + 1;
-      this.id = id;
-      this.height = height;
-      this.width = width;
-      this.frame = frame;
-      this.hinge = hinge;
-      this.qty = qty;
+ class Row {
+
+   constructor(id, height, width, frame, strike, hinge, qty) {
+     this.num = quoterows.length + 1;
+     this.id = id;
+     this.height = height;
+     this.width = width;
+     this.frame = frame;
+     this.strike = strike;
+     this.hinge = hinge;
+     this.qty = qty;
     }
+
+    /*
+      Method to calculate prices based off of properties of this row
+
+      All properties will be changed in the input fields
+      With these new changes, upon row addition use this function to calculate a price
+      Formula         Cost of Alluminum     Hinge Price(ph)  Strike(ph)    additional fees
+                       (W + 2(H)) x .34c  +    quant($4)   +   quant($4) +        $10
+    */
+
+      calcPrice() {
+        return (((this.width + (2*(this.height)) * 0.34) + (this.hinge[1] * (this.hinge[0])) + (this.strike[1]*(this.strike[0])) + 10) * this.qty)
+      }
+
   }
 
   const newRow = (obj) => {
-    const num = new Row(0, 0, 0, 0, 'Standard', '', 1);
+    const num = new Row(1000, 96, 36, 'Standard', [4, 2], [4, 2], 1);
     return num;
   }
 

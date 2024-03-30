@@ -29,6 +29,7 @@ function QuoteBuilder({setCurrentPage}) {
   }
 
   class Row {
+
     constructor(num, id, height, width, frame, hinge, qty) {
       this.num = quoterows.length + 1;
       this.id = id;
@@ -38,6 +39,19 @@ function QuoteBuilder({setCurrentPage}) {
       this.hinge = hinge;
       this.qty = qty;
     }
+
+    /*
+      Method to calculate prices based off of properties of this row
+
+      All properties will be changed in the input fields
+      With these new changes, upon row addition use this function to calculate a price
+
+    */
+
+      calcPrice() {
+        return 'Placeholder'
+      }
+
   }
 
   const newRow = (obj) => {

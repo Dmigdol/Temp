@@ -11,30 +11,6 @@ function NewRow({slide, rowObj}) {
     {value: 'pivot', label: 'Pivot'}
   ]
 
-  /*
-    Frame Object
-      contains all options for frame selection
-      formatting
-      single: {
-        strike: {
-          type: {
-            default: [`Lip 2 1/4" Radius`, `Lip 2 1/4" Square`, `T-Strike 1 1/8" x 2 3/4"`,
-                        `ASA-Strike 1 1/4" x 4 7/8"`, `No Strike`]
-            deadbolt: [`1" x 2 1/4" Radius`, `1" x 2 1/4" Square`, `1 1/8" x 2 3/4" Radius`, `1 1/8" x 2 3/4" Square`]
-          }
-          height: `36" up`
-        },
-        hinge: {
-          '<72' : [(2)CalRoyal CR3D51, (2)Tectus 340 3D, (2) 4x4 butt hinge],
-          '72-84' : [(3)CalRoyal CR3D51, (3)Tectus 340 3D, (3) 4x4 butt hinge],
-          '84-96' : [(3)CalRoyal CR3D62, (3)Tectus 540 3D, (4) 4x4 butt hinge],
-          '>96' :  [(4)CalRoyal CR3D62, (4)Tectus 540 3D, (4) 4x4 butt hinge]
-        }
-      },
-      double : '{
-        ...etc
-      }'
-  */
 
   const standardFrame = {
     single: {
@@ -56,7 +32,7 @@ function NewRow({slide, rowObj}) {
     double : 'etc...'
   }
 
-  console.log('rowOBJ', rowObj)
+  console.log('rowOBJ', rowObj.calcPrice())
 
 
   const [row, changeRow] = useState(rowObj);

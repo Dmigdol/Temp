@@ -31,7 +31,7 @@ function QuoteBuilder({setCurrentPage}) {
 
  class Row {
 
-   constructor(num, id, height, width, frame, strike, hinge, qty) {
+   constructor(id, height, width, frame, strike, hinge, qty) {
      this.num = quoterows.length + 1;
      this.id = id;
      this.height = height;
@@ -58,7 +58,7 @@ function QuoteBuilder({setCurrentPage}) {
   }
 
   const newRow = (obj) => {
-    const num = new Row(1, 1000, 96, 36, 'Standard', [4, 2], [4, 2], 1);
+    const num = new Row(1000, 96, 36, 'Standard', [4, 2], [4, 2], 1);
     return num;
   }
 

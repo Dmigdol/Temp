@@ -9,14 +9,6 @@ function QuoteBuilder({setCurrentPage}) {
   const [quoterows, setQuoteRows] = useState([])
   const [slide, setSlide] = useState(0)
 
-  /*
-      NEXT STEP AFTER RETURNING FROM 2/29
-      SET UP BASIC INCREMENTING SYSTEM WHERE EVERY CLICK OF ADD ROW
-      WILL INCREASE NUMBER AND CREATE A NEW ROW IN THE QUOTEROWS STATE
-
-      LINE 59 WILL NEED TO BE CHANGED TO A FOR EACH FUNCTION
-  */
-
  const test = {
    num: 1,
    id: 1001,
@@ -28,9 +20,7 @@ function QuoteBuilder({setCurrentPage}) {
    qty: 1
  }
 
-
  class Row {
-
    constructor(id, height, width, frame, strike, hinge, qty) {
      this.num = quoterows.length + 1;
      this.id = id;
@@ -43,25 +33,18 @@ function QuoteBuilder({setCurrentPage}) {
     }
 
     /*
-      Method to calculate prices based off of properties of this row
-
-      All properties will be changed in the input fields
-      With these new changes, upon row addition use this function to calculate a price
-      Formula         Cost of Alluminum     Hinge Price(ph)  Strike(ph)    additional fees
-                       (W + 2(H)) x .34c  +    quant($4)   +   quant($4) +        $10
+      Placeholder prices for parts
     */
 
       calcPrice() {
         return (((this.width + (2*(this.height)) * 0.34) + (this.hinge[1] * (this.hinge[0])) + (this.strike[1]*(this.strike[0])) + 10) * this.qty)
       }
-
   }
 
   const newRow = (obj) => {
     const num = new Row(1000, 96, 36, 'Standard', [4, 2], [4, 2], 1);
     return num;
   }
-
 
   const addRow = (obj) => {
     const num = new Row(obj.num, obj.id, obj.height,obj.width, obj.frame, obj.hinge, obj.qty);

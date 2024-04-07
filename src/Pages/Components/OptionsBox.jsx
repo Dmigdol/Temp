@@ -2,8 +2,9 @@ import './OptionsBox.scss'
 import { useRef, useEffect, useState } from "react";
 
 
-function OptionsBox({entry, optShow, setOptShow}) {
+function OptionsBox({entry}) {
 
+  console.log('entry', entry)
 
   return (
     <div>

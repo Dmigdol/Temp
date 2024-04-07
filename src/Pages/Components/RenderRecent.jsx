@@ -14,7 +14,7 @@ function RenderRecent({current, data}) {
 
 
   function toggleOptions(id, context) {
-    console.log('here',id)
+    console.log('here', id, '   ',)
     if (context === 'id') {
       if (optShow === false) {
         setOptShow(true);
@@ -63,12 +63,12 @@ function RenderRecent({current, data}) {
     <div className='Entry' >
     {data.map((entry) => {
       return (
-        <div key={entry.id} id={entry.id} className='info-box' ref={wrapperRef}>
+        <div key={entry.id} className='info-box' ref={wrapperRef}>
             <span className='Number hb'>{entry.reference_id}</span>
             <span className='Name hb'>{entry.employee}</span>
             <span className='Client hb'>{entry.name}</span>
             <span className='Date hb'>{entry.date}</span>
-            <OptionsBox entry={entry} optShow={optShow} setOptShow={setOptShow}/>
+            <OptionsBox entry={entry}/>
             <div className='options-box'
             onClick={() => {
               toggleOptions(entry.id, 'id')}}>

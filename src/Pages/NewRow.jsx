@@ -61,7 +61,10 @@ function NewRow({slide, rowObj}) {
       <div className='Input-container'>
         <div className='Form-container'>
           <form className='form-input'>
-            <label> {`Item ID : `}
+            <label className='item-id'>
+              <span className='item-id-text'>
+              {`Item ID : `}
+              </span>
               <input
               className='Label-input'
               autoComplete="off"
@@ -78,7 +81,10 @@ function NewRow({slide, rowObj}) {
               }}
               />
             </label>
-            <label> {`Height : `}
+            <label className='height-id'>
+              <span className='height-id-text'>
+              {`Height : `}
+              </span>
               <input
               className='Height-input'
               type='number'
@@ -87,7 +93,10 @@ function NewRow({slide, rowObj}) {
               onChange={handleInput}
               />
             </label>
-            <label> {`Width : `}
+            <label className='width-id'>
+              <span className='width-id-text'>
+               {`Width : `}
+              </span>
               <input
               className='Width-input'
               type='number'
@@ -96,15 +105,21 @@ function NewRow({slide, rowObj}) {
               onChange={handleInput}
               />
             </label>
-              <label> {`Frame Type: `}
+              <label className='frame-id'>
+              <span className='frame-id-text'>
+              {`Frame Type: `}
+              </span>
                 <Select
                 className='frame-dropdown'
                 options={frameOptions} />
               </label>
               <div className='selection-container'>
-                <button type="button" className='single selector'>S</button>
-                <button type="button" className='double selector'>D</button>
-              </div>
+                <div className='single-door'>
+                  <img className="single-door-img" src='door.png' width='30%'/>
+                </div>
+                <div className='double-door'>
+                  <img className="double-door-img" src='home.png' width='30%'/>
+                </div>              </div>
           <button className='form-submit' type='submit'>submit</button>
           </form>
         </div>

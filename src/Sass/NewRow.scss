@@ -11,6 +11,7 @@ $borderGray: #948f8fd3;
   border: 1px solid black;
   margin-top: 3vh;
   transition: all 700ms;
+  justify-content: space-evenly;
   &.init {
     display: inline-flex;
     position: absolute;
@@ -39,14 +40,10 @@ $borderGray: #948f8fd3;
   flex-direction: row;
 }
 
-.Form-container {
-  width: 100%;
-
-}
 
 .Input-container {
-  width: 100%;
-  display: inline-block;
+  width: 66%;
+  border: 2px solid black;
 }
 
 .form-input {
@@ -62,11 +59,23 @@ label {
   margin-top: 5%;
 }
 
+// Text
+
+.item-id-text, .height-id-text, .width-id-text, .frame-id-text {
+  margin-left: 10%;
+}
+
+// Full Input Row
+
+.item-id, .height-id, .width-id, .frame-id {
+  display: inline-flex;
+}
+
 // Input boxes
 
 .Height-input, .Label-input, .Width-input {
-  float: right;
-  margin-right: 35%;
+  margin-left: auto;
+  margin-right: 10%;
 }
 
 
@@ -77,8 +86,8 @@ label {
 // Dropdowns
 
 .frame-dropdown {
-  float: right;
-  margin-right: 35%;
+  margin-left: auto;
+  margin-right: 10%;
 }
 
 // Button
@@ -87,12 +96,4 @@ label {
   display: flex;
   margin-top: 5%;
   justify-content: center;
-}
-
-.selector {
-  width: 15%;
-  font-size: 40px;
-  &.double {
-    margin-left: 5%;
-  }
 }

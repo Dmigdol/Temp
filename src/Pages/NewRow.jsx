@@ -1,9 +1,10 @@
 import { useState } from "react";
 import '../Sass/NewRow.scss'
 import Select from 'react-select'
+import Conditionals from './Components/Conditionals.jsx'
 
 
-function NewRow({slide, rowObj}) {
+function NewRow({slide, rowObj, setSlide}) {
 
   const frameOptions = [
     {value: 'standard', label: 'Standard'},
@@ -58,6 +59,14 @@ function NewRow({slide, rowObj}) {
 
   return (
     <div className={slide ? 'Entry-frame init' : 'Entry-frame'}>
+      <div className='form-header'>
+        <span className='form-header-text'>{`Entry #${rowObj.num}`}</span>
+      </div>
+      <span className='x-button'
+        onClick={() => {
+          setSlide(0)
+        }}
+      >&#x2715;</span>
       <div className='Input-container'>
         <div className='Form-container'>
           <form className='form-input'>
@@ -81,9 +90,21 @@ function NewRow({slide, rowObj}) {
               }}
               />
             </label>
+            <div className='button-headers'>
+              <span className='button-headers-single'>Single</span>
+              <span className='button-headers-double'>Double</span>
+            </div>
+            <div className='selection-container'>
+              <div className='single-door'>
+                <img className="single-door-img" src='door.png' width='30%'/>
+              </div>
+              <div className='double-door'>
+                <img className="double-door-img" src='home.png' width='30%'/>
+              </div>
+            </div>
             <label className='height-id'>
               <span className='height-id-text'>
-              {`Height : `}
+              {`Height (in) : `}
               </span>
               <input
               className='Height-input'
@@ -95,7 +116,7 @@ function NewRow({slide, rowObj}) {
             </label>
             <label className='width-id'>
               <span className='width-id-text'>
-               {`Width : `}
+               {`Width (in) : `}
               </span>
               <input
               className='Width-input'
@@ -112,18 +133,11 @@ function NewRow({slide, rowObj}) {
                 <Select
                 className='frame-dropdown'
                 options={frameOptions} />
-              </label>
-              <div className='selection-container'>
-                <div className='single-door'>
-                  <img className="single-door-img" src='door.png' width='30%'/>
-                </div>
-                <div className='double-door'>
-                  <img className="double-door-img" src='home.png' width='30%'/>
-                </div>              </div>
-          <button className='form-submit' type='submit'>submit</button>
+            </label>
           </form>
         </div>
       </div>
+      <span className='form-submit' type='submit'>Continue</span>
       <div className='Drop-container'>
         <div className='DoorFrame selection'>
         </div>

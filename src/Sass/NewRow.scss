@@ -11,12 +11,12 @@ $borderGray: #948f8fd3;
   border: 1px solid black;
   margin-top: 3vh;
   transition: all 700ms;
-  justify-content: space-evenly;
+  justify-content: center;
   &.init {
     display: inline-flex;
+    flex-wrap: wrap;
     position: absolute;
     width: 40vw;
-    height: 90vh;
     animation: fade-in-right ease 1000ms forwards;
   }
   @keyframes fade-in-right {
@@ -43,7 +43,7 @@ $borderGray: #948f8fd3;
 
 .Input-container {
   width: 66%;
-  border: 2px solid black;
+  height: 83vh;
 }
 
 .form-input {
@@ -61,6 +61,28 @@ label {
 
 // Text
 
+.x-button {
+  font-size: xx-large;
+  position: absolute;
+  top: 1%;
+  right: 3%;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.form-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.form-header-text {
+  font-size: xx-large;
+  color: #224E90;
+}
+
 .item-id-text, .height-id-text, .width-id-text, .frame-id-text {
   margin-left: 10%;
 }
@@ -69,6 +91,7 @@ label {
 
 .item-id, .height-id, .width-id, .frame-id {
   display: inline-flex;
+  margin-top: 8%;
 }
 
 // Input boxes
@@ -80,7 +103,12 @@ label {
 
 
 .form-submit {
-  max-width: 20%;
+  position: absolute;
+  color: #224E90;
+  width: fit-content;
+  font-size: xx-large;
+  left: 39%;
+  bottom: 3%;
 }
 
 // Dropdowns
@@ -93,7 +121,24 @@ label {
 // Button
 
 .selection-container {
-  display: flex;
+  display: inline-flex;
   margin-top: 5%;
+}
+
+.single-door, .double-door {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.button-headers {
+  width: 100%;
+  display: flex;
+}
+
+.button-headers-single, .button-headers-double {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
   justify-content: center;
 }

@@ -128,7 +128,12 @@ label {
 .single-door, .double-door {
   display: flex;
   justify-content: center;
+  width: 100%;
   margin-left: auto;
+}
+
+.single-door-img {
+  font-size: 5vw;
 }
 
 .button-headers {

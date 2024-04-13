@@ -104,7 +104,7 @@ function NewRow({slide, rowObj, setSlide}) {
                 <FontAwesomeIcon className='single-door-img' icon={byPrefixAndName.fass['door-closed']} style={{color: "#224e90"}} />
               </div>
               <div className='double-door'>
-                <img className="double-door-img" src='home.png' width='30%'/>
+                <FontAwesomeIcon className='single-door-img' icon={byPrefixAndName.fass['door-closed']}/>
               </div>
             </div>
             <label className='height-id'>

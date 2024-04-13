@@ -84,6 +84,7 @@ function QuoteBuilder({setCurrentPage}) {
         <div className='NewRow button'
         onClick={()=> {
           addRow(test)
+          setSlide(!slide)
           console.log('Current Quote Rows', quoterows)
         }}
         >New Row</div>

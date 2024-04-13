@@ -2,9 +2,14 @@ import { useState } from "react";
 import '../Sass/NewRow.scss'
 import Select from 'react-select'
 import Conditionals from './Components/Conditionals.jsx'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
+
 
 
 function NewRow({slide, rowObj, setSlide}) {
+
+  console.log('font aw', byPrefixAndName.fas['door-closed'])
 
   const frameOptions = [
     {value: 'standard', label: 'Standard'},
@@ -96,7 +101,7 @@ function NewRow({slide, rowObj, setSlide}) {
             </div>
             <div className='selection-container'>
               <div className='single-door'>
-                <img className="single-door-img" src='door.png' width='30%'/>
+                <FontAwesomeIcon className='single-door-img' icon={byPrefixAndName.fass['door-closed']} style={{color: "#224e90"}} />
               </div>
               <div className='double-door'>
                 <img className="double-door-img" src='home.png' width='30%'/>

@@ -9,7 +9,7 @@ import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
 function NewRow({slide, rowObj, setSlide}) {
 
-  console.log('font aw', byPrefixAndName.fas['door-closed'])
+  console.log('font aw', rowObj)
 
   const frameOptions = [
     {value: 'standard', label: 'Standard'},
@@ -18,25 +18,7 @@ function NewRow({slide, rowObj, setSlide}) {
   ]
 
 
-  const standardFrame = {
-    single: {
-      height: `36" up`,
-      strike: {
-        type: {
-          default: [`Lip 2 1/4" Radius`, `Lip 2 1/4" Square`, `T-Strike 1 1/8" x 2 3/4"`,
-                      `ASA-Strike 1 1/4" x 4 7/8"`, `No Strike`],
-          deadbolt: [`1" x 2 1/4" Radius`, `1" x 2 1/4" Square`, `1 1/8" x 2 3/4" Radius`, `1 1/8" x 2 3/4" Square`]
-        },
-      },
-      hinge: {
-        '<72' : [`(2)CalRoyal CR3D51`, `(2)Tectus 340 3D`, `(2) 4x4 butt hinge`],
-        '72-84' : [`(3)CalRoyal CR3D51`, `(3)Tectus 340 3D`, `(3) 4x4 butt hinge`],
-        '84-96' : [`(3)CalRoyal CR3D62`, `(3)Tectus 540 3D`, `(4) 4x4 butt hinge`],
-        '>96' :  [`(4)CalRoyal CR3D62`, `(4)Tectus 540 3D`, `(4) 4x4 butt hinge`]
-      }
-    },
-    double : 'etc...'
-  }
+
 
   console.log('rowOBJ', rowObj.calcPrice())
 
@@ -131,7 +113,7 @@ function NewRow({slide, rowObj, setSlide}) {
               onChange={handleInput}
               />
             </label>
-              <label className='frame-id'>
+            <label className='frame-id'>
               <span className='frame-id-text'>
               {`Frame Type: `}
               </span>
@@ -139,19 +121,11 @@ function NewRow({slide, rowObj, setSlide}) {
                 className='frame-dropdown'
                 options={frameOptions} />
             </label>
+            <Conditionals data={rowObj} />
           </form>
         </div>
       </div>
       <span className='form-submit' type='submit'>Continue</span>
-      <div className='Drop-container'>
-        <div className='DoorFrame selection'>
-        </div>
-        <div className='Checkbox'>
-          {/* single or double? */}
-        </div>
-        <div className='Hinge selection'>
-        </div>
-      </div>
     </div>
   )
 }

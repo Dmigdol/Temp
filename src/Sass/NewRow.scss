@@ -1,5 +1,5 @@
 
-$vectorBlue: #224E90;
+$vectorBlue: rgb(34, 78, 144);
 $vectorLightBlue: #335C9A;
 $bgGray: #e9e3e3d3;
 $borderGray: #948f8fd3;
@@ -128,7 +128,12 @@ label {
 .single-door, .double-door {
   display: flex;
   justify-content: center;
+  width: 100%;
   margin-left: auto;
+}
+
+.single-door-img {
+  font-size: 5vw;
 }
 
 .button-headers {

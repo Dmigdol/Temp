@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import '../Sass/Landing.scss'
 import axios from 'axios';
 import Row from './LandingRow'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
+
 
 function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
 
@@ -86,11 +89,13 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
         <div className="landing Center">
           <div className="landing-headbar">
           <div className='search-btn-container'>
-              <button className='search-btn'
+              <FontAwesomeIcon className='search-btn'
+              icon={byPrefixAndName.fass['magnifying-glass']}
+              style={{color: "#605c5c",}}
               onClick={(() => {
                 firstCheck()
               })}
-              >Q</button>
+              />
           </div>
           <div className='search-container'>
               <div className={searchState}></div>

@@ -47,7 +47,7 @@ function QuoteBuilder({setCurrentPage}) {
   }
 
   const addRow = (obj) => {
-    const num = new Row(obj.num, obj.id, obj.height,obj.width, obj.frame, obj.hinge, obj.qty);
+    const num = new Row(obj.num, obj.id, obj.height, obj.width, obj.frame, obj.hinge, obj.qty);
     quoterows.length > 0 ? setQuoteRows([...quoterows, num]) : setQuoteRows([num]);
   }
 
@@ -84,6 +84,7 @@ function QuoteBuilder({setCurrentPage}) {
         <div className='NewRow button'
         onClick={()=> {
           addRow(test)
+          setSlide(!slide)
           console.log('Current Quote Rows', quoterows)
         }}
         >New Row</div>

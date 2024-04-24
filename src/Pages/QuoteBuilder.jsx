@@ -48,9 +48,7 @@ function QuoteBuilder({setCurrentPage}) {
 
   const addRow = (obj) => {
     const num = new Row(obj.num, obj.id, obj.height, obj.width, obj.frame, obj.hinge, obj.qty);
-    console.log('addRow Payload num:', num)
     quoterows.length > 0 ? setQuoteRows([...quoterows, num]) : setQuoteRows([num]);
-    console.log('quoterows', quoterows)
   }
 
   const slideCheck = () => {
@@ -86,7 +84,6 @@ function QuoteBuilder({setCurrentPage}) {
         <div className='NewRow button'
         onClick={()=> {
           setSlide(!slide)
-          console.log('Current Quote Rows', quoterows)
         }}
         >New Row</div>
       </div>

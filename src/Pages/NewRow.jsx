@@ -10,8 +10,6 @@ import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
 function NewRow({slide, rowObj, setSlide, addRow}) {
 
-  console.log('font aw', rowObj)
-
   const frameOptions = [
     {value: 'standard', label: 'Standard'},
     {value: 'ins', label: 'In-Swing'},
@@ -29,7 +27,6 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
     payload.hinge = 'PH';
     payload.qty = 'PH';
 
-    console.log('payload ', payload)
     addRow(payload)
     setSlide(!slide)
   }
@@ -38,29 +35,11 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
     // checks if all forms are filled
   }
 
-
-
-
   const [row, changeRow] = useState(rowObj);
   const [double, setDouble] = useState('single');
 
   // Data
   const [item, setItem] = useState({});
-
-  const handleInput = (e) => {
-    e.preventDefault()
-    row[e.target.name] = e.target.value;
-    console.log(row)
-    // const name = e.target.name
-    // const value = e.target.value
-    // console.log('INPUT ',name,)
-    // changeRow(values => ({...values, [name]: value  }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('prevented')
-  }
 
   return (
     <div className={slide ? 'Entry-frame init' : 'Entry-frame'}>

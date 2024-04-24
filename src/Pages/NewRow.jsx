@@ -10,6 +10,8 @@ import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
 function NewRow({slide, rowObj, setSlide, addRow}) {
 
+  const [frame, selectFrame] = useState('standard');
+
   const frameOptions = [
     {value: 'standard', label: 'Standard'},
     {value: 'ins', label: 'In-Swing'},
@@ -19,11 +21,13 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
   const submitForm = (e) => {
     e.preventDefault();
 
+
     const formData = new FormData(e.target);
     const payload = Object.fromEntries(formData);
+    console.log('submission :', payload)
 
     payload.num = rowObj.num;
-    payload.frame = 'PH';
+    payload.frame = frame;
     payload.hinge = 'PH';
     payload.qty = 'PH';
 
@@ -116,6 +120,9 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
               </span>
                 <Select
                 className='frame-dropdown'
+                onChange={e => {
+                  selectFrame(e.label)
+                }}
                 options={frameOptions} />
             </label>
             {/* <Conditionals data={rowObj} /> */}

@@ -2,7 +2,6 @@ import './Rows.scss'
 
 function RenderRow({rows, curr}) {
 
-  console.log('???', curr)
 
   return (
   <div className='quote-row-container'>

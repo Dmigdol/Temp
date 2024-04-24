@@ -1,15 +1,18 @@
 import { useState } from "react";
 import '../Sass/NewRow.scss'
 import Select from 'react-select'
+import RenderRow from './Components/RenderRow'
 import Conditionals from './Components/Conditionals.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
+import  newDesc from './Helpers/DescBuilder.js'
 
 
 
-function NewRow({slide, rowObj, setSlide}) {
+function NewRow({slide, rowObj, setSlide, addRow}) {
 
-  console.log('font aw', rowObj)
+  const [frame, selectFrame] = useState('standard');
+  const [numOfDoors, setNumOfDoors] = useState('single')
 
   const frameOptions = [
     {value: 'standard', label: 'Standard'},
@@ -17,32 +20,35 @@ function NewRow({slide, rowObj, setSlide}) {
     {value: 'pivot', label: 'Pivot'}
   ]
 
+  const submitForm = (e) => {
+    e.preventDefault();
 
 
+    const formData = new FormData(e.target);
+    const payload = Object.fromEntries(formData);
 
-  console.log('rowOBJ', rowObj.calcPrice())
+    payload.num = rowObj.num;
+    payload.frame = frame;
+    payload.hinge = 'PH';
+    payload.NumOfDoors = numOfDoors
+    payload.strike = 'ASA'
+    payload.handling = 'LH-r'
 
+    payload.desc = newDesc(payload)
+
+    console.log('submission :', payload)
+    addRow(payload)
+    setSlide(!slide)
+  }
+
+  const checkValididity = () => {
+    // checks if all forms are filled
+  }
 
   const [row, changeRow] = useState(rowObj);
-  const [double, setDouble] = useState('single');
 
   // Data
   const [item, setItem] = useState({});
-
-  const handleInput = (e) => {
-    e.preventDefault()
-    row[e.target.name] = e.target.value;
-    console.log(row)
-    // const name = e.target.name
-    // const value = e.target.value
-    // console.log('INPUT ',name,)
-    // changeRow(values => ({...values, [name]: value  }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('prevented')
-  }
 
   return (
     <div className={slide ? 'Entry-frame init' : 'Entry-frame'}>
@@ -56,7 +62,7 @@ function NewRow({slide, rowObj, setSlide}) {
       >&#x2715;</span>
       <div className='Input-container'>
         <div className='Form-container'>
-          <form className='form-input'>
+          <form className='form-input' onSubmit={submitForm}>
             <label className='item-id'>
               <span className='item-id-text'>
               {`Item ID : `}
@@ -67,14 +73,18 @@ function NewRow({slide, rowObj, setSlide}) {
               name='id'
               type='text'
               defaultValue={row.id || ''}
-              onChange={e => {
-                handleInput(e)
-                e.preventDefault()
-              }}
-              onSubmit={e =>{
-                handleSubmit(e)
-                e.preventDefault()
-              }}
+              />
+            </label>
+            <label className='qty-input'>
+              <span className='qty-input-text'>
+                {'Quantity : '}
+              </span>
+              <input
+              className='Qty-input'
+              autoComplete="off"
+              name='qty'
+              type='number'
+              defaultValue={1}
               />
             </label>
             <div className='button-headers'>
@@ -82,25 +92,13 @@ function NewRow({slide, rowObj, setSlide}) {
               <span className='button-headers-double'>Double</span>
             </div>
             <div className='selection-container'>
-              <div className='single-door'>
+              <div className='single-door' onClick={e => setNumOfDoors('single')}>
                 <FontAwesomeIcon className='single-door-img' icon={byPrefixAndName.fass['door-closed']} style={{color: "#224e90"}} />
               </div>
-              <div className='double-door'>
+              <div className='double-door' onClick={e => setNumOfDoors('double')}>
                 <FontAwesomeIcon className='single-door-img' icon={byPrefixAndName.fass['door-closed']}/>
               </div>
             </div>
-            <label className='height-id'>
-              <span className='height-id-text'>
-              {`Height (in) : `}
-              </span>
-              <input
-              className='Height-input'
-              type='number'
-              name='height'
-              defaultValue={row.height || ''}
-              onChange={handleInput}
-              />
-            </label>
             <label className='width-id'>
               <span className='width-id-text'>
                {`Width (in) : `}
@@ -110,7 +108,17 @@ function NewRow({slide, rowObj, setSlide}) {
               type='number'
               name='width'
               defaultValue={row.width || ''}
-              onChange={handleInput}
+              />
+            </label>
+            <label className='height-id'>
+              <span className='height-id-text'>
+              {`Height (in) : `}
+              </span>
+              <input
+              className='Height-input'
+              type='number'
+              name='height'
+              defaultValue={row.height || ''}
               />
             </label>
             <label className='frame-id'>
@@ -119,13 +127,16 @@ function NewRow({slide, rowObj, setSlide}) {
               </span>
                 <Select
                 className='frame-dropdown'
+                onChange={e => {
+                  selectFrame(e.label)
+                }}
                 options={frameOptions} />
             </label>
-            <Conditionals data={rowObj} />
+            {/* <Conditionals data={rowObj} /> */}
+            <button className='form-submit' type='submit'>Continue</button>
           </form>
         </div>
       </div>
-      <span className='form-submit' type='submit'>Continue</span>
     </div>
   )
 }

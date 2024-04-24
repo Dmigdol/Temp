@@ -2,7 +2,7 @@
 $vectorBlue: rgb(34, 78, 144);
 $vectorLightBlue: #335C9A;
 $bgGray: #e9e3e3d3;
-$borderGray: #948f8fd3;
+$borderGray: rgba(148, 143, 143, 0.827);
 
 .Entry-frame {
   display: none;
@@ -59,6 +59,10 @@ label {
   margin-top: 5%;
 }
 
+.id-qty-container {
+  width: 100%;
+}
+
 // Text
 
 .x-button {
@@ -83,20 +87,20 @@ label {
   color: #224E90;
 }
 
-.item-id-text, .height-id-text, .width-id-text, .frame-id-text {
+.item-id-text, .height-id-text, .width-id-text, .frame-id-text, .qty-input-text {
   margin-left: 10%;
 }
 
 // Full Input Row
 
-.item-id, .height-id, .width-id, .frame-id {
+.item-id, .height-id, .width-id, .frame-id, .qty-input {
   display: inline-flex;
   margin-top: 8%;
 }
 
 // Input boxes
 
-.Height-input, .Label-input, .Width-input {
+.Height-input, .Label-input, .Width-input, .Qty-input {
   margin-left: auto;
   margin-right: 10%;
 }

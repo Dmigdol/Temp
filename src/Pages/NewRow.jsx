@@ -68,14 +68,6 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
               name='id'
               type='text'
               defaultValue={row.id || ''}
-              // onChange={e => {
-              //   handleInput(e)
-              //   e.preventDefault()
-              // }}
-              // onSubmit={e =>{
-              //   handleSubmit(e)
-              //   e.preventDefault()
-              // }}
               />
             </label>
             <div className='button-headers'>
@@ -99,7 +91,6 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
               type='number'
               name='height'
               defaultValue={row.height || ''}
-              // onChange={handleInput}
               />
             </label>
             <label className='width-id'>
@@ -111,7 +102,6 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
               type='number'
               name='width'
               defaultValue={row.width || ''}
-              // onChange={handleInput}
               />
             </label>
             <label className='frame-id'>

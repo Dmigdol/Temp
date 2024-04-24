@@ -12,6 +12,7 @@ import  newDesc from './Helpers/DescBuilder.js'
 function NewRow({slide, rowObj, setSlide, addRow}) {
 
   const [frame, selectFrame] = useState('standard');
+  const [numOfDoors, setNumOfDoors] = useState('single')
 
   const frameOptions = [
     {value: 'standard', label: 'Standard'},
@@ -29,7 +30,7 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
     payload.num = rowObj.num;
     payload.frame = frame;
     payload.hinge = 'PH';
-    payload.NumOfDoors = 'single'
+    payload.NumOfDoors = numOfDoors
     payload.strike = 'ASA'
     payload.handling = 'LH-r'
 
@@ -40,18 +41,11 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
     setSlide(!slide)
   }
 
-    /*
-      Creates a compact description based off entered data
-    */
-
-
-
   const checkValididity = () => {
     // checks if all forms are filled
   }
 
   const [row, changeRow] = useState(rowObj);
-  const [double, setDouble] = useState('single');
 
   // Data
   const [item, setItem] = useState({});
@@ -98,10 +92,10 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
               <span className='button-headers-double'>Double</span>
             </div>
             <div className='selection-container'>
-              <div className='single-door'>
+              <div className='single-door' onClick={e => setNumOfDoors('single')}>
                 <FontAwesomeIcon className='single-door-img' icon={byPrefixAndName.fass['door-closed']} style={{color: "#224e90"}} />
               </div>
-              <div className='double-door'>
+              <div className='double-door' onClick={e => setNumOfDoors('double')}>
                 <FontAwesomeIcon className='single-door-img' icon={byPrefixAndName.fass['door-closed']}/>
               </div>
             </div>

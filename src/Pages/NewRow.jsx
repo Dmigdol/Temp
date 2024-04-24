@@ -5,6 +5,7 @@ import RenderRow from './Components/RenderRow'
 import Conditionals from './Components/Conditionals.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
+import newDesc from './Helpers/DescBuilder.js'
 
 
 
@@ -33,6 +34,12 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
     addRow(payload)
     setSlide(!slide)
   }
+
+    /*
+      Creates a compact description based off entered data
+    */
+
+
 
   const checkValididity = () => {
     // checks if all forms are filled
@@ -93,17 +100,6 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
                 <FontAwesomeIcon className='single-door-img' icon={byPrefixAndName.fass['door-closed']}/>
               </div>
             </div>
-            <label className='height-id'>
-              <span className='height-id-text'>
-              {`Height (in) : `}
-              </span>
-              <input
-              className='Height-input'
-              type='number'
-              name='height'
-              defaultValue={row.height || ''}
-              />
-            </label>
             <label className='width-id'>
               <span className='width-id-text'>
                {`Width (in) : `}
@@ -113,6 +109,17 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
               type='number'
               name='width'
               defaultValue={row.width || ''}
+              />
+            </label>
+            <label className='height-id'>
+              <span className='height-id-text'>
+              {`Height (in) : `}
+              </span>
+              <input
+              className='Height-input'
+              type='number'
+              name='height'
+              defaultValue={row.height || ''}
               />
             </label>
             <label className='frame-id'>

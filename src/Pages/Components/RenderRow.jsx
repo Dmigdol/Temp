@@ -2,6 +2,7 @@ import './Rows.scss'
 
 function RenderRow({rows, curr}) {
 
+  console.log('rows', rows)
   console.log('???', curr)
 
   return (

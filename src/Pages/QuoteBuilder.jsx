@@ -21,7 +21,7 @@ function QuoteBuilder({setCurrentPage}) {
  }
 
  class Row {
-   constructor(id, height, width, frame, strike, hinge, qty) {
+   constructor(num, id, height, width, frame, strike, hinge, qty) {
      this.num = quoterows.length + 1;
      this.id = id;
      this.height = height;
@@ -42,18 +42,20 @@ function QuoteBuilder({setCurrentPage}) {
   }
 
   const newRow = (obj) => {
-    const num = new Row(1000, 96, 36, 'Standard', [4, 2], [4, 2], 1);
+    const num = new Row();
     return num;
   }
 
   const addRow = (obj) => {
     const num = new Row(obj.num, obj.id, obj.height, obj.width, obj.frame, obj.hinge, obj.qty);
+    console.log('addRow Payload num:', num)
     quoterows.length > 0 ? setQuoteRows([...quoterows, num]) : setQuoteRows([num]);
+    console.log('quoterows', quoterows)
   }
 
   const slideCheck = () => {
     if(slide) {
-      return <NewRow slide={slide} rowObj={newRow()} setSlide={setSlide}/>
+      return <NewRow slide={slide} rowObj={newRow()} addRow={addRow} setSlide={setSlide}/>
     }
   }
 
@@ -76,14 +78,13 @@ function QuoteBuilder({setCurrentPage}) {
           <div className='rows-container'>
             {quoterows.map((current) => {
               return(
-                <RenderRow rows={quoterows} key={current.num} curr={current}/>
+                <RenderRow rows={quoterows} key={current.num} curr={current} addRow={addRow} setSlide={setSlide}/>
               )
             })}
           </div>
         </div>
         <div className='NewRow button'
         onClick={()=> {
-          addRow(test)
           setSlide(!slide)
           console.log('Current Quote Rows', quoterows)
         }}

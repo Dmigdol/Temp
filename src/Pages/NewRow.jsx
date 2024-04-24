@@ -1,13 +1,14 @@
 import { useState } from "react";
 import '../Sass/NewRow.scss'
 import Select from 'react-select'
+import RenderRow from './Components/RenderRow'
 import Conditionals from './Components/Conditionals.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
 
 
-function NewRow({slide, rowObj, setSlide}) {
+function NewRow({slide, rowObj, setSlide, addRow}) {
 
   console.log('font aw', rowObj)
 
@@ -17,10 +18,27 @@ function NewRow({slide, rowObj, setSlide}) {
     {value: 'pivot', label: 'Pivot'}
   ]
 
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const payload = Object.fromEntries(formData);
+
+    payload.num = rowObj.num;
+    payload.frame = 'PH';
+    payload.hinge = 'PH';
+    payload.qty = 'PH';
+
+    console.log('payload ', payload)
+    addRow(payload)
+    setSlide(!slide)
+  }
+
+  const checkValididity = () => {
+    // checks if all forms are filled
+  }
 
 
-
-  console.log('rowOBJ', rowObj.calcPrice())
 
 
   const [row, changeRow] = useState(rowObj);
@@ -56,7 +74,7 @@ function NewRow({slide, rowObj, setSlide}) {
       >&#x2715;</span>
       <div className='Input-container'>
         <div className='Form-container'>
-          <form className='form-input'>
+          <form className='form-input' onSubmit={submitForm}>
             <label className='item-id'>
               <span className='item-id-text'>
               {`Item ID : `}
@@ -67,14 +85,14 @@ function NewRow({slide, rowObj, setSlide}) {
               name='id'
               type='text'
               defaultValue={row.id || ''}
-              onChange={e => {
-                handleInput(e)
-                e.preventDefault()
-              }}
-              onSubmit={e =>{
-                handleSubmit(e)
-                e.preventDefault()
-              }}
+              // onChange={e => {
+              //   handleInput(e)
+              //   e.preventDefault()
+              // }}
+              // onSubmit={e =>{
+              //   handleSubmit(e)
+              //   e.preventDefault()
+              // }}
               />
             </label>
             <div className='button-headers'>
@@ -98,7 +116,7 @@ function NewRow({slide, rowObj, setSlide}) {
               type='number'
               name='height'
               defaultValue={row.height || ''}
-              onChange={handleInput}
+              // onChange={handleInput}
               />
             </label>
             <label className='width-id'>
@@ -110,7 +128,7 @@ function NewRow({slide, rowObj, setSlide}) {
               type='number'
               name='width'
               defaultValue={row.width || ''}
-              onChange={handleInput}
+              // onChange={handleInput}
               />
             </label>
             <label className='frame-id'>
@@ -121,11 +139,11 @@ function NewRow({slide, rowObj, setSlide}) {
                 className='frame-dropdown'
                 options={frameOptions} />
             </label>
-            <Conditionals data={rowObj} />
+            {/* <Conditionals data={rowObj} /> */}
+            <button className='form-submit' type='submit'>Continue</button>
           </form>
         </div>
       </div>
-      <span className='form-submit' type='submit'>Continue</span>
     </div>
   )
 }

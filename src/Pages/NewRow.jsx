@@ -24,12 +24,12 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
 
     const formData = new FormData(e.target);
     const payload = Object.fromEntries(formData);
-    console.log('submission :', payload)
 
     payload.num = rowObj.num;
     payload.frame = frame;
     payload.hinge = 'PH';
 
+    console.log('submission :', payload)
     addRow(payload)
     setSlide(!slide)
   }

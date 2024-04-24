@@ -1,6 +1,7 @@
 
 const newDesc = (obj) => {
   let description = `${obj.width} x ${obj.height} `
+
   switch(obj.NumOfDoors) {
     case 'single':
       description += `Single `;
@@ -27,9 +28,12 @@ const newDesc = (obj) => {
 
   obj.strikeHeight ? description += `${obj.strikeHeight} ` : description = description;
   obj.deadbolt ? description += `${obj.deadbolt }` : description = description;
-  obj.fireRating ? description += `${obj.fireRating} ` : description = description;
+  obj.fireRating ? description += `20min FR ` : description = description;
   obj.closer ? description += `${obj.closer} ` : description = description;
+  obj.handling ? description += `${obj.handling} ` :description = description;
 
+  console.log('desc ', description)
+  return (description)
 }
 
 export default newDesc;

@@ -5,7 +5,7 @@ import RenderRow from './Components/RenderRow'
 import Conditionals from './Components/Conditionals.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
-import newDesc from './Helpers/DescBuilder.js'
+import  newDesc from './Helpers/DescBuilder.js'
 
 
 
@@ -29,6 +29,11 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
     payload.num = rowObj.num;
     payload.frame = frame;
     payload.hinge = 'PH';
+    payload.NumOfDoors = 'single'
+    payload.strike = 'ASA'
+    payload.handling = 'LH-r'
+
+    payload.desc = newDesc(payload)
 
     console.log('submission :', payload)
     addRow(payload)

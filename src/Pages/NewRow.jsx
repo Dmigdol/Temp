@@ -29,7 +29,6 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
     payload.num = rowObj.num;
     payload.frame = frame;
     payload.hinge = 'PH';
-    payload.qty = 'PH';
 
     addRow(payload)
     setSlide(!slide)
@@ -68,6 +67,18 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
               name='id'
               type='text'
               defaultValue={row.id || ''}
+              />
+            </label>
+            <label className='qty-input'>
+              <span className='qty-input-text'>
+                {'Quantity : '}
+              </span>
+              <input
+              className='Qty-input'
+              autoComplete="off"
+              name='qty'
+              type='number'
+              defaultValue={1}
               />
             </label>
             <div className='button-headers'>

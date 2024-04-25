@@ -27,6 +27,7 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
     const formData = new FormData(e.target);
     const payload = Object.fromEntries(formData);
 
+
     payload.num = rowObj.num;
     payload.frame = frame;
     payload.hinge = 'PH';

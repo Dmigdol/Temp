@@ -12,7 +12,8 @@ import  newDesc from './Helpers/DescBuilder.js'
 function NewRow({slide, rowObj, setSlide, addRow}) {
 
   const [frame, selectFrame] = useState('standard');
-  const [numOfDoors, setNumOfDoors] = useState('single')
+  const [numOfDoors, setNumOfDoors] = useState('single');
+  const [height, setHeight] = useState(0)
 
   const frameOptions = [
     {value: 'standard', label: 'Standard'},
@@ -117,6 +118,9 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
               </span>
               <input
               className='Height-input'
+              onChange={e => {
+                setHeight(e.target.value)
+              }}
               type='number'
               name='height'
               defaultValue={row.height || ''}
@@ -133,6 +137,7 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
                 }}
                 options={frameOptions} />
             </label>
+            {/* <Conditionals frame={frame} height={height}> */}
             {/* <Conditionals data={rowObj} /> */}
             <button className='form-submit' type='submit'>Continue</button>
           </form>

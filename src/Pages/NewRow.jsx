@@ -1,5 +1,8 @@
 import { useState } from "react";
 import '../Sass/NewRow.scss'
+import Container from 'react-bootstrap/Container'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form'
 import Select from 'react-select'
 import Button from 'react-bootstrap/Button';
 import RenderRow from './Components/RenderRow'
@@ -65,7 +68,18 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
       >&#x2715;</span>
       <div className='Input-container'>
         <div className='Form-container'>
-          <form className='form-input' onSubmit={submitForm}>
+          <Form onSubmit={submitForm}>
+            <Form.Group class='row'>
+              <Form.Label class='col-3 form-check-inline'>Item ID: </Form.Label>
+              <Form.Control class='col-3 form-check-inline' name='id' type='id' placeholder='Enter ID'/>
+              <Form.Label class='col-2 form-check-inline'>Qty: </Form.Label>
+              <Form.Control class='col-2 form-check-inline' name='qty' type='qty' />
+            </Form.Group>
+            <Container>
+              <Button variant='outline-primary' type="submit">Continue</Button>
+            </Container>
+          </Form>
+          {/* <form className='form-input' onSubmit={submitForm}>
             <label className='item-id'>
               <span className='item-id-text'>
               {`Item ID : `}
@@ -137,11 +151,12 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
                   selectFrame(e.label)
                 }}
                 options={frameOptions} />
-            </label>
+            </label> */}
             {/* <Conditionals frame={frame} height={height}> */}
             {/* <Conditionals data={rowObj} /> */}
             {/* <button className='form-submit' type='submit'>Continue</button> */}
-          </form>
+            {/*
+          </form> */}
         </div>
       </div>
     </div>

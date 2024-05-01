@@ -1,5 +1,7 @@
 import './infobox.scss'
 import OptionsBox from './OptionsBox.jsx'
+import Table from 'react-bootstrap/Table'
+import Container from 'react-bootstrap/Container'
 import { useRef, useEffect, useState } from "react";
 
 
@@ -61,7 +63,31 @@ function RenderRecent({current, data}) {
   return (
 
     <div className='Entry' >
-    {data.map((entry) => {
+      <Container className='mx-2'>
+        <Table hover className='table-large'>
+          <thead>
+            <tr style={{'text-align': 'left'}}>
+              <th>ID</th>
+              <th>Client</th>
+              <th>Employee</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((entry) => {
+              return (
+                <tr className='table-cell'>
+                    <td>{entry.reference_id}</td>
+                    <td className='col-5'>{entry.name}</td>
+                    <td>{entry.employee}</td>
+                    <td>{entry.date}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </Table>
+      </Container>
+    {/* {data.map((entry) => {
       return (
         <div key={entry.id} className='info-box' ref={wrapperRef}>
             <span className='Number hb'>{entry.reference_id}</span>
@@ -76,7 +102,7 @@ function RenderRecent({current, data}) {
             </div>
           </div>
       )
-    })}
+    })} */}
     </div>
   )
 }

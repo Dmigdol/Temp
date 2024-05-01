@@ -3,12 +3,14 @@ import '../Sass/QuoteBuilder.scss'
 import RenderRow from './Components/RenderRow'
 import QuoteTop from './QuoteTop'
 import NewRow from './NewRow'
+import NewRowModal from './Components/NewRowModal.jsx'
 import Button from 'react-bootstrap/Button'
 
 function QuoteBuilder({setCurrentPage}) {
 
   const [quoterows, setQuoteRows] = useState([])
   const [slide, setSlide] = useState(0)
+  const [show, setShow] = useState(false)
 
  const test = {
    num: 1,
@@ -56,13 +58,15 @@ function QuoteBuilder({setCurrentPage}) {
 
   const slideCheck = () => {
     if(slide) {
-      return <NewRow slide={slide} rowObj={newRow()} addRow={addRow} setSlide={setSlide}/>
+      setShow(true);
+      return
+      // return <NewRow slide={slide} rowObj={newRow()} addRow={addRow} setSlide={setSlide}/>
     }
   }
 
   return(
     <div className='QuotePage'>
-      {slideCheck()}
+      <NewRowModal setShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} show={show}/>
       <div className={slide ? 'quote init' : 'quote'}>
         <div className='quote-header'>
           <QuoteTop className='QT'/>
@@ -87,6 +91,7 @@ function QuoteBuilder({setCurrentPage}) {
         <div className='NewRow button'
         onClick={()=> {
           setSlide(!slide)
+          setShow(true)
         }}
         >New Row</div>
       </div>

@@ -2,6 +2,7 @@ import './infobox.scss'
 import OptionsBox from './OptionsBox.jsx'
 import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
+import ListModal from './ListModal.jsx'
 import { useRef, useEffect, useState } from "react";
 
 
@@ -10,7 +11,11 @@ function RenderRecent({current, data}) {
 
   const [optShow, setOptShow] = useState(false);
   const [focus, setFocus] = useState();
+  const [clicked, setClicked] = useState({});
   const wrapperRef = useRef(null);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
 
 
 
@@ -58,11 +63,14 @@ function RenderRecent({current, data}) {
     }, [ref]);
   }
 
+
   useOutsideAlerter(wrapperRef);
 
   return (
 
+
     <div className='Entry' >
+      <ListModal setShow={setShow} show={show} data={clicked}/>
       <Container className='mx-2'>
         <Table hover className='table-large'>
           <thead>
@@ -76,7 +84,10 @@ function RenderRecent({current, data}) {
           <tbody>
             {data.map((entry) => {
               return (
-                <tr className='table-cell'>
+                <tr id={entry.reference_id} className='table-cell' onClick={((e) => {
+                  setClicked(entry)
+                  handleShow()
+                })}>
                     <td>{entry.reference_id}</td>
                     <td className='col-5'>{entry.name}</td>
                     <td>{entry.employee}</td>

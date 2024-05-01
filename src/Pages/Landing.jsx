@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import '../Sass/Landing.scss'
 import axios from 'axios';
 import Row from './LandingRow'
+import Table from 'react-bootstrap/Table';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
@@ -116,7 +118,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
               onClick={() => setCurrentPage('QuoteBuilder')}
               >+</div>
           </div>
-          <div className='categories'>
+          {/* <div className='categories'>
             <span className='Number hb'>
               Number
             </span>
@@ -132,7 +134,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
             <div className='options-box headbar-box'>
               <img className="list-img" src='list.png' width='100%' />
             </div>
-          </div>
+          </div> */}
           <div className='row-container'>
             {isLoading ? <div className='loading'>Gathering Data, Please wait</div> :
             <Row wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}
@@ -141,7 +143,8 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
             <div className='pagenum'>
               Page {page}
             </div>
-            {/* eventually change this to conditionally render based off list size / 9 */}
+
+
               <div className='pagechange'>
                   <div className='leftarrow'
                   onClick={(() => {
@@ -175,8 +178,6 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
           </div>
         </div>
       </div>
-
-      {/* } */}
     </div>
   )
 }

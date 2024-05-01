@@ -1,14 +1,21 @@
 import './infobox.scss'
 import OptionsBox from './OptionsBox.jsx'
+import Table from 'react-bootstrap/Table'
+import Container from 'react-bootstrap/Container'
+import ListModal from './ListModal.jsx'
 import { useRef, useEffect, useState } from "react";
 
 
 
-function RenderRecent({current, data}) {
+function RenderRecent({current, data, setCurrentPage}) {
 
   const [optShow, setOptShow] = useState(false);
   const [focus, setFocus] = useState();
+  const [clicked, setClicked] = useState({});
   const wrapperRef = useRef(null);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
 
 
 
@@ -56,12 +63,42 @@ function RenderRecent({current, data}) {
     }, [ref]);
   }
 
+
   useOutsideAlerter(wrapperRef);
 
   return (
 
+
     <div className='Entry' >
-    {data.map((entry) => {
+      <ListModal setShow={setShow} setCurrentPage={setCurrentPage} show={show} data={clicked}/>
+      <Container className='mx-2'>
+        <Table hover className='table-large'>
+          <thead>
+            <tr style={{'text-align': 'left'}}>
+              <th>ID</th>
+              <th>Client</th>
+              <th>Employee</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((entry) => {
+              return (
+                <tr id={entry.reference_id} className='table-cell' onClick={((e) => {
+                  setClicked(entry)
+                  handleShow()
+                })}>
+                    <td>{entry.reference_id}</td>
+                    <td className='col-4'>{entry.name}</td>
+                    <td >{entry.employee}</td>
+                    <td>{entry.date}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </Table>
+      </Container>
+    {/* {data.map((entry) => {
       return (
         <div key={entry.id} className='info-box' ref={wrapperRef}>
             <span className='Number hb'>{entry.reference_id}</span>
@@ -76,7 +113,7 @@ function RenderRecent({current, data}) {
             </div>
           </div>
       )
-    })}
+    })} */}
     </div>
   )
 }

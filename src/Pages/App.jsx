@@ -6,6 +6,7 @@ import QuoteBuilder from './QuoteBuilder'
 import NewRow from './NewRow'
 import '../Sass/App.scss'
 
+
 function App() {
 
   const [currentPage, setCurrentPage] = useState('Login');

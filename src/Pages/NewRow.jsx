@@ -1,6 +1,7 @@
 import { useState } from "react";
 import '../Sass/NewRow.scss'
 import Select from 'react-select'
+import Button from 'react-bootstrap/Button';
 import RenderRow from './Components/RenderRow'
 import Conditionals from './Components/Conditionals.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -139,7 +140,7 @@ function NewRow({slide, rowObj, setSlide, addRow}) {
             </label>
             {/* <Conditionals frame={frame} height={height}> */}
             {/* <Conditionals data={rowObj} /> */}
-            <button className='form-submit' type='submit'>Continue</button>
+            {/* <button className='form-submit' type='submit'>Continue</button> */}
           </form>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { useRef, useEffect, useState } from "react";
 
 
 
-function RenderRecent({current, data}) {
+function RenderRecent({current, data, setCurrentPage}) {
 
   const [optShow, setOptShow] = useState(false);
   const [focus, setFocus] = useState();
@@ -70,7 +70,7 @@ function RenderRecent({current, data}) {
 
 
     <div className='Entry' >
-      <ListModal setShow={setShow} show={show} data={clicked}/>
+      <ListModal setShow={setShow} setCurrentPage={setCurrentPage} show={show} data={clicked}/>
       <Container className='mx-2'>
         <Table hover className='table-large'>
           <thead>
@@ -89,8 +89,8 @@ function RenderRecent({current, data}) {
                   handleShow()
                 })}>
                     <td>{entry.reference_id}</td>
-                    <td className='col-5'>{entry.name}</td>
-                    <td>{entry.employee}</td>
+                    <td className='col-4'>{entry.name}</td>
+                    <td >{entry.employee}</td>
                     <td>{entry.date}</td>
                 </tr>
               )

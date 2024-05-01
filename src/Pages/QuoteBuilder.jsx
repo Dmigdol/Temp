@@ -3,6 +3,7 @@ import '../Sass/QuoteBuilder.scss'
 import RenderRow from './Components/RenderRow'
 import QuoteTop from './QuoteTop'
 import NewRow from './NewRow'
+import Button from 'react-bootstrap/Button'
 
 function QuoteBuilder({setCurrentPage}) {
 
@@ -89,6 +90,7 @@ function QuoteBuilder({setCurrentPage}) {
         }}
         >New Row</div>
       </div>
+      <Button className='back-btn'></Button>
     </div>
   )
 }

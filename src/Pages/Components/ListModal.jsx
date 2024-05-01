@@ -9,11 +9,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './ListModal.scss'
 import { useState } from 'react';
 
-function ListModal({setShow, show, data}) {
+function ListModal({setShow, show, data, setCurrentPage}) {
 
   console.log(data)
 
   const handleClose = () => setShow(false);
+
+  const handleEdit = () => {
+
+  }
 
   return(
 
@@ -23,19 +27,30 @@ function ListModal({setShow, show, data}) {
           <Modal.Title>{data.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Container>
+          <Container className='modal-body'>
             <Row>
-              <Col># {data.reference_id}</Col>
+              <Col>ID: {data.reference_id}</Col>
+            </Row>
+            <Row>
+              <Col># of Items: Placeholder</Col>
+            </Row>
+            <Row>
+              <Col>Created By: {data.employee}</Col>
+            </Row>
+            <Row>
+              <Col>Date Created: {data.date}</Col>
+              <Col>Last Edited: Placeholder</Col>
             </Row>
           </Container>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className='modal-footer'>
           <Button variant='outline-primary' className='edit-btn'>
                   <FontAwesomeIcon
-                  icon={byPrefixAndName.fal['pen-to-square']}
+                  icon={byPrefixAndName.fas['pen-to-square']}
+                  onClick={()=>{setCurrentPage('QuoteBuilder')}}
                   />
           </Button>
-          <Button variant='secondary' onClick={handleClose}>Close</Button>
+          <Button onClick={handleClose}>Order</Button>
         </Modal.Footer>
       </Modal>
     </div>

@@ -37,7 +37,7 @@ function Login({setCurrentPage}) {
           </form>
         </div>
         <button class="button login"
-          onClick={()=>{setCurrentPage('Landing')}}
+          onClick={()=>{setCurrentPage(['Landing'])}}
         >Login</button>
         <div className="forgotText"
           onClick={()=>{ alert('Forgot Login Clicked'); }}

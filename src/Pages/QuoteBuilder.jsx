@@ -6,7 +6,7 @@ import NewRow from './NewRow'
 import NewRowModal from './Components/NewRowModal.jsx'
 import Button from 'react-bootstrap/Button'
 
-function QuoteBuilder({setCurrentPage}) {
+function QuoteBuilder({setCurrentPage, data}) {
 
   const [quoterows, setQuoteRows] = useState([])
   const [slide, setSlide] = useState(0)
@@ -69,7 +69,7 @@ function QuoteBuilder({setCurrentPage}) {
       <NewRowModal setShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} show={show}/>
       <div className={slide ? 'quote init' : 'quote'}>
         <div className='quote-header'>
-          <QuoteTop className='QT'/>
+          <QuoteTop className='QT' data={data}/>
         </div>
         <div className='quote-info'>
           <div className='quote-info-header'>
@@ -96,7 +96,7 @@ function QuoteBuilder({setCurrentPage}) {
         >New Row</div>
       </div>
       <Button className='back-btn' variant='outline-primary'
-      onClick={() => setCurrentPage('Landing')}
+      onClick={() => setCurrentPage(['Landing'])}
       >Back</Button>
     </div>
   )

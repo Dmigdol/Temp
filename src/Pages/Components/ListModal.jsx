@@ -22,7 +22,7 @@ function ListModal({setShow, show, data, setCurrentPage}) {
   return(
 
     <div className='modal show'>
-      <Modal centered size='lg' show={show} onHide={handleClose}>
+      <Modal centered size='md' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{data.name}</Modal.Title>
         </Modal.Header>
@@ -37,9 +37,9 @@ function ListModal({setShow, show, data, setCurrentPage}) {
             <Row>
               <Col>Created By: {data.employee}</Col>
             </Row>
-            <Row>
+            <Row >
               <Col>Date Created: {data.date}</Col>
-              <Col>Last Edited: Placeholder</Col>
+              <Col className='last-edited'>Last Edited: Placeholder</Col>
             </Row>
           </Container>
         </Modal.Body>
@@ -47,7 +47,7 @@ function ListModal({setShow, show, data, setCurrentPage}) {
           <Button variant='outline-primary' className='edit-btn'>
                   <FontAwesomeIcon
                   icon={byPrefixAndName.fas['pen-to-square']}
-                  onClick={()=>{setCurrentPage('QuoteBuilder')}}
+                  onClick={()=>{setCurrentPage(['QuoteBuilder', data])}}
                   />
           </Button>
           <Button onClick={handleClose}>Order</Button>

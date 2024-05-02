@@ -115,26 +115,9 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
             >Orders
             </div>
             <div className='NewRow  button'
-              onClick={() => setCurrentPage('QuoteBuilder')}
+              onClick={() => setCurrentPage(['QuoteBuilder'])}
               >+</div>
           </div>
-          {/* <div className='categories'>
-            <span className='Number hb'>
-              Number
-            </span>
-            <span className='Name hb'>
-              Name
-            </span>
-            <span className='Client hb'>
-              Client
-            </span>
-            <span className='Date hb'>
-              Date
-            </span>
-            <div className='options-box headbar-box'>
-              <img className="list-img" src='list.png' width='100%' />
-            </div>
-          </div> */}
           <div className='row-container'>
             {isLoading ? <div className='loading'>Gathering Data, Please wait</div> :
             <Row wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}

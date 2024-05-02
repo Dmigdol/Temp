@@ -1,7 +1,9 @@
 
 import '../Sass/QuoteTop.scss'
 
-function QuoteTop() {
+function QuoteTop({ data }) {
+
+  console.log('QT data', data)
 
   return (
     <div className='Quote-top'>

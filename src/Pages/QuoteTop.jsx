@@ -8,7 +8,7 @@ function QuoteTop({ data }) {
   return (
     <div className='Quote-top'>
       <div className='Company-info'>
-        <span className='Company-Name'>Big Top Company</span>
+        <span className='Company-Name'>{data.name}</span>
         <span className='Company-Address-1'>12345 Main St.</span>
         <span className='Company-Address-2'>Winchester, VA 22601</span>
         <span className='Company-email'>email@emailwebsite.com</span>

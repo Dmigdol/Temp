@@ -20,18 +20,28 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState('date');
 
+  const tempEmployee = {
+    name: 'Paul Allor',
+    id: 1000,
+    postion: 'admin'
+  }
+
 
   const fetchData = () => {
     setIsLoading(true);
-    axios.get(`http://localhost:3000/api/${current}`)
-      .then(response => {
-        setData(response.data)
-        setIsLoading(false)
-      })
-      .catch((err) => {
-        console.log('error retrieving recents ', err)
-      })
-  }
+    if(tempEmployee.postion === 'admin') {
+      axios.get(`http://localhost:3000/api/landing/admin?id=${tempEmployee.id}`)
+        .then(response => {
+          setData(response.data)
+          setIsLoading(false)
+        })
+        .catch((err) => {
+          console.log('error retrieving recents ', err)
+        })
+      } else {
+
+      }
+    }
 
   const pageButtons = (context) => {
     console.log(context)

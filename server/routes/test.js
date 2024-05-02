@@ -2,7 +2,7 @@ const router = require('express').Router();
 const controller = require('../controllers/test');
 
 router.get('/test', controller.getAll);
-router.get('/quote', controller.getCountries);
+router.get('/landing/:id', controller.getQuotes);
 router.get('/order', controller.getOrders);
 
 

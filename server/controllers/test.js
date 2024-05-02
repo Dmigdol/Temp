@@ -1,9 +1,9 @@
 const models = require('../models/test');
 
 module.exports = {
-  getCountries(req, res) {
-    const countries = req.params.countries;
-    models.getCountries()
+  getQuotes(req, res) {
+    const quotes = req.params.quotes;
+    models.getQuotes()
       .then((results) => {
         res.send(results);
       });
@@ -14,7 +14,8 @@ module.exports = {
       .then(results => res.send(results));
   },
   getAll(req, res) {
-    const orders = req.params.orders;
+    const id = req.query.id;
+    console.log('Quote:: ', id)
     models.getAll()
       .then(results => res.send(results));
   },

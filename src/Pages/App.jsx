@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [currentPage, setCurrentPage] = useState('Login');
+  const [currentPage, setCurrentPage] = useState(['Login']);
   const [slide, setSlide] = useState(0)
   const [optShow, setOptShow] = useState(false)
 
@@ -22,15 +22,15 @@ function App() {
   console.log(currentPage)
 
   function renderSwitch(param) {
-    switch(param) {
+    switch(param[0]) {
       case 'Login':
-        return <Login setCurrentPage={setCurrentPage}/>;
+        return <Login setCurrentPage={setCurrentPage} data={param[1]}/>;
         break;
       case 'Landing' :
-        return <Landing ref={wrapperRef} setCurrentPage={setCurrentPage} setOptShow={setOptShow} optShow={optShow}/> ;
+        return <Landing ref={wrapperRef} setCurrentPage={setCurrentPage} setOptShow={setOptShow} optShow={optShow} data={param[1]}/> ;
         break;
       case 'QuoteBuilder' :
-        return <QuoteBuilder setCurrentPage={setCurrentPage}/>;
+        return <QuoteBuilder setCurrentPage={setCurrentPage} data={param[1]}/>;
         break;
       default: return <div>{`Error in Switch Statement: Trying to load ` + param}</div>
         break;

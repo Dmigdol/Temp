@@ -1,19 +1,20 @@
 
 import '../Sass/QuoteTop.scss'
 
-function QuoteTop() {
+function QuoteTop({ data }) {
+
+  console.log('QT data', data)
 
   return (
     <div className='Quote-top'>
       <div className='Company-info'>
-        <span className='Company-Name'>Big Top Company</span>
-        <span className='Company-Address-1'>12345 Main St.</span>
-        <span className='Company-Address-2'>Winchester, VA 22601</span>
-        <span className='Company-email'>email@emailwebsite.com</span>
-        <span className='Company-email'>555-123-4567</span>
+        <span className='Company-Name'>{data.customer.company_name}</span>
+        <span className='Company-Address-1'>{data.customer.shipping_address}</span>
+        <span className='Company-email'>{data.customer.email}</span>
+        <span className='Company-email'>{data.customer.phone}</span>
       </div>
       <div className='Quote-header'>
-        <span className='Quote-Header-Text'>Big Top Company Quote 12345</span>
+        <span className='Quote-Header-Text'>{data.customer.company_name} #{data.quote_id.slice(0,5)}</span>
       </div>
       <div className='Pricing'>
         <span className='Sub-Total'>Sub-Total</span>

@@ -14,27 +14,35 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
 
   const [recent, setRecent] = useState([]);
   const [data, setData] = useState([]);
-  const [current, setCurrent] = useState('quote');
+  const [current, setCurrent] = useState('quotes');
   const [filter, setFilter] = useState([0,9]);
   const [searchState, setSearchState] = useState('search-input first');
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState('date');
 
+  const tempEmployee = {
+    name: 'Paul Allor',
+    id: 1000,
+    postion: 'admin'
+  }
+
 
   const fetchData = () => {
     setIsLoading(true);
-    axios.get(`http://localhost:3000/api/${current}`)
+    if(tempEmployee.postion === 'admin') {
+      axios.get(`http://localhost:3000/api/test?id=${tempEmployee.id}`)
       .then(response => {
-        setData(response.data)
+        setData(response.data[current])
         setIsLoading(false)
       })
       .catch((err) => {
         console.log('error retrieving recents ', err)
       })
+    }
   }
 
+
   const pageButtons = (context) => {
-    console.log(context)
     switch(context) {
       case '<' :
         if (page === 1) {
@@ -56,19 +64,26 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
     }
   }
 
-  const cutList = () => {
-    if (page === 1) {
-      return(
-        data.slice(0,9)
-      )
-    } else {
-      console.log('filter', filter)
-      return(
-        data.slice(filter[0], filter[1])
-      )
+  const cutList = (data) => {
+    if(data) {
+      if (page === 1) {
+        return(
+          data.slice(0,9)
+        )
+      } else {
+        console.log('filter', filter)
+        return(
+          data.slice(filter[0], filter[1])
+        )
+        }
+      }
     }
-  }
 
+
+    useEffect(() => {
+      fetchData()
+      console.log('full data', data)
+    }, [current])
 
   const firstCheck = () => {
     if (searchState === 'search-input first' || 'search-input hide') {
@@ -78,11 +93,6 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
       setSearchState('search-input hide')
     }
   }
-
-  useEffect(() => {
-    fetchData()
-    console.log('full data', data)
-  }, [current])
 
   return (
     <div className="App">
@@ -115,28 +125,11 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
             >Orders
             </div>
             <div className='NewRow  button'
-              onClick={() => setCurrentPage('QuoteBuilder')}
+              onClick={() => setCurrentPage(['QuoteBuilder'])}
               >+</div>
           </div>
-          {/* <div className='categories'>
-            <span className='Number hb'>
-              Number
-            </span>
-            <span className='Name hb'>
-              Name
-            </span>
-            <span className='Client hb'>
-              Client
-            </span>
-            <span className='Date hb'>
-              Date
-            </span>
-            <div className='options-box headbar-box'>
-              <img className="list-img" src='list.png' width='100%' />
-            </div>
-          </div> */}
           <div className='row-container'>
-            {isLoading ? <div className='loading'>Gathering Data, Please wait</div> :
+            {(isLoading && data) ? <div className='loading'>Gathering Data, Please wait</div> :
             <Row wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}
           </div>
           <div className='landing-footer'>

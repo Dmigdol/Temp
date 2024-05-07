@@ -9,62 +9,12 @@ import { useRef, useEffect, useState } from "react";
 
 function RenderRecent({current, data, setCurrentPage}) {
 
-  const [optShow, setOptShow] = useState(false);
-  const [focus, setFocus] = useState();
-  const [clicked, setClicked] = useState({});
-  const wrapperRef = useRef(null);
+
+  const [clicked, setClicked] = useState();
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
 
-
-
-
-  function toggleOptions(id, context) {
-    console.log('here', id, '   ',)
-    if (context === 'id') {
-      if (optShow === false) {
-        setOptShow(true);
-      } else if (focus === id) {
-        setFocus()
-        document.getElementById(id).className = 'options-list'
-      } else if (focus !== id && focus) {
-        document.getElementById(focus).className = 'options-list'
-        document.getElementById(id).className = 'options-list show'
-        setFocus(id)
-      }
-      if (focus === undefined) {
-        setFocus(id)
-        document.getElementById(id).className = 'options-list show'
-      }
-    } else {
-      setFocus()
-      document.getElementById(id).className = 'options-list'
-    }
-  }
-
-
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-        console.log(ref.current)
-        }
-      }
-      // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  }
-
-
-  useOutsideAlerter(wrapperRef);
 
   return (
 
@@ -83,15 +33,16 @@ function RenderRecent({current, data, setCurrentPage}) {
           </thead>
           <tbody>
             {data.map((entry) => {
+              console.log('renderdata',entry)
               return (
                 <tr id={entry.reference_id} className='table-cell' onClick={((e) => {
                   setClicked(entry)
                   handleShow()
                 })}>
-                    <td>{entry.reference_id}</td>
-                    <td className='col-4'>{entry.name}</td>
-                    <td >{entry.employee}</td>
-                    <td>{entry.date}</td>
+                    <td>{entry.quote_id.slice(0,5)}</td>
+                    <td className='col-4'>{entry.customer.company_name}</td>
+                    <td >{entry.employee.employee_name}</td>
+                    <td>{entry.created_at}</td>
                 </tr>
               )
             })}

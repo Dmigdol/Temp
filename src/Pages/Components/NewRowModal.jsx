@@ -45,11 +45,11 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
     e.preventDefault()
     const payload = inputs;
 
-
+    console.log('inputs',inputs)
 
     payload.num = rowObj.num;
     // payload.checkBox = checkBox;
-    payload.hinge = 'PH';
+    // payload.hinge = 'PH';
     payload.strike = 'ASA'
     payload.handling = 'LH-r'
     payload.desc = newDesc(payload)

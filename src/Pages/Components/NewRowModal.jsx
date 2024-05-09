@@ -92,7 +92,7 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
               </Row>
               <Row className='modal-row'>
                 <Col md={8}>
-                  <Form.Select value={inputs.frame}  name='frame' onChange={handleInputChange}>
+                  <Form.Select value={inputs.frame}  name='frame' default={'standard'} onChange={handleInputChange}>
                     <option value='standard'>Standard</option>
                     <option value='in-swing'>In-Swing</option>
                     <option value='pivot'>Pivot</option>

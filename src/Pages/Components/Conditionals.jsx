@@ -20,7 +20,7 @@ function Conditionals({data, setInputs}) {
     if(data.height < 72){
       return(
         <>
-          <Form.Select name='hinge' onChange={handleInputChange}>
+          <Form.Select name='hinge' default='CR3D51-2' onChange={handleInputChange}>
             <option value='CR3D51-2'>CalRoyal CR3D51 {`(2)`}</option>
             <option value='340 3D-2'>Tectus 340 3D {`(2)`}</option>
             <option value='butt-2'>4x4 butt hinge {`(2)`}</option>
@@ -32,7 +32,7 @@ function Conditionals({data, setInputs}) {
     if(data.height > 72 && data.height < 84){
       return(
         <>
-          <Form.Select name='hinge' onChange={handleInputChange}>
+          <Form.Select name='hinge' default='CR3D51-3' onChange={handleInputChange}>
             <option value='CR3D51-3'>CalRoyal CR3D51 {`(3)`}</option>
             <option value='340 3D-3'>Tectus 340 3D {`(3)`}</option>
             <option value='butt-3'>4x4 butt hinge {`(3)`}</option>
@@ -43,7 +43,7 @@ function Conditionals({data, setInputs}) {
     if(data.height > 84 && data.height <= 96){
       return(
         <>
-          <Form.Select name='hinge' onChange={handleInputChange}>
+          <Form.Select name='hinge' default='CR3D62-3' onChange={handleInputChange}>
             <option value='CR3D62-3'>CalRoyal CR3D562 {`(3)`}</option>
             <option value='540 3D-3'>Tectus 540 3D {`(3)`}</option>
             <option value='butt-4'>4x4 butt hinge {`(4)`}</option>
@@ -54,7 +54,7 @@ function Conditionals({data, setInputs}) {
   if(data.height > 96 && data.height <= 120){
     return(
       <>
-        <Form.Select name='hinge' onChange={handleInputChange}>
+        <Form.Select name='hinge' default='CR3D62-4' onChange={handleInputChange}>
           <option value='CR3D62-4'>CalRoyal CR3D562 {`(4)`}</option>
           <option value='540 3D-4'>Tectus 540 3D {`(4)`}</option>
           <option value='butt-4'>4x4 butt hinge {`(4)`}</option>

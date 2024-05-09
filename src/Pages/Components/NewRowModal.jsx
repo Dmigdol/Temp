@@ -30,6 +30,10 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
     setInputs({...inputs, [name]: value})
   }
 
+  const handleRadioChange = (e) => {
+    setInputs({...inputs, 'numDoors': e.target.id})
+  }
+
   const returnToDefault = () => {
     setHeight(0);
     setCheckBox('single');
@@ -44,13 +48,13 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
 
 
     payload.num = rowObj.num;
-    payload.checkBox = checkBox;
+    // payload.checkBox = checkBox;
     payload.hinge = 'PH';
     payload.strike = 'ASA'
     payload.handling = 'LH-r'
     payload.desc = newDesc(payload)
 
-
+    console.log(payload)
 
 
     addRow(payload)
@@ -101,14 +105,14 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
                   {checkBox === 'single' ?
                   <Form.Check
                   checked
-                  onChange={handleInputChange}
+                  onChange={handleRadioChange}
                   type='radio'
                   name='group1'
                   id='single'
                   />
                   :
                   <Form.Check
-                  onChange={handleInputChange}
+                  onChange={handleRadioChange}
                   onClick={(e)=> setCheckBox('single')}
                   type='radio'
                   name='group1'
@@ -121,14 +125,14 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
                   {checkBox === 'double' ?
                   <Form.Check
                   checked
-                  onChange={handleInputChange}
+                  onChange={handleRadioChange}
                   type='radio'
                   name='group1'
                   id='double'
                   />
                   :
                   <Form.Check
-                  onChange={handleInputChange}
+                  onChange={handleRadioChange}
                   onClick={(e)=> setCheckBox('double')}
                   type='radio'
                   name='group1'

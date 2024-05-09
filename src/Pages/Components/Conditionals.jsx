@@ -29,11 +29,10 @@ function Conditionals({data, setInputs}) {
   }
 
   const logicCheck = (frame, height) => {
-    console.log(height)
     if (frame === 'standard') {
       switch (true) {
         case height < 72 :
-          return formRender(['CR3D51-2', 'CalRoyal CR3D51 (2)'], ['340 3D-2', 'Tectus 340 3D (2)'], ['butt-2', '4x4 butt hinge (2)']);
+          return formRender(['CR3D51-2', 'CalRoyal CR3D51 (2)'], ['340 3D-2', 'Tectus 340 3D (2)']);
           break;
         case height > 72 && height < 84 :
           return formRender(['CR3D51-3', 'CalRoyal CR3D51 (3)'], ['340 3D-3', 'Tectus 340 3D (3)'], ['butt-3', '4x4 butt hinge (3)']);
@@ -46,12 +45,37 @@ function Conditionals({data, setInputs}) {
           break;
       }
     }
-    if (frame === 'in-swing')
+    if (frame === 'in-swing') {
+      console.log('firing')
+      switch (true) {
+        case height < 72 :
+          return formRender(['CR3D51-2', 'CalRoyal CR3D51 (2)'], ['340 3D-2', 'Tectus 340 3D (2)']);
+          break;
+        case height > 72 && height < 84 :
+          return formRender(['CR3D51-3', 'CalRoyal CR3D51 (3)'], ['340 3D-3', 'Tectus 340 3D (3)']);
+          break;
+        case height > 84 && height <= 96 :
+          return formRender(['CR3D62-3', 'CalRoyal CR3D62 (3)'], ['540 3D-3', 'Tectus 540 3D (3)']);
+          break;
+        case height > 96 && height <= 120 :
+          return formRender(['CR3D62-4', 'CalRoyal CR3D62 (4)'], ['540 3D-4', 'Tectus 540 3D (4)']);
+          break;
+      }
+    }
+      if(frame === 'pivot'){
+        return formRender(['Frits system-one', 'FritsJurgen System One'], ['Dorma CP440', 'Dorma CP440'])
+    }
   }
 
   console.log('pre switch', data)
   switch(data.frame) {
-    case 'standard' || 'in-swing':
+    case 'standard':
+      return logicCheck(data.frame, data.height);
+      break;
+    case 'in-swing':
+      return logicCheck(data.frame, data.height);
+      break;
+    case 'pivot' :
       return logicCheck(data.frame, data.height);
       break;
   }

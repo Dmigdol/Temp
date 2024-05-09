@@ -16,3 +16,20 @@
   justify-content: center;
   padding-bottom: 5%;
 }
+
+.single-box, .double-box {
+  display: flex;
+  align-items: center;
+}
+
+.single-box-text, .double-box-text {
+  padding-right: 10%;
+}
+
+.checked {
+
+}
+
+.boxes {
+  display: flex;
+}

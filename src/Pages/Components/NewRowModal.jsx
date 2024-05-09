@@ -16,6 +16,7 @@ import { useState } from 'react';
 function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
 
   const [height, setHeight] = useState(0)
+  const [checkBox, setCheckBox] = useState('single')
   const [modalPage, setModalPage] = useState('first')
   const [inputs, setInputs] = useState({frame: 'standard'})
 
@@ -29,23 +30,35 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
     setInputs({...inputs, [name]: value})
   }
 
+  const handleRadioChange = (e) => {
+    setInputs({...inputs, 'numDoors': e.target.id})
+  }
+
+  const returnToDefault = () => {
+    setHeight(0);
+    setCheckBox('single');
+    setModalPage('first');
+    setInputs({});
+  }
+
   const submitForm = (e) => {
     e.preventDefault()
     const payload = inputs;
 
+    console.log('inputs',inputs)
 
     payload.num = rowObj.num;
-    payload.hinge = 'PH';
+    // payload.checkBox = checkBox;
+    // payload.hinge = 'PH';
     payload.strike = 'ASA'
     payload.handling = 'LH-r'
-
     payload.desc = newDesc(payload)
 
-
+    console.log(payload)
 
 
     addRow(payload)
-    setInputs({})
+    returnToDefault();
     setSlide(false)
   }
 
@@ -79,13 +92,53 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
               </Row>
               <Row className='modal-row'>
                 <Col md={8}>
-                  <Form.Select value={inputs.frame}  name='frame' onChange={handleInputChange}>
+                  <Form.Select value={inputs.frame}  name='frame' default={'standard'} onChange={handleInputChange}>
                     <option value='standard'>Standard</option>
                     <option value='in-swing'>In-Swing</option>
                     <option value='pivot'>Pivot</option>
                   </Form.Select>
                 </Col>
-                <Col md={8}>
+              </Row>
+              <Row className='modal-row boxes'>
+                <Col md={3} className='single-box'>
+                  <Form.Label className='single-box-text'>Single</Form.Label>
+                  {checkBox === 'single' ?
+                  <Form.Check
+                  checked
+                  onChange={handleRadioChange}
+                  type='radio'
+                  name='group1'
+                  id='single'
+                  />
+                  :
+                  <Form.Check
+                  onChange={handleRadioChange}
+                  onClick={(e)=> setCheckBox('single')}
+                  type='radio'
+                  name='group1'
+                  id='single'
+                  />
+                }
+                </Col>
+                <Col md={3} className='double-box'>
+                  <Form.Label className='double-box-text'>Double</Form.Label>
+                  {checkBox === 'double' ?
+                  <Form.Check
+                  checked
+                  onChange={handleRadioChange}
+                  type='radio'
+                  name='group1'
+                  id='double'
+                  />
+                  :
+                  <Form.Check
+                  onChange={handleRadioChange}
+                  onClick={(e)=> setCheckBox('double')}
+                  type='radio'
+                  name='group1'
+                  id='double'
+                  />
+                }
                 </Col>
               </Row>
               <Button onClick={(e) => {

@@ -16,51 +16,68 @@ function Conditionals({data, setInputs}) {
     setInputs({...data, [name]: value})
   }
 
-  if (data.frame === 'standard') {
-    if(data.height < 72){
-      return(
-        <>
-          <Form.Select name='hinge' onChange={handleInputChange}>
-            <option value='CR3D51-2'>CalRoyal CR3D51 {`(2)`}</option>
-            <option value='340 3D-2'>Tectus 340 3D {`(2)`}</option>
-            <option value='butt-2'>4x4 butt hinge {`(2)`}</option>
-          </Form.Select>
-        </>
-      )
-    }
-  }
-    if(data.height > 72 && data.height < 84){
-      return(
-        <>
-          <Form.Select name='hinge' onChange={handleInputChange}>
-            <option value='CR3D51-3'>CalRoyal CR3D51 {`(3)`}</option>
-            <option value='340 3D-3'>Tectus 340 3D {`(3)`}</option>
-            <option value='butt-3'>4x4 butt hinge {`(3)`}</option>
-          </Form.Select>
-        </>
-      )
-    }
-    if(data.height > 84 && data.height <= 96){
-      return(
-        <>
-          <Form.Select name='hinge' onChange={handleInputChange}>
-            <option value='CR3D62-3'>CalRoyal CR3D562 {`(3)`}</option>
-            <option value='540 3D-3'>Tectus 540 3D {`(3)`}</option>
-            <option value='butt-4'>4x4 butt hinge {`(4)`}</option>
-          </Form.Select>
-        </>
-      )
-    }
-  if(data.height > 96 && data.height <= 120){
+  const formRender = (opt1, opt2, opt3) => {
     return(
       <>
-        <Form.Select name='hinge' onChange={handleInputChange}>
-          <option value='CR3D62-4'>CalRoyal CR3D562 {`(4)`}</option>
-          <option value='540 3D-4'>Tectus 540 3D {`(4)`}</option>
-          <option value='butt-4'>4x4 butt hinge {`(4)`}</option>
+        <Form.Select name='hinge' default={opt1[0]} onChange={handleInputChange}>
+          <option value={opt1[0]}>{`${opt1[1]}`}</option>
+          <option value={opt2[0]}>{`${opt2[1]}`}</option>
+          {opt3 ? <option value={opt3[0]}>{`${opt3[1]}`}</option> : ''}
         </Form.Select>
       </>
     )
+  }
+
+  const logicCheck = (frame, height) => {
+    if (frame === 'standard') {
+      switch (true) {
+        case height < 72 :
+          return formRender(['CR3D51-2', 'CalRoyal CR3D51 (2)'], ['340 3D-2', 'Tectus 340 3D (2)']);
+          break;
+        case height > 72 && height < 84 :
+          return formRender(['CR3D51-3', 'CalRoyal CR3D51 (3)'], ['340 3D-3', 'Tectus 340 3D (3)'], ['butt-3', '4x4 butt hinge (3)']);
+          break;
+        case height > 84 && height <= 96 :
+          return formRender(['CR3D62-3', 'CalRoyal CR3D62 (3)'], ['540 3D-3', 'Tectus 540 3D (3)'], ['butt-4', '4x4 butt hinge (4)']);
+          break;
+        case height > 96 && height <= 120 :
+          return formRender(['CR3D62-4', 'CalRoyal CR3D62 (4)'], ['540 3D-4', 'Tectus 540 3D (4)'], ['butt-4', '4x4 butt hinge (4)']);
+          break;
+      }
+    }
+    if (frame === 'in-swing') {
+      console.log('firing')
+      switch (true) {
+        case height < 72 :
+          return formRender(['CR3D51-2', 'CalRoyal CR3D51 (2)'], ['340 3D-2', 'Tectus 340 3D (2)']);
+          break;
+        case height > 72 && height < 84 :
+          return formRender(['CR3D51-3', 'CalRoyal CR3D51 (3)'], ['340 3D-3', 'Tectus 340 3D (3)']);
+          break;
+        case height > 84 && height <= 96 :
+          return formRender(['CR3D62-3', 'CalRoyal CR3D62 (3)'], ['540 3D-3', 'Tectus 540 3D (3)']);
+          break;
+        case height > 96 && height <= 120 :
+          return formRender(['CR3D62-4', 'CalRoyal CR3D62 (4)'], ['540 3D-4', 'Tectus 540 3D (4)']);
+          break;
+      }
+    }
+      if(frame === 'pivot'){
+        return formRender(['Frits system-one', 'FritsJurgen System One'], ['Dorma CP440', 'Dorma CP440'])
+    }
+  }
+
+  console.log('pre switch', data)
+  switch(data.frame) {
+    case 'standard':
+      return logicCheck(data.frame, data.height);
+      break;
+    case 'in-swing':
+      return logicCheck(data.frame, data.height);
+      break;
+    case 'pivot' :
+      return logicCheck(data.frame, data.height);
+      break;
   }
 }
 

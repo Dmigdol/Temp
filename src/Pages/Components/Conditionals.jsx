@@ -1,4 +1,4 @@
-import './Conditionals.scss'
+import './Conditionals'
 import Select from 'react-select'
 import { useRef, useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button'
@@ -18,20 +18,34 @@ function Conditionals({data, setInputs}) {
 
   const formRender = (opt1, opt2, opt3) => {
     return(
-      <>
-        <Form.Select name='hinge' default={opt1[0]} onChange={handleInputChange}>
-          <option value={opt1[0]}>{`${opt1[1]}`}</option>
-          <option value={opt2[0]}>{`${opt2[1]}`}</option>
-          {opt3 ? <option value={opt3[0]}>{`${opt3[1]}`}</option> : ''}
-        </Form.Select>
-      </>
+      <Container fluid>
+        <Row className='modal-row'>
+          <Form.Group as={Col} md={8}>
+            <Form.Label className='input-label'>Hinge Type</Form.Label>
+            <Form.Select name='hinge' default={opt1[0]} onChange={handleInputChange}>
+              <option>Select Hinge</option>
+              <option value={opt1[0]}>{`${opt1[1]}`}</option>
+              <option value={opt2[0]}>{`${opt2[1]}`}</option>
+              {opt3 ? <option value={opt3[0]}>{`${opt3[1]}`}</option> : ''}
+            </Form.Select>
+          </Form.Group>
+        </Row>
+        <Row className='modal-row'>
+          <Form.Group as={Col} md={8}>
+            <Form.Label className='input-label'>Strike Type</Form.Label>
+            <Form.Select name='strike' default={opt1[0]} onChange={handleInputChange}>
+
+            </Form.Select>
+          </Form.Group>
+        </Row>
+      </Container>
     )
   }
 
   const logicCheck = (frame, height) => {
     if (frame === 'standard') {
       switch (true) {
-        case height < 72 :
+        case height <= 72 :
           return formRender(['CR3D51-2', 'CalRoyal CR3D51 (2)'], ['340 3D-2', 'Tectus 340 3D (2)']);
           break;
         case height > 72 && height < 84 :
@@ -48,7 +62,7 @@ function Conditionals({data, setInputs}) {
     if (frame === 'in-swing') {
       console.log('firing')
       switch (true) {
-        case height < 72 :
+        case height <= 72 :
           return formRender(['CR3D51-2', 'CalRoyal CR3D51 (2)'], ['340 3D-2', 'Tectus 340 3D (2)']);
           break;
         case height > 72 && height < 84 :

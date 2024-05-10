@@ -1,8 +1,9 @@
 
 const newDesc = (obj) => {
-  let description = `${obj.width} x ${obj.height} `
 
-  switch(obj.NumOfDoors) {
+  let description = ``
+
+  switch(obj.numDoors) {
     case 'single':
       description += `Single `;
       break;
@@ -10,6 +11,9 @@ const newDesc = (obj) => {
       description += `Double `;
       break;
   }
+  description += `${obj.width}" x ${obj.height}" `
+
+
 
   switch(obj.strike) {
     case 'ASA':

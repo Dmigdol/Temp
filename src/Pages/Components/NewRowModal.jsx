@@ -15,10 +15,9 @@ import { useState } from 'react';
 
 function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
 
-  const [height, setHeight] = useState(0)
   const [checkBox, setCheckBox] = useState('single')
   const [modalPage, setModalPage] = useState('first')
-  const [inputs, setInputs] = useState({frame: 'standard'})
+  const [inputs, setInputs] = useState({frame: '', numDoors: ''})
 
   const handleClose = () => {
     setShow(false)
@@ -35,10 +34,15 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
   }
 
   const returnToDefault = () => {
-    setHeight(0);
-    setCheckBox('single');
+    setCheckBox('');
     setModalPage('first');
     setInputs({});
+  }
+
+  const checkInputs = () => {
+    if (Object.keys(inputs).length > 5 && Object.values(inputs).every(x => x === null || x === '')) {
+      return  true
+    } else {return false}
   }
 
   const submitForm = (e) => {
@@ -75,71 +79,60 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
         <Container fluid className='test'>
           <Form onSubmit={submitForm}>
               <Row className='modal-row'>
-                <Col md={5}>
-                    <Form.Control value={inputs.id} placeholder='Item ID' name='id' type='id' onChange={handleInputChange}/>
-                </Col>
-                <Col md={3}>
+                <Form.Group as={Col} md={5}>
+                  <Form.Label className='input-label'>Item ID</Form.Label>
+                  <Form.Control value={inputs.id} placeholder='Item ID' name='id' type='id' onChange={handleInputChange}/>
+                </Form.Group>
+                <Form.Group as={Col} md={4}>
+                  <Form.Label className='input-label'>Qty</Form.Label>
                     <Form.Control value={inputs.qty} placeholder='QTY' name='qty' onChange={handleInputChange}/>
-                </Col>
+                </Form.Group>
               </Row>
               <Row className='modal-row'>
-                <Col md={4}>
+                <Form.Group as={Col} md={4}>
+                  <Form.Label className='input-label'>{`Width (in)`}</Form.Label>
                   <Form.Control value={inputs.width} placeholder ='Width' name='width' onChange={handleInputChange}/>
-                </Col>
-                <Col md={4}>
+                </Form.Group>
+                <Form.Group as={Col} md={4}>
+                  <Form.Label className='input-label'>{`Height (in)`}</Form.Label>
                   <Form.Control value={inputs.height} placeholder ='Height' name='height' onChange={handleInputChange}/>
-                </Col>
+                </Form.Group>
               </Row>
               <Row className='modal-row'>
-                <Col md={8}>
-                  <Form.Select value={inputs.frame}  name='frame' default={'standard'} onChange={handleInputChange}>
+                <Form.Group as={Col} md={8}>
+                  <Form.Label className='input-label'>Frame Type</Form.Label>
+                  <Form.Select value={inputs.frame}  name='frame'  onChange={handleInputChange}>
+                    <option>Select Frame</option>
                     <option value='standard'>Standard</option>
                     <option value='in-swing'>In-Swing</option>
                     <option value='pivot'>Pivot</option>
                   </Form.Select>
-                </Col>
+                </Form.Group>
               </Row>
               <Row className='modal-row boxes'>
-                <Col md={3} className='single-box'>
+              <Row  className='modal-row boxes'>
+                <Form.Group as={Col} md={4}>
                   <Form.Label className='single-box-text'>Single</Form.Label>
-                  {checkBox === 'single' ?
-                  <Form.Check
-                  checked
-                  onChange={handleRadioChange}
-                  type='radio'
-                  name='group1'
-                  id='single'
-                  />
-                  :
-                  <Form.Check
-                  onChange={handleRadioChange}
-                  onClick={(e)=> setCheckBox('single')}
-                  type='radio'
-                  name='group1'
-                  id='single'
-                  />
-                }
-                </Col>
-                <Col md={3} className='double-box'>
+                    <Form.Check
+                      inline
+                      onChange={handleRadioChange}
+                      type='radio'
+                      name='group1'
+                      id='single'
+                    />
+                </Form.Group>
+                <Form.Group as={Col} md={4}>
                   <Form.Label className='double-box-text'>Double</Form.Label>
-                  {checkBox === 'double' ?
-                  <Form.Check
-                  checked
-                  onChange={handleRadioChange}
-                  type='radio'
-                  name='group1'
-                  id='double'
-                  />
-                  :
-                  <Form.Check
-                  onChange={handleRadioChange}
-                  onClick={(e)=> setCheckBox('double')}
-                  type='radio'
-                  name='group1'
-                  id='double'
-                  />
-                }
-                </Col>
+                    <Form.Check
+                      inline
+                      onChange={handleRadioChange}
+                      onClick={(e)=> setCheckBox('double')}
+                      type='radio'
+                      name='group1'
+                      id='double'
+                    />
+                </Form.Group>
+              </Row>
               </Row>
               <Button onClick={(e) => {
                 setModalPage('second')
@@ -155,10 +148,12 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
                   Back
                 </Button>
                 <Button onClick={(e) => {
-                  setSlide(false)
-                  submitForm(e)
-                  handleClose()
-                  setModalPage('first')
+                  if (checkInputs) {
+                    setSlide(false)
+                    submitForm(e)
+                    handleClose()
+                    setModalPage('first')
+                  }
                 }}>
                   Submit
                 </Button>
@@ -173,3 +168,4 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
 }
 
 export default NewRowModal;
+

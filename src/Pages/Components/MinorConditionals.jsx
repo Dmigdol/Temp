@@ -40,16 +40,30 @@ function MinorConditionals({data, setInputs}){
             id='deadBolt'
           />
         </Form.Group>
-        <Form.Group as={Col} md={4}>
-          <Form.Label className='input-label'>Closer</Form.Label>
-          <Form.Check
-            className='box-text'
-            inline
-            onChange={handleInputChange}
-            name='closer'
-            id='closer'
-          />
-        </Form.Group>
+        {data.frame !== 'pivot' ?
+          <Form.Group as={Col} md={4}>
+            <Form.Label className='input-label'>Closer</Form.Label>
+            <Form.Check
+              className='box-text'
+              inline
+              onChange={handleInputChange}
+              name='closer'
+              id='closer'
+            />
+          </Form.Group>
+        :
+          <Form.Group as={Col} md={4}>
+            <Form.Label className='input-label disabled'>Closer</Form.Label>
+            <Form.Check
+            disabled
+              className='box-text'
+              inline
+              onChange={handleInputChange}
+              name='closer'
+              id='closer'
+            />
+          </Form.Group>
+        }
         {data.frame === 'standard' ?
           <Form.Group as={Col} md={4}>
           <Form.Label className='input-label'>Fire Rating</Form.Label>

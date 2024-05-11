@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Conditionals from './Conditionals.jsx'
 import StrikeRender from './StrikeRender.jsx'
+import MinorConditionals from './MinorConditionals.jsx'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
@@ -147,6 +148,7 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
               {/* SECOND PAGE STARTS HERE */}
                 <Conditionals data={inputs} setInputs={setInputs}/>
                 <StrikeRender data={inputs} inputs={inputs} setInputs={setInputs}/>
+                <MinorConditionals data={inputs} setInputs={setInputs}/>
                 <Button onClick={() => {setModalPage('first')}}>
                   Back
                 </Button>

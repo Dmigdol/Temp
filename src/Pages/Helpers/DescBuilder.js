@@ -31,10 +31,10 @@ const newDesc = (obj) => {
   }
 
   obj.strikeHeight ? description += `${obj.strikeHeight}"` : description = description;
-  obj.deadbolt ? description += `${obj.deadbolt }` : description = description;
+  obj.deadBolt === 'on' ? description += ` DB ` : description = description;
   obj.fireRating ? description += `20min FR ` : description = description;
-  obj.closer ? description += `${obj.closer} ` : description = description;
   obj.handling ? description += `${obj.handling} ` :description = description;
+  obj.closer === 'on' ? description += ` Closer ` : description = description;
 
   console.log('desc ', description)
   return (description)

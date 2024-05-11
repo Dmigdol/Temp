@@ -30,11 +30,11 @@ const newDesc = (obj) => {
       break;
   }
 
-  obj.strikeHeight ? description += `${obj.strikeHeight}"` : description = description;
-  obj.deadBolt === 'on' ? description += ` DB ` : description = description;
-  obj.fireRating ? description += `20min FR ` : description = description;
+  obj.strikeHeight ? description += `${obj.strikeHeight}" ` : description = description;
+  obj.deadBolt === 'on' ? description += `DB ` : description = description;
+  obj.fireRating === 'on' ? description += `20min FR ` : description = description;
   obj.handling ? description += `${obj.handling} ` :description = description;
-  obj.closer === 'on' ? description += ` Closer ` : description = description;
+  obj.closer === 'on' ? description += `Closer ` : description = description;
 
   console.log('desc ', description)
   return (description)

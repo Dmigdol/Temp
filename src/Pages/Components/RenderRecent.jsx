@@ -1,5 +1,4 @@
 import './infobox.scss'
-import OptionsBox from './OptionsBox.jsx'
 import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
 import ListModal from './ListModal.jsx'

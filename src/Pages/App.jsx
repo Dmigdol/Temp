@@ -5,7 +5,6 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import Landing from './Landing';
 import QuoteBuilder from './QuoteBuilder'
-import NewRow from './NewRow'
 import '../Sass/App.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 

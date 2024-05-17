@@ -4,6 +4,7 @@ import axios from 'axios';
 import Row from './LandingRow'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CustomerInput from './Components/CustomerInput.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
@@ -19,12 +20,16 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   const [searchState, setSearchState] = useState('search-input first');
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState('date');
+  const [newQuote, setNewQuote] = useState(false);
+
 
   const tempEmployee = {
     name: 'Paul Allor',
     id: 1000,
     postion: 'admin'
   }
+
+
 
 
   const fetchData = () => {
@@ -97,6 +102,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   return (
     <div className="App">
       {/* {isLoading ? <div>Loading</div> : */}
+      <CustomerInput newQuote={newQuote} setNewQuote={setNewQuote}/>
       <div className="landing">
         <div className="landing Center">
           <div className="landing-headbar">
@@ -125,7 +131,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
             >Orders
             </div>
             <div className='NewRow  button'
-              onClick={() => setCurrentPage(['QuoteBuilder'])}
+              onClick={() => setNewQuote(true)}
               >+</div>
           </div>
           <div className='row-container'>

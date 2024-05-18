@@ -12,7 +12,6 @@ function RenderRecent({current, data, setCurrentPage}) {
 
   const [clicked, setClicked] = useState();
   const [show, setShow] = useState(false);
-  const [newQuote, setNewQuote] = useState(false);
 
   const handleShow = () => setShow(true);
 
@@ -22,7 +21,6 @@ function RenderRecent({current, data, setCurrentPage}) {
 
     <div className='Entry' >
       <ListModal setShow={setShow} setCurrentPage={setCurrentPage} show={show} data={clicked}/>
-      <CustomerInput newQuote={newQuote} setNewQuote={setNewQuote}/>
       <Container className='mx-2'>
         <Table hover className='table-large'>
           <thead>

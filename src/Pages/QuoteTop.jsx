@@ -14,7 +14,7 @@ function QuoteTop({ data }) {
         <span className='Company-email'>{data.customer.phone}</span>
       </div>
       <div className='Quote-header'>
-        <span className='Quote-Header-Text'>{data.customer.company_name} #{data.quote_id.slice(0,5)}</span>
+        <span className='Quote-Header-Text'>{data.customer.company_name}</span>
       </div>
       <div className='Pricing'>
         <span className='Sub-Total'>Sub-Total</span>

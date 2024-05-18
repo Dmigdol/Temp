@@ -102,11 +102,11 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   return (
     <div className="App">
       {/* {isLoading ? <div>Loading</div> : */}
-      <CustomerInput newQuote={newQuote} setNewQuote={setNewQuote}/>
+      <CustomerInput newQuote={newQuote} setNewQuote={setNewQuote} setCurrentPage={setCurrentPage}/>
       <div className="landing">
         <div className="landing Center">
           <div className="landing-headbar">
-          <div className='search-btn-container'>
+          {/* <div className='search-btn-container'>
               <FontAwesomeIcon className='search-btn'
               icon={byPrefixAndName.fass['magnifying-glass']}
               style={{color: "#605c5c",}}
@@ -117,19 +117,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
           </div>
           <div className='search-container'>
               <div className={searchState}></div>
-          </div>
-            <div className={current === 'quote' ? "quotes-headbar active" : "quotes-headbar"}
-            onClick={(() => {
-              setCurrent('quote')
-            })}
-            >Quotes
-            </div>
-            <div className={current === 'order' ? "orders-headbar active" : "orders-headbar"}
-            onClick={(() => {
-              setCurrent('order')
-            })}
-            >Orders
-            </div>
+          </div> */}
             <div className='NewRow  button'
               onClick={() => setNewQuote(true)}
               >+</div>

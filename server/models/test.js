@@ -21,5 +21,21 @@ module.exports = {
       temp.orders = await module.exports.getOrders(id)
       temp.quotes = await module.exports.getQuotes(id)
       return temp
+  },
+  async createQuote(payload) {
+    const {data, error} = await db
+      .from('quotes')
+      .insert(
+        {
+          quote_id : payload.quote_id,
+          employee_id : payload.employee_id,
+          customer_id : payload.customer_id,
+          status : payload.status,
+          total_price : 0,
+          customer_name : payload.customer_name
+        }
+      )
+      .select()
+      return(data);
   }
 };

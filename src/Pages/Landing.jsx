@@ -4,6 +4,9 @@ import axios from 'axios';
 import Row from './LandingRow'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import CustomerInput from './Components/CustomerInput.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
@@ -106,18 +109,19 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
       <div className="landing">
         <div className="landing Center">
           <div className="landing-headbar">
-          {/* <div className='search-btn-container'>
-              <FontAwesomeIcon className='search-btn'
+          <div className='search-btn-container'>
+              {/* <FontAwesomeIcon className='search-btn'
               icon={byPrefixAndName.fass['magnifying-glass']}
               style={{color: "#605c5c",}}
               onClick={(() => {
                 firstCheck()
               })}
-              />
+              /> */}
           </div>
           <div className='search-container'>
               <div className={searchState}></div>
-          </div> */}
+          </div>
+
             <div className='NewRow  button'
               onClick={() => setNewQuote(true)}
               >+</div>

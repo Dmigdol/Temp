@@ -1,22 +1,62 @@
 import { useEffect, useState } from "react";
 import '../Sass/Login.scss'
 import axios from 'axios';
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
 
 
-
-function Login({setCurrentPage}) {
+function Login({setCurrentPage, setLogged}) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLogin = () => {
+    setLogged(true)
+    setCurrentPage(['Landing'])
+  }
+
   return (
     <div className="App">
+
       <div className="Login frame">
-        <div className="Container Logo">
+        <Container>
+          <Row className='logo-header'>
+            <Col className='header-poly poly-left' md={3}>
+            </Col>
+            <Col className='logo-img'>
+              <img className="Logoimg" src='VFlogo.png'/>
+            </Col>
+            <Col className='header-poly poly-right' md={3}>
+            </Col>
+          </Row>
+          <Row className='login-body'>
+            <Form.Group as={Col} md={8} className='email-login'>
+              <Form.Label>Email</Form.Label>
+              <Form.Control  placeholder='Email' name='email'></Form.Control>
+            </Form.Group>
+          </Row>
+          <Row className='login-body'>
+            <Form.Group  as={Col} md={8} className='password-login'>
+              <Form.Label>Password</Form.Label>
+              <Form.Control  placeholder='Password' name='password'></Form.Control>
+            </Form.Group>
+          </Row>
+          <Row className='login-button-row'>
+            <Button
+              as={Col}
+              md={4}
+              onClick={()=>{handleLogin()}}
+            >Login</Button>
+
+          </Row>
+        </Container>
+        {/* <div className="Container Logo">
           <img className="Logoimg" src='VFlogo.png'/>
         </div>
           <div class="Container Header">
-          <span className="Heading"> Sign In</span>
         </div>
         <div className="Container input">
           <form className="email">
@@ -41,7 +81,7 @@ function Login({setCurrentPage}) {
         >Login</button>
         <div className="forgotText"
           onClick={()=>{ alert('Forgot Login Clicked'); }}
-        >Forgot Login?</div>
+        >Forgot Login?</div> */}
       </div>
     </div>
   );

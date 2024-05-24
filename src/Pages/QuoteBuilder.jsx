@@ -10,6 +10,9 @@ function QuoteBuilder({setCurrentPage, data}) {
   const [quoterows, setQuoteRows] = useState([])
   const [slide, setSlide] = useState(0)
   const [show, setShow] = useState(false)
+  const [inputs, setInputs] = useState({frame: '', numDoors: '', strikeHeight: ''})
+
+  console.log('QUOTE ROWS', quoterows)
 
  const test = {
    num: 1,
@@ -42,6 +45,7 @@ function QuoteBuilder({setCurrentPage, data}) {
       calcPrice() {
         return (((this.width + (2*(this.height)) * 0.34) + (this.hinge[1] * (this.hinge[0])) + (this.strike[1]*(this.strike[0])) + 10) * this.qty)
       }
+
   }
 
   const newRow = (obj) => {
@@ -65,7 +69,7 @@ function QuoteBuilder({setCurrentPage, data}) {
 
   return(
     <div className='QuotePage'>
-      <NewRowModal setShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} show={show}/>
+      <NewRowModal setShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} quoterows={quoterows} setQuoteRows={setQuoteRows} show={show} inputs={inputs} setInputs={setInputs}/>
       <div className={slide ? 'quote init' : 'quote'}>
         <div className='quote-header'>
           <QuoteTop className='QT' data={data}/>
@@ -82,7 +86,7 @@ function QuoteBuilder({setCurrentPage, data}) {
           <div className='rows-container'>
             {quoterows.map((current) => {
               return(
-                <RenderRow rows={quoterows} key={current.num} curr={current} addRow={addRow} setSlide={setSlide}/>
+                <RenderRow rows={quoterows} key={current.num} curr={current} addRow={addRow} setShow={setShow} inputs={inputs} setInputs={setInputs} setSlide={setSlide}/>
               )
             })}
           </div>

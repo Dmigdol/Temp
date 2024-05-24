@@ -4,11 +4,8 @@
 @mixin flex {
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  min-height: 77vh;
-  min-width: 48vw;
-  margin-top:6vh;
+  margin-top: 13vh;
 }
 
 button {
@@ -16,9 +13,7 @@ button {
 }
 
 @mixin framing {
-  border-style: solid;
   border-width: 4px;
-  border-radius: 13%;
   border-color: $vectorBlue;
   overflow:auto;
 }
@@ -39,6 +34,7 @@ $vectorLightBlue: #335C9A;
   @include framing;
   flex-wrap: wrap;
   &.Login {
+    border: 2px solid $vectorBlue;
     position: absolute;
     background-color: white;
     flex-direction: column;
@@ -61,7 +57,6 @@ $vectorLightBlue: #335C9A;
     margin-top: 5%;
     top: 20%;
     width: 13%;
-    margin-bottom: -8%;
   }
 
   &.Header {
@@ -114,6 +109,10 @@ $vectorLightBlue: #335C9A;
   min-width: 100%;
 }
 
+.Logoimg {
+  width: 100%
+}
+
 // Buttons
 
 .button {
@@ -136,4 +135,57 @@ $vectorLightBlue: #335C9A;
   border-width: 4px;
   border-radius: 13px;
   border-color: $vectorBlue;
+}
+
+// Bootstrap
+
+.login-body {
+  text-align: left;
+  align-content: center;
+  width: 100%;
+}
+
+.logo-header{
+  align-self: center;
+  border-bottom: 2px solid $vectorBlue;
+  margin-bottom: 5%;
+  padding: 0 0 !important;
+
+}
+
+.login-body {
+  justify-content: center;
+}
+
+
+.email-login {
+  margin-left: 1.5vw;
+}
+
+.password-login {
+  margin-left: 1.5vw;
+  margin-bottom: 2%;
+}
+
+.login-button-row {
+  justify-content: center;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: $vectorBlue !important;
+}
+.btn-primary:hover {
+  background-color: $vectorLightBlue !important;
+}
+
+.header-poly {
+  background-color: #183b6e;
+}
+
+.poly-left {
+  clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+}
+
+.poly-right {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%);
 }

@@ -15,11 +15,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import  newDesc from '../Helpers/DescBuilder.js'
 import { useState } from 'react';
 
-function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
+function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs}) {
 
   const [checkBox, setCheckBox] = useState('single')
   const [modalPage, setModalPage] = useState('first')
-  const [inputs, setInputs] = useState({frame: '', numDoors: '', strikeHeight: ''})
 
   const handleClose = () => {
     setShow(false)
@@ -71,7 +70,7 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
 
   return(
     <>
-      <Modal centered size='md'
+      <Modal centered size='md' className='modal-dialog-right'
       show={show} onHide={handleClose}>
         <Modal.Header className='modal-header' closeButton>
           <Modal.Title>{`Entry ${rowObj.num}`}</Modal.Title>

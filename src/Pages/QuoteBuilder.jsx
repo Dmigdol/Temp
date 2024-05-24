@@ -98,9 +98,6 @@ function QuoteBuilder({setCurrentPage, data}) {
         }}
         >New Row</div>
       </div>
-      <Button className='back-btn' variant='outline-primary'
-      onClick={() => setCurrentPage(['Landing'])}
-      >Back</Button>
     </div>
   )
 }

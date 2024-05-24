@@ -1,12 +1,23 @@
 import './Rows.scss'
 
-function RenderRow({rows, curr}) {
+function RenderRow({rows, curr, setShow, setSlide, setInputs}) {
+
 
 
   return (
-  <div className='quote-row-container'>
+
+  <div className='quote-row-container'
+    onClick={(e) =>{
+      // console.log('current', curr)
+      // setShow(true)
+      // setInputs(curr)
+      // setSlide(true)
+    }}>
+
     {rows.length === 0 ? (
-      <div className='individual-row'>
+      <div className='individual-row'
+
+      >
       <span className='Line-num quote-row'> </span>
       <span className='Item-ID quote-row'></span>
       <span className='Frame-type quote-row'></span>

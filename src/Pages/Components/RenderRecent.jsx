@@ -1,9 +1,9 @@
 import './infobox.scss'
-import OptionsBox from './OptionsBox.jsx'
 import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
 import ListModal from './ListModal.jsx'
 import { useRef, useEffect, useState } from "react";
+import CustomerInput from './CustomerInput.jsx'
 
 
 

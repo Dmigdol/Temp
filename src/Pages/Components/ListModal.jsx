@@ -14,7 +14,8 @@ function ListModal({setShow, show, data, setCurrentPage}) {
   const handleClose = () => setShow(false);
 
   const handleEdit = () => {
-
+    console.log(data)
+    setCurrentPage(['QuoteBuilder', data])
   }
 
   return(
@@ -46,7 +47,7 @@ function ListModal({setShow, show, data, setCurrentPage}) {
             <Button variant='outline-primary' className='edit-btn'>
                     <FontAwesomeIcon
                     icon={byPrefixAndName.fas['pen-to-square']}
-                    onClick={()=>{setCurrentPage(['QuoteBuilder', data])}}
+                    onClick={()=>{handleEdit()}}
                     />
             </Button>
             <Button onClick={handleClose}>Order</Button>

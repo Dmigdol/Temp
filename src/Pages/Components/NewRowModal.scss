@@ -4,6 +4,16 @@
   margin-left: auto;
 }
 
+.modal-dialog-right {
+  margin-left: -25%;
+}
+
+.modal-backdrop {
+  opacity: 0.1 !important;
+}
+
+
+
 .new-row-modal{
   float: left;
 }
@@ -18,8 +28,9 @@
 
 .modal-row {
   justify-content: center;
-  padding-bottom: 5%;
+  padding-bottom: 3%;
 }
+
 
 .floating-label {
   font-size: 25;

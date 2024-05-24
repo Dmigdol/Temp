@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Conditionals from './Conditionals.jsx'
+import StrikeRender from './StrikeRender.jsx'
+import MinorConditionals from './MinorConditionals.jsx'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
@@ -13,15 +15,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import  newDesc from '../Helpers/DescBuilder.js'
 import { useState } from 'react';
 
-function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
+function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs}) {
 
   const [checkBox, setCheckBox] = useState('single')
   const [modalPage, setModalPage] = useState('first')
-  const [inputs, setInputs] = useState({frame: '', numDoors: ''})
 
   const handleClose = () => {
     setShow(false)
     setSlide(false)
+    returnToDefault()
   }
 
   const handleInputChange = (e) => {
@@ -54,7 +56,6 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
     payload.num = rowObj.num;
     // payload.checkBox = checkBox;
     // payload.hinge = 'PH';
-    payload.strike = 'ASA'
     payload.handling = 'LH-r'
     payload.desc = newDesc(payload)
 
@@ -69,7 +70,7 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
 
   return(
     <>
-      <Modal centered size='md'
+      <Modal centered size='md' className='modal-dialog-right'
       show={show} onHide={handleClose}>
         <Modal.Header className='modal-header' closeButton>
           <Modal.Title>{`Entry ${rowObj.num}`}</Modal.Title>
@@ -109,8 +110,8 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
                   </Form.Select>
                 </Form.Group>
               </Row>
-              <Row className='modal-row boxes'>
-              <Row  className='modal-row boxes'>
+              <Row className='modal-row'>
+              <Row  className='modal-row'>
                 <Form.Group as={Col} md={4}>
                   <Form.Label className='single-box-text'>Single</Form.Label>
                     <Form.Check
@@ -143,7 +144,10 @@ function NewRowModal({show, setShow, setSlide, slide, data, rowObj, addRow}) {
           </Container>
             :
               <>
+              {/* SECOND PAGE STARTS HERE */}
                 <Conditionals data={inputs} setInputs={setInputs}/>
+                <StrikeRender data={inputs} inputs={inputs} setInputs={setInputs}/>
+                <MinorConditionals data={inputs} setInputs={setInputs}/>
                 <Button onClick={() => {setModalPage('first')}}>
                   Back
                 </Button>

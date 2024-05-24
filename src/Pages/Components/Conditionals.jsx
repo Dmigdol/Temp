@@ -19,22 +19,14 @@ function Conditionals({data, setInputs}) {
   const formRender = (opt1, opt2, opt3) => {
     return(
       <Container fluid>
-        <Row className='modal-row'>
-          <Form.Group as={Col} md={8}>
+        <Row className='modal-row' inline>
+          <Form.Group as={Col} md={9}>
             <Form.Label className='input-label'>Hinge Type</Form.Label>
             <Form.Select name='hinge' default={opt1[0]} onChange={handleInputChange}>
-              <option>Select Hinge</option>
+              <option hidden value/>
               <option value={opt1[0]}>{`${opt1[1]}`}</option>
               <option value={opt2[0]}>{`${opt2[1]}`}</option>
               {opt3 ? <option value={opt3[0]}>{`${opt3[1]}`}</option> : ''}
-            </Form.Select>
-          </Form.Group>
-        </Row>
-        <Row className='modal-row'>
-          <Form.Group as={Col} md={8}>
-            <Form.Label className='input-label'>Strike Type</Form.Label>
-            <Form.Select name='strike' default={opt1[0]} onChange={handleInputChange}>
-
             </Form.Select>
           </Form.Group>
         </Row>

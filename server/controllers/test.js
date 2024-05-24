@@ -19,4 +19,13 @@ module.exports = {
     models.getAll(id)
       .then(results => res.send(results));
   },
+  createQuote(req, res) {
+    console.log(req.query)
+    const payload = req.query;
+    models.createQuote(payload)
+      .then((results) => {
+        console.log(results)
+        res.send(results);
+      })
+  },
 }

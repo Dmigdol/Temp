@@ -17,7 +17,7 @@ function NavBar({user, setCurrentPage, setLogged}) {
   return (
 
     <Navbar  expand='lg' fixed='top' className='nav-whole'>
-      <Container className='nav-body' fluid>
+      <Container className='nav-body'>
         <Navbar.Brand className='img-container'>
           <img className="Logoimg" src='VFlogo.png'/>
         </Navbar.Brand>

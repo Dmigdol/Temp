@@ -4,10 +4,10 @@ $vectorLightBlue: #335C9A;
 
 .nav-whole {
   background-color: white;
-  border-bottom: 2px solid #224E90;
 }
 
 .nav-body {
+  border-bottom: 2px solid #224E90;
   font-size: 16px;
 }
 
@@ -17,9 +17,8 @@ $vectorLightBlue: #335C9A;
 
 .nav-left {
   margin-right: auto;
+  margin-left: 3%;
 }
 
-.user-nav {
-  margin-right: 5%;
-}
+
 

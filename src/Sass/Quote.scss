@@ -1,0 +1,39 @@
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
+
+// Container
+
+.full-container {
+  margin-top: 6%;
+  border: 2px solid $vectorBlue;
+  border-radius: 15px;
+  transition: all 700ms ease;
+  &.init {
+    margin-right: 1vw;
+    transition: all 300ms ease;
+  }
+}
+
+.input-container {
+  position: absolute;
+  border: 2px solid $vectorBlue;
+  width: 29vw;
+  margin-left: 0;
+}
+
+
+// Row
+
+.header-row {
+  justify-content: center;
+}
+
+// Col
+
+// Button
+
+.new-button {
+  margin-left: 90%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}

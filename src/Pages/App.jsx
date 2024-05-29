@@ -6,6 +6,7 @@ import NavBar from './Components/NavBar.jsx'
 import Container from 'react-bootstrap/Container'
 import Landing from './Landing';
 import QuoteBuilder from './QuoteBuilder'
+import Quote from './Quote'
 import '../Sass/App.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,7 +38,7 @@ function App() {
         return <Landing ref={wrapperRef} setCurrentPage={setCurrentPage} setOptShow={setOptShow} optShow={optShow} data={param[1]}/> ;
         break;
       case 'QuoteBuilder' :
-        return <QuoteBuilder setCurrentPage={setCurrentPage} data={param[1]}/>;
+        return <Quote setCurrentPage={setCurrentPage} data={param[1]}/>;
         break;
       default: return <div>{`Error in Switch Statement: Trying to load ` + param}</div>
         break;

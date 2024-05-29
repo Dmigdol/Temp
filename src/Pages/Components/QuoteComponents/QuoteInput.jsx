@@ -1,0 +1,125 @@
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import { useState } from 'react';
+import Collapse from 'react-bootstrap/Collapse'
+import './QuoteComponentsSCSS/QuoteInput.scss'
+import Hinge from './HingeConditionals.jsx'
+
+function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs}) {
+
+
+  const [checkBox, setCheckBox] = useState('single')
+
+  const handleClose = () => {
+    // setShow(false)
+    setSlide(false)
+    returnToDefault()
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setInputs({...inputs, [name]: value})
+  }
+
+  const returnToDefault = () => {
+    setCheckBox('');
+    setInputs({});
+  }
+
+  const checkInputs = () => {
+    if (Object.keys(inputs).length > 5 && Object.values(inputs).every(x => x === null || x === '')) {
+      return  true
+    } else {return false}
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    const payload = inputs;
+
+    console.log('inputs',inputs)
+
+    payload.num = rowObj.num;
+    // payload.checkBox = checkBox;
+    // payload.hinge = 'PH';
+    payload.handling = 'LH-r'
+
+    console.log(payload)
+
+
+    addRow(payload)
+    returnToDefault();
+    setSlide(false)
+  }
+  return (
+    <Container className='input-container'>
+      <Form onSubmit={submitForm}>
+      <Row>
+        <Col md={12}>
+          Location
+        </Col>
+        <Form.Group as={Col} md={6}>
+          <Form.Label className='input-label'>Tag</Form.Label>
+          <Form.Control value={inputs.tag} placeholder='Tag' name='tag' type='tag' onChange={handleInputChange}/>
+        </Form.Group>
+        <Form.Group as={Col} md={4}>
+          <Form.Label className='input-label'>Room</Form.Label>
+          <Form.Control value={inputs.room} placeholder='Room' name='room' onChange={handleInputChange}/>
+        </Form.Group>
+      </Row>
+      <Row>
+        <Col md={12}>
+            Frame
+        </Col>
+        <Form.Group as={Col} md={4}>
+          <Form.Label className='input-label'>{`Width (in)`}</Form.Label>
+          <Form.Control value={inputs.width} placeholder ='Width' name='width' onChange={handleInputChange}/>
+        </Form.Group>
+        <Form.Group as={Col} md={4}>
+          <Form.Label className='input-label'>{`Height (in)`}</Form.Label>
+          <Form.Control value={inputs.height} placeholder ='Height' name='height' onChange={handleInputChange}/>
+        </Form.Group>
+        <Form.Group as={Col} md={8}>
+          <Form.Label className='input-label'>Frame Type</Form.Label>
+          <Form.Select value={inputs.frame}  name='frame'  onChange={handleInputChange}>
+            <option>Select Frame</option>
+            <option value='standard'>Standard</option>
+            <option value='in-swing'>In-Swing</option>
+            <option value='pivot'>Pivot</option>
+          </Form.Select>
+        </Form.Group>
+      </Row>
+      <Row>
+      <Form.Group as={Col} md={4}>
+        <Form.Label className='double-box-text'>Double Door</Form.Label>
+          <Form.Check
+            inline
+            onChange={handleInputChange}
+            name='group1'
+            id='double'
+          />
+      </Form.Group>
+      </Row>
+      <Row>
+        <Col md={12}>
+          Hinge
+        </Col>
+        {/* <Hinge data={data} setInputs={setInputs}/> */}
+      </Row>
+      </Form>
+      <Button onClick={(e) => {
+        if (checkInputs) {
+          setSlide(false)
+          submitForm(e)
+          handleClose()
+        }
+      }}>
+        Add Row
+      </Button>
+    </Container>
+  )
+}
+
+export default QuoteInput;

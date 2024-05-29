@@ -4,6 +4,7 @@ import RenderRow from './Components/RenderRow'
 import QuoteTop from './QuoteTop'
 import NewRowModal from './Components/NewRowModal.jsx'
 import Button from 'react-bootstrap/Button'
+import Quote from './Quote'
 
 function QuoteBuilder({setCurrentPage, data}) {
 

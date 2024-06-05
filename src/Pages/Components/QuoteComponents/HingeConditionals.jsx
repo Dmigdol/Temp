@@ -18,8 +18,8 @@ function Conditionals({inputs, setInputs}) {
   const formRender = (opt1, opt2, opt3) => {
     return(
       <Container fluid>
-        <Row className='modal-row' inline>
-          <Form.Group as={Col} md={9}>
+        <Row inline>
+          <Form.Group as={Col} md={6}>
             <Form.Label className='input-label'>Hinge Type</Form.Label>
             {opt1.length !== 0 ?
             <Form.Select name='hinge' default={opt1[0]} onChange={handleInputChange}>

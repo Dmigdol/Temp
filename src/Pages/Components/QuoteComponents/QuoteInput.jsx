@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Collapse from 'react-bootstrap/Collapse'
 import './QuoteComponentsSCSS/QuoteInput.scss'
 import Hinge from './HingeConditionals.jsx'
+import Strike from './StrikeConditionals.jsx'
 
 function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs}) {
 
@@ -58,9 +59,10 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
     <Container className='input-container'>
       <Form onSubmit={submitForm}>
       <Row>
-        <Col md={12}>
+        <Col md={8} className='input-header'>
           Location
         </Col>
+        <Col md={4}/>
         <Form.Group as={Col} md={6}>
           <Form.Label className='input-label'>Tag</Form.Label>
           <Form.Control value={inputs.tag} placeholder='Tag' name='tag' type='tag' onChange={handleInputChange}/>
@@ -71,9 +73,10 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         </Form.Group>
       </Row>
       <Row>
-        <Col md={12}>
+        <Col md={8} className='input-header'>
             Frame
         </Col>
+        <Col md={4}/>
         <Form.Group as={Col} md={4}>
           <Form.Label className='input-label'>{`Width (in)`}</Form.Label>
           <Form.Control value={inputs.width} placeholder ='Width' name='width' onChange={handleInputChange}/>
@@ -85,7 +88,7 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Form.Group as={Col} md={8}>
           <Form.Label className='input-label'>Frame Type</Form.Label>
           <Form.Select value={inputs.frame}  name='frame'  onChange={handleInputChange}>
-            <option>Select Frame</option>
+            <option hidden value/>
             <option value='standard'>Standard</option>
             <option value='in-swing'>In-Swing</option>
             <option value='pivot'>Pivot</option>
@@ -98,16 +101,24 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
           <Form.Check
             inline
             onChange={handleInputChange}
-            name='group1'
+            name='numDoors'
             id='double'
           />
       </Form.Group>
       </Row>
       <Row>
-        <Col md={12}>
+        <Col md={8} className='input-header'>
           Hinge
         </Col>
+        <Col md={4}/>
         <Hinge inputs={inputs} setInputs={setInputs}/>
+      </Row>
+      <Row>
+        <Col md={8} className='input-header'>
+          Strike
+        </Col>
+        <Col md={4}/>
+        <Strike inputs={inputs} setInputs={setInputs}/>
       </Row>
       </Form>
       <Button onClick={(e) => {

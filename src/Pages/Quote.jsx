@@ -20,7 +20,7 @@ function Quote({setCurrentPage, data}) {
   const [quoterows, setQuoteRows] = useState([])
   const [slide, setSlide] = useState(0)
   const [show, setShow] = useState(false)
-  const [inputs, setInputs] = useState({frame: '', numDoors: '', strikeHeight: ''})
+  const [inputs, setInputs] = useState({frame: '', numDoors: 'single', strikeHeight: ''})
 
   console.log('QUOTE ROWS', quoterows)
 

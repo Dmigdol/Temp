@@ -8,13 +8,13 @@ function QuoteTop({ data }) {
   return (
     <div className='Quote-top'>
       <div className='Company-info'>
-        <span className='Company-Name'>{data.company.company_name}</span>
-        <span className='Company-Address-1'>{data.company.shipping_address}</span>
-        <span className='Company-email'>{data.company.email}</span>
-        <span className='Company-email'>{data.company.phone}</span>
+        <span className='Company-Name'>{data.customer.company_name}</span>
+        <span className='Company-Address-1'>{data.customer.shipping_address}</span>
+        <span className='Company-email'>{data.customer.email}</span>
+        <span className='Company-email'>{data.customer.phone}</span>
       </div>
       <div className='Quote-header'>
-        <span className='Quote-Header-Text'>{data.company.company_name}</span>
+        <span className='Quote-Header-Text'>{data.customer.company_name}</span>
       </div>
       <div className='Pricing'>
         <span className='Sub-Total'>Sub-Total</span>

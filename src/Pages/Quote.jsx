@@ -20,7 +20,7 @@ function Quote({setCurrentPage, data}) {
   const [quoterows, setQuoteRows] = useState([])
   const [slide, setSlide] = useState(0)
   const [show, setShow] = useState(false)
-  const [inputs, setInputs] = useState({frame: 'standard', numDoors: '', strikeHeight: ''})
+  const [inputs, setInputs] = useState({frame: '', numDoors: '', strikeHeight: ''})
 
   console.log('QUOTE ROWS', quoterows)
 
@@ -68,11 +68,11 @@ function Quote({setCurrentPage, data}) {
 
   return (
     <>
-      <QuoteInput className='input-container' etShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} quoterows={quoterows} setQuoteRows={setQuoteRows} show={show} inputs={inputs} setInputs={setInputs}/>
+      <QuoteInput className='input-container' data={data} setShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} quoterows={quoterows} setQuoteRows={setQuoteRows} show={show} inputs={inputs} setInputs={setInputs}/>
       <Container  className={slide ? 'full-container init' : 'full-container'}>
         {/* <NewRowModal setShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} quoterows={quoterows} setQuoteRows={setQuoteRows} show={show} inputs={inputs} setInputs={setInputs}/> */}
         <Row className='header-row'>
-          <Col md={8}>
+          <Col>
           <QuoteTop data={data}/>
           </Col>
         </Row>

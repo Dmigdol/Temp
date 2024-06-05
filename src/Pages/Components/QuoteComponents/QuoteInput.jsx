@@ -13,6 +13,7 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
 
   const [checkBox, setCheckBox] = useState('single')
 
+
   const handleClose = () => {
     // setShow(false)
     setSlide(false)
@@ -106,7 +107,7 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Col md={12}>
           Hinge
         </Col>
-        {/* <Hinge data={data} setInputs={setInputs}/> */}
+        <Hinge inputs={inputs} setInputs={setInputs}/>
       </Row>
       </Form>
       <Button onClick={(e) => {

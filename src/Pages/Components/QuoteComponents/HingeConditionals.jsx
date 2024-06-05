@@ -6,13 +6,13 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 
-function Conditionals({data, setInputs}) {
+function Conditionals({inputs, setInputs}) {
 
-  console.log('conditionals payload', data)
+  console.log('conditionals payload', inputs)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setInputs({...data, [name]: value})
+    setInputs({...inputs, [name]: value})
   }
 
   const formRender = (opt1, opt2, opt3) => {
@@ -21,12 +21,21 @@ function Conditionals({data, setInputs}) {
         <Row className='modal-row' inline>
           <Form.Group as={Col} md={9}>
             <Form.Label className='input-label'>Hinge Type</Form.Label>
+            {opt1.length !== 0 ?
             <Form.Select name='hinge' default={opt1[0]} onChange={handleInputChange}>
               <option hidden value/>
               <option value={opt1[0]}>{`${opt1[1]}`}</option>
               <option value={opt2[0]}>{`${opt2[1]}`}</option>
               {opt3 ? <option value={opt3[0]}>{`${opt3[1]}`}</option> : ''}
             </Form.Select>
+            :
+            <Form.Select disabled name='hinge' default={opt1[0]} onChange={handleInputChange}>
+              <option hidden value/>
+              <option value={opt1[0]}>{`${opt1[1]}`}</option>
+              <option value={opt2[0]}>{`${opt2[1]}`}</option>
+              {opt3 ? <option value={opt3[0]}>{`${opt3[1]}`}</option> : ''}
+            </Form.Select>
+            }
           </Form.Group>
         </Row>
       </Container>
@@ -34,7 +43,7 @@ function Conditionals({data, setInputs}) {
   }
 
   const logicCheck = (frame, height) => {
-    if (frame === 'standard') {
+    if (frame === 'standard' && height >= 72) {
       switch (true) {
         case height <= 72 :
           return formRender(['CR3D51-2', 'CalRoyal CR3D51 (2)'], ['340 3D-2', 'Tectus 340 3D (2)']);
@@ -48,8 +57,12 @@ function Conditionals({data, setInputs}) {
         case height > 96 && height <= 120 :
           return formRender(['CR3D62-4', 'CalRoyal CR3D62 (4)'], ['540 3D-4', 'Tectus 540 3D (4)'], ['butt-4', '4x4 butt hinge (4)']);
           break;
+          default:
+          return formRender([], [], []);
+          break;
       }
     }
+
     if (frame === 'in-swing') {
       console.log('firing')
       switch (true) {
@@ -67,23 +80,31 @@ function Conditionals({data, setInputs}) {
           break;
       }
     }
-      if(frame === 'pivot'){
+    if(frame === 'pivot'){
         return formRender(['Frits system-one', 'FritsJurgen System One'], ['Dorma CP440', 'Dorma CP440'])
+    }
+    if(frame === '' || height < 72) {
+      return formRender([], [], [])
     }
   }
 
-  console.log('pre switch', data)
-  switch(data.frame) {
-    case 'standard':
-      return logicCheck(data.frame, data.height);
-      break;
-    case 'in-swing':
-      return logicCheck(data.frame, data.height);
-      break;
-    case 'pivot' :
-      return logicCheck(data.frame, data.height);
-      break;
-  }
+  console.log('pre switch', inputs)
+
+    switch(inputs.frame) {
+      case 'standard':
+        return logicCheck(inputs.frame, inputs.height);
+        break;
+      case 'in-swing':
+        return logicCheck(inputs.frame, inputs.height);
+        break;
+      case 'pivot' :
+        return logicCheck(inputs.frame, inputs.height);
+        break;
+      default:
+        return logicCheck(inputs.frame, inputs.height);
+        break;
+    }
+
 }
 
 

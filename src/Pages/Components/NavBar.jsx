@@ -16,15 +16,17 @@ function NavBar({user, setCurrentPage, setLogged}) {
 
   return (
 
-    <Navbar  expand='lg' fixed='top'>
-      <Container className='nav-body' fluid>
+    <Navbar  expand='lg' fixed='top' className='nav-whole'>
+      <Container className='nav-body'>
         <Navbar.Brand className='img-container'>
           <img className="Logoimg" src='VFlogo.png'/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav-left">
-            <Nav.Link>Home</Nav.Link>
+            <Nav.Link
+            onClick={() => setCurrentPage(['Landing'])}
+            >Home</Nav.Link>
             <Nav.Link className='link'>Link</Nav.Link>
           </Nav>
           <Nav className='user-nav'>

@@ -29,10 +29,20 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   const tempEmployee = {
     name: 'Paul Allor',
     id: 1000,
-    postion: 'admin'
+    postion: 'admin',
+    company: {
+      billing_address: '21542 Roadway ave. Long Beach, CA',
+      company_name: 'Legit Shoes',
+      email: 'BuymyShoes@yahoo.com',
+      id: 'cc112fd3-3d27-4bfe-b3f1-fec5d3c93d79',
+      phone: '555-654-6544',
+      shipping_address: '21542 Roadway ave. Long Beach, CA'
+    }
   }
 
-
+  const handleNewQuote = (e) => {
+    setCurrentPage(['QuoteBuilder', tempEmployee])
+  }
 
 
   const fetchData = () => {
@@ -102,10 +112,14 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
     }
   }
 
+  /*
+    USE CUSTOMER INPUT ON ADMIN PAGE SO PAUL CAN CREATE NEW USERS FROM THERE
+  */
+
   return (
     <div className="App">
       {/* {isLoading ? <div>Loading</div> : */}
-      <CustomerInput newQuote={newQuote} setNewQuote={setNewQuote} setCurrentPage={setCurrentPage}/>
+      {/* <CustomerInput newQuote={newQuote} setNewQuote={setNewQuote} setCurrentPage={setCurrentPage}/> */}
       <div className="landing">
         <div className="landing Center">
           <div className="landing-headbar">
@@ -123,7 +137,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
           </div>
 
             <div className='NewRow  button'
-              onClick={() => setNewQuote(true)}
+              onClick={() => handleNewQuote()}
               >+</div>
           </div>
           <div className='row-container'>

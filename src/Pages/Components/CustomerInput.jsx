@@ -20,14 +20,7 @@ function CustomerInput({newQuote, setNewQuote, setCurrentPage}) {
     setInputs({...inputs, [name]: value})
   }
 
-  const handleNewQuote = (e) => {
-    inputs.shipping_address = `${inputs.shipping_address},
-    ${inputs.city}, ${inputs.state} ${inputs.zip}`
-    const data = {customer : inputs}
-    setPayload(data)
-    setCurrentPage(['QuoteBuilder', data])
-    handleClose()
-  }
+
 
   const pushCompany = () => {
     axios.put('http://localhost:3000/api/newQuote', inputs)
@@ -42,6 +35,10 @@ function CustomerInput({newQuote, setNewQuote, setCurrentPage}) {
   const handleRadioChange = (e) => {
     setInputs({...inputs, 'difCheck': e.target.id})
   }
+
+    /*
+    USE CUSTOMER INPUT ON ADMIN PAGE SO PAUL CAN CREATE NEW USERS FROM THERE
+  */
 
   return (
 
@@ -98,7 +95,6 @@ function CustomerInput({newQuote, setNewQuote, setCurrentPage}) {
                 <Button
                 className='submit-btn'
                 onClick={(e) => {
-                  handleNewQuote(e)
                 }}
                 >Create</Button>
             </Row>

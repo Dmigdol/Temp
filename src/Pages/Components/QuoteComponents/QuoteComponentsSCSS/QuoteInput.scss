@@ -1,0 +1,26 @@
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
+
+// Container
+
+.input-container {
+  border: 1px solid $vectorBlue;
+  height: 85%;
+  overflow: scroll;
+}
+
+// Row
+
+// Col
+
+// Text
+
+.input-header {
+  font-size: 27px;
+  font-weight: 400;
+  margin-bottom: 6%;
+  color: #224E90;
+  border-bottom: 2px solid $vectorBlue;
+}
+
+// Button

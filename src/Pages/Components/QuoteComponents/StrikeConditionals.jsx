@@ -7,7 +7,13 @@ import Form from 'react-bootstrap/Form'
 
 function StrikeRender({inputs, setInputs}) {
 
+  const [strikeStake, setStrikeState] = useState(true)
+
   const handleInputChange = (e) => {
+    if(e.target === 'NS') {
+      console.log(e.target)
+      setInputs({...inputs, 'strikeHeight': undefined})
+    }
     const { name, value } = e.target
     setInputs({...inputs, [name]: value})
   }
@@ -18,7 +24,7 @@ function StrikeRender({inputs, setInputs}) {
         <Row>
           <Form.Group as={Col} md={5}>
             <Form.Label className='input-label'>Strike Type</Form.Label>
-            {inputs.numDoors !== 'on' ?
+            {inputs.numDoors === 'single' ?
             <Form.Select name='strike' onChange={handleInputChange}>
               <option hidden value/>
               <option value='ASA'>ASA Strike</option>

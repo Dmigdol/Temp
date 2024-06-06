@@ -12,12 +12,13 @@ import Strike from './StrikeConditionals.jsx'
 function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs}) {
 
 
-  const [checkBox, setCheckBox] = useState('single')
+  const [checkBox, setCheckBox] = useState(false)
 
 
   const handleClose = () => {
     // setShow(false)
     setSlide(false)
+    setShow(false)
     returnToDefault()
   }
 
@@ -26,9 +27,14 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
     setInputs({...inputs, [name]: value})
   }
 
+  const handleCheckBox = () => {
+    setCheckBox(!checkBox)
+    {checkBox ? setInputs({...inputs, 'numDoors': 'single'}) : setInputs({...inputs, 'numDoors': 'double'})}
+  }
+
   const returnToDefault = () => {
     setCheckBox('');
-    setInputs({});
+    setInputs({frame: '', numDoors: 'single', strikeHeight: ''});
   }
 
   const checkInputs = () => {
@@ -100,7 +106,7 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Form.Label className='double-box-text'>Double Door</Form.Label>
           <Form.Check
             inline
-            onChange={handleInputChange}
+            onChange={handleCheckBox}
             name='numDoors'
             id='double'
           />

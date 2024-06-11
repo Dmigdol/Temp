@@ -3,7 +3,6 @@ import QuoteList from './Components/QuoteComponents/QuoteList.jsx'
 import QuoteInput from './Components/QuoteComponents/QuoteInput.jsx'
 import { useEffect, useState } from "react";
 import RenderRow from './Components/RenderRow'
-import NewRowModal from './Components/NewRowModal.jsx'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import QuoteTop from './QuoteTop.jsx'
@@ -76,7 +75,6 @@ function Quote({setCurrentPage, data}) {
       <QuoteInput className='input-container' data={data} setShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} quoterows={quoterows} setQuoteRows={setQuoteRows} show={show} inputs={inputs} setInputs={setInputs}/>
       : ''}
       <Container  className={slide ? 'full-container init' : 'full-container'}>
-        {/* <NewRowModal setShow={setShow} setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} quoterows={quoterows} setQuoteRows={setQuoteRows} show={show} inputs={inputs} setInputs={setInputs}/> */}
         <Row className='header-row'>
           <Col>
           <QuoteTop data={data}/>

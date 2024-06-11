@@ -1,6 +1,7 @@
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './QuoteComponentsSCSS/QuoteList.scss'
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar';
@@ -13,7 +14,7 @@ function QuoteList({rows, slide, setShow, setSlide, setInputs}) {
       <Table>
         <thead>
           <tr>
-            <th>#</th>
+            <th className='th'>#</th>
             <th>Tag</th>
             <th>Room</th>
             <th>{'Size (W x H)'}</th>
@@ -32,7 +33,7 @@ function QuoteList({rows, slide, setShow, setSlide, setInputs}) {
           {rows.map((entry) => {
             console.log('renderdata', entry)
             return (
-              <tr>
+              <tr className='quote-row-entry'>
                 <td>{entry.num}</td>
                 <td>{entry.tag}</td>
                 <td>{entry.room}</td>

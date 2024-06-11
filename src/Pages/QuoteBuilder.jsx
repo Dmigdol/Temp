@@ -75,7 +75,8 @@ function QuoteBuilder({setCurrentPage, data}) {
         <div className='quote-header'>
           <QuoteTop className='QT' data={data}/>
         </div>
-        <div className='quote-info'>
+        <Quote />
+        {/* <div className='quote-info'>
           <div className='quote-info-header'>
             <span className='Line-num quote-top'>#</span>
             <span className='Item-ID quote-top'>Item ID</span>
@@ -97,7 +98,7 @@ function QuoteBuilder({setCurrentPage, data}) {
           setSlide(!slide)
           setShow(true)
         }}
-        >New Row</div>
+        >New Row</div> */}
       </div>
     </div>
   )

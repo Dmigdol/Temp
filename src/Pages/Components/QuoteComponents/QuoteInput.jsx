@@ -8,6 +8,7 @@ import Collapse from 'react-bootstrap/Collapse'
 import './QuoteComponentsSCSS/QuoteInput.scss'
 import Hinge from './HingeConditionals.jsx'
 import Strike from './StrikeConditionals.jsx'
+import Misc from './MiscConditionals.jsx'
 
 function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs}) {
 
@@ -126,6 +127,13 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Col md={4}/>
         <Strike inputs={inputs} setInputs={setInputs}/>
       </Row>
+        <Row>
+          <Col md={8} className='input-header'>
+            Misc
+          </Col>
+          <Col md={4}/>
+        <Misc inputs={inputs} setInputs={setInputs}/>
+        </Row>
       </Form>
       <Button onClick={(e) => {
         if (checkInputs) {

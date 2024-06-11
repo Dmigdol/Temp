@@ -20,7 +20,7 @@ function QuoteList({rows, slide, setShow, setSlide, setInputs}) {
             <th>Frame</th>
             <th>Hinge</th>
             <th>Strike</th>
-            <th>Strike Height</th>
+            <th>DeadBolt</th>
             <th>Closer</th>
             <th>Fire Rating</th>
             <th>Qty</th>
@@ -39,10 +39,10 @@ function QuoteList({rows, slide, setShow, setSlide, setInputs}) {
                 <td>{`${entry.width}" x ${entry.height}"`}</td>
                 <td>{entry.frame}</td>
                 <td>{entry.hinge}</td>
-                <td>{entry.strike}</td>
-                <td>{entry.strikeHeight}</td>
-                {entry.closer === 'on' ? <td>True</td> : <td>False</td>}
-                {entry.fireRating === 'on' ? <td>True</td> : <td>False</td>}
+                <td>{`${entry.strike} ${entry.strikeHeight}"`}</td>
+                {entry.deadBolt === 'on' ? <td>Yes</td> : <td>No</td>}
+                {entry.closer === 'on' ? <td>Yes</td> : <td>No</td>}
+                {entry.fireRating === 'on' ? <td>Yes</td> : <td>No</td>}
                 <td>{entry.qty}</td>
                 <td>PH</td>
                 <td>PH</td>

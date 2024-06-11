@@ -26,7 +26,7 @@ function Quote({setCurrentPage, data}) {
 
 
   class QuoteRow {
-    constructor(num, tag, room, height, width, frame, strike, strikeHeight, hinge, desc, qty) {
+    constructor(num, tag, room, height, width, frame, strike, strikeHeight, deadBolt, closer, fireRating, hinge, desc, qty) {
       this.num = quoterows.length + 1;
       this.tag = tag;
       this.room = room;
@@ -35,6 +35,9 @@ function Quote({setCurrentPage, data}) {
       this.frame = frame;
       this.strike = strike;
       this.strikeHeight = strikeHeight
+      this.deadBolt = deadBolt
+      this.closer = closer;
+      this.fireRating = fireRating;
       this.hinge = hinge;
       this.desc = desc;
       this.qty = qty;
@@ -56,7 +59,7 @@ function Quote({setCurrentPage, data}) {
   }
 
   const addRow = (obj) => {
-    const num = new QuoteRow(obj.num, obj.tag, obj.room, obj.height, obj.width, obj.frame, obj.strike, obj.strikeHeight, obj.hinge, obj.desc, obj.qty);
+    const num = new QuoteRow(obj.num, obj.tag, obj.room, obj.height, obj.width, obj.frame, obj.strike, obj.strikeHeight, obj.deadBolt, obj.closer, obj.fireRating, obj.hinge, obj.desc, obj.qty);
     quoterows.length > 0 ? setQuoteRows([...quoterows, num]) : setQuoteRows([num]);
   }
 

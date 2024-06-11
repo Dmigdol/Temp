@@ -12,7 +12,7 @@ function StrikeRender({inputs, setInputs}) {
   const handleInputChange = (e) => {
     if(e.target === 'NS') {
       console.log(e.target)
-      setInputs({...inputs, 'strikeHeight': undefined})
+      setInputs({...inputs, 'strikeHeight': ''})
     }
     const { name, value } = e.target
     setInputs({...inputs, [name]: value})

@@ -7,14 +7,23 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function QuoteList({rows, slide, setShow, setSlide, setInputs}) {
+function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputContext, setInputContext}) {
+
+  const handleDupelicate = (entry) => {
+    setInputContext('duplicate')
+    setInputs({...entry, 'tag': '', 'room': ''})
+    setSlide(!slide)
+    setShow(true)
+  }
+
+  console.log('test', inputs)
 
   return (
     <Container>
       <Table>
         <thead>
           <tr>
-            <th className='th'>#</th>
+            <th>#</th>
             <th>Tag</th>
             <th>Room</th>
             <th>{'Size (W x H)'}</th>
@@ -24,7 +33,6 @@ function QuoteList({rows, slide, setShow, setSlide, setInputs}) {
             <th>DeadBolt</th>
             <th>Closer</th>
             <th>Fire Rating</th>
-            <th>Qty</th>
             <th>Unit Price</th>
             <th>Ext Price</th>
           </tr>
@@ -33,7 +41,11 @@ function QuoteList({rows, slide, setShow, setSlide, setInputs}) {
           {rows.map((entry) => {
             console.log('renderdata', entry)
             return (
-              <tr className='quote-row-entry'>
+              <tr className='quote-row-entry'
+              onClick={(e) => {
+                handleDupelicate(entry)
+              }}
+              >
                 <td>{entry.num}</td>
                 <td>{entry.tag}</td>
                 <td>{entry.room}</td>
@@ -44,7 +56,6 @@ function QuoteList({rows, slide, setShow, setSlide, setInputs}) {
                 {entry.deadBolt === 'on' ? <td>Yes</td> : <td>No</td>}
                 {entry.closer === 'on' ? <td>Yes</td> : <td>No</td>}
                 {entry.fireRating === 'on' ? <td>Yes</td> : <td>No</td>}
-                <td>{entry.qty}</td>
                 <td>PH</td>
                 <td>PH</td>
               </tr>

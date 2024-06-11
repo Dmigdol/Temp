@@ -22,14 +22,18 @@ function Conditionals({inputs, setInputs}) {
           <Form.Group as={Col} md={6}>
             <Form.Label className='input-label'>Hinge Type</Form.Label>
             {opt1.length !== 0 ?
-            <Form.Select name='hinge' default={opt1[0]} onChange={handleInputChange}>
+            <Form.Select name='hinge' default={opt1[0]} onChange={handleInputChange}
+            defaultValue={inputs.hinge}
+            >
               <option hidden value/>
               <option value={opt1[0]}>{`${opt1[1]}`}</option>
               <option value={opt2[0]}>{`${opt2[1]}`}</option>
               {opt3 ? <option value={opt3[0]}>{`${opt3[1]}`}</option> : ''}
             </Form.Select>
             :
-            <Form.Select disabled name='hinge' default={opt1[0]} onChange={handleInputChange}>
+            <Form.Select disabled name='hinge' default={opt1[0]} onChange={handleInputChange}
+            defaultValue={inputs.hinge}
+            >
               <option hidden value/>
               <option value={opt1[0]}>{`${opt1[1]}`}</option>
               <option value={opt2[0]}>{`${opt2[1]}`}</option>

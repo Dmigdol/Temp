@@ -33,6 +33,7 @@ function MiscConditionals({inputs, setInputs}){
           <Form.Label className='input-label'>DeadBolt</Form.Label>
           <Form.Check
             className='box-text'
+            defaultChecked={inputs.deadBolt}
             inline
             onChange={handleInputChange}
             name='deadBolt'
@@ -44,6 +45,7 @@ function MiscConditionals({inputs, setInputs}){
             <Form.Label className='input-label'>Closer</Form.Label>
             <Form.Check
               className='box-text'
+              defaultChecked={inputs.closer}
               inline
               onChange={handleInputChange}
               name='closer'
@@ -68,6 +70,7 @@ function MiscConditionals({inputs, setInputs}){
           <Form.Label className='input-label'>Fire Rating</Form.Label>
             <Form.Check
               className='box-text'
+              defaultChecked={inputs.fireRating}
               inline
               onChange={handleInputChange}
               name='fireRating'

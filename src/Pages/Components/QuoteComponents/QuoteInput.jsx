@@ -10,7 +10,7 @@ import Hinge from './HingeConditionals.jsx'
 import Strike from './StrikeConditionals.jsx'
 import Misc from './MiscConditionals.jsx'
 
-function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs}) {
+function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs, inputContext, setInputContext}) {
 
 
   const [checkBox, setCheckBox] = useState(false)
@@ -35,6 +35,7 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
 
   const returnToDefault = () => {
     setCheckBox('');
+    setInputContext('')
     setInputs({frame: '', numDoors: 'single', strikeHeight: ''});
   }
 
@@ -107,6 +108,7 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Form.Label className='double-box-text'>Double Door</Form.Label>
           <Form.Check
             inline
+            defaultChecked={inputs.numDoors === 'double'}
             onChange={handleCheckBox}
             name='numDoors'
             id='double'

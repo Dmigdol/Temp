@@ -17,7 +17,6 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
 
 
   const handleClose = () => {
-    // setShow(false)
     setSlide(false)
     setShow(false)
     returnToDefault()
@@ -28,15 +27,16 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
     setInputs({...inputs, [name]: value})
   }
 
-  const handleCheckBox = () => {
-    setCheckBox(!checkBox)
-    {checkBox ? setInputs({...inputs, 'numDoors': 'single'}) : setInputs({...inputs, 'numDoors': 'double'})}
+  const handleCheckChange = (e) => {
+    const { name, checked } = e.target
+    setInputs({...inputs, [name]: checked})
   }
 
   const returnToDefault = () => {
     setCheckBox('');
     setInputContext('')
-    setInputs({frame: '', numDoors: 'single', strikeHeight: ''});
+    setInputs({frame: '', strikeHeight: ''});
+    setSlide(false)
   }
 
   const checkInputs = () => {
@@ -54,17 +54,20 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
     payload.num = rowObj.num;
     // payload.checkBox = checkBox;
     // payload.hinge = 'PH';
-    payload.handling = 'LH-r'
 
     console.log(payload)
-
-
     addRow(payload)
     returnToDefault();
-    setSlide(false)
   }
+
   return (
     <Container className='input-container'>
+      <div className="form-exit" onClick={() => {
+        returnToDefault();
+        setShow(!show)
+      }}>
+        &#x2715;
+      </div>
       <Form onSubmit={submitForm}>
       <Row>
         <Col md={8} className='input-header'>
@@ -108,8 +111,8 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Form.Label className='double-box-text'>Double Door</Form.Label>
           <Form.Check
             inline
-            defaultChecked={inputs.numDoors === 'double'}
-            onChange={handleCheckBox}
+            defaultChecked={inputs.numDoors}
+            onChange={handleCheckChange}
             name='numDoors'
             id='double'
           />
@@ -137,15 +140,32 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Misc inputs={inputs} setInputs={setInputs}/>
         </Row>
       </Form>
-      <Button onClick={(e) => {
-        if (checkInputs) {
-          setSlide(false)
-          submitForm(e)
-          handleClose()
-        }
-      }}>
-        Add Row
-      </Button>
+      {
+        inputContext !== 'edit' ?
+          <Button
+            className='submit-button'
+            onClick={(e) => {
+              if (checkInputs) {
+                setSlide(false)
+                submitForm(e)
+                handleClose()
+              }
+          }}>
+            Add Row
+          </Button>
+          :
+          <Button
+            className='submit-button'
+            onClick={(e) => {
+              if (checkInputs) {
+                setSlide(false)
+                submitForm(e)
+                handleClose()
+              }
+          }}>
+            Update
+          </Button>
+      }
     </Container>
   )
 }

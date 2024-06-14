@@ -14,12 +14,19 @@ function MiscConditionals({inputs, setInputs}){
     setInputs({...inputs, [name]: value})
   }
 
+  const handleCheckChange = (e) => {
+    const { name, checked } = e.target
+    setInputs({...inputs, [name]: checked})
+  }
+
   return(
     <Container fluid>
       <Row>
         <Form.Group as={Col} md={6}>
           <Form.Label className='input-label'>Handing</Form.Label>
-          <Form.Select name='hanlding' onChange={handleInputChange}>
+          <Form.Select name='handing' onChange={handleInputChange}
+            defaultValue={inputs.handing}
+          >
             <option hidden value/>
             <option value='LH'>Left Hand</option>
             <option value='RH'>Right Hand</option>
@@ -35,7 +42,7 @@ function MiscConditionals({inputs, setInputs}){
             className='box-text'
             defaultChecked={inputs.deadBolt}
             inline
-            onChange={handleInputChange}
+            onChange={handleCheckChange}
             name='deadBolt'
             id='deadBolt'
           />
@@ -47,7 +54,7 @@ function MiscConditionals({inputs, setInputs}){
               className='box-text'
               defaultChecked={inputs.closer}
               inline
-              onChange={handleInputChange}
+              onChange={handleCheckChange}
               name='closer'
               id='closer'
             />
@@ -59,7 +66,7 @@ function MiscConditionals({inputs, setInputs}){
             disabled
               className='box-text'
               inline
-              onChange={handleInputChange}
+              onChange={handleCheckChange}
               name='closer'
               id='closer'
             />
@@ -72,7 +79,7 @@ function MiscConditionals({inputs, setInputs}){
               className='box-text'
               defaultChecked={inputs.fireRating}
               inline
-              onChange={handleInputChange}
+              onChange={handleCheckChange}
               name='fireRating'
               id='fireRating'
             />
@@ -84,7 +91,7 @@ function MiscConditionals({inputs, setInputs}){
               disabled
               className='box-text'
               inline
-              onChange={handleInputChange}
+              onChange={handleCheckChange}
               name='fireRating'
               id='fireRating'
             />

@@ -24,7 +24,7 @@ function StrikeRender({inputs, setInputs}) {
         <Row>
           <Form.Group as={Col} md={5}>
             <Form.Label className='input-label'>Strike Type</Form.Label>
-            {inputs.numDoors === 'single' ?
+            {!inputs.numDoors ?
             <Form.Select name='strike' onChange={handleInputChange}
             defaultValue={inputs.strike}
             >

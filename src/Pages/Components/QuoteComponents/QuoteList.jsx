@@ -1,4 +1,5 @@
 import Table from 'react-bootstrap/Table';
+import { useRef, useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './QuoteComponentsSCSS/QuoteList.scss'
@@ -6,17 +7,51 @@ import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import Row from 'react-bootstrap/Row'
+
 
 function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputContext, setInputContext}) {
 
+
+  const [currEntry, setCurrEntry] = useState()
+
   const handleDupelicate = (entry) => {
     setInputContext('duplicate')
-    setInputs({...entry, 'tag': '', 'room': ''})
+    setInputs({...currEntry, 'tag': '', 'room': ''})
+    document.body.click()
+    console.log('current entries', inputs)
     setSlide(!slide)
     setShow(true)
   }
 
-  console.log('test', inputs)
+  const editEntry = (entry) => {
+    setInputContext('edit')
+    setInputs(currEntry)
+    document.body.click()
+    setSlide(!slide)
+    setShow(true)
+  }
+
+  const rowClick = (entry) => {
+    setCurrEntry(entry)
+  }
+
+
+  const clickMenu = (
+    <Popover>
+      <Popover.Body>
+        <Row>
+          <Button className='popover-button' onClick={editEntry}>Edit Row</Button>
+        </Row>
+        <Row>
+          <Button className='popover-button' onClick={handleDupelicate}>Copy</Button>
+        </Row>
+      </Popover.Body>
+    </Popover>
+  )
+
 
   return (
     <Container>
@@ -30,6 +65,7 @@ function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputCont
             <th>Frame</th>
             <th>Hinge</th>
             <th>Strike</th>
+            <th>Handing</th>
             <th>DeadBolt</th>
             <th>Closer</th>
             <th>Fire Rating</th>
@@ -41,24 +77,27 @@ function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputCont
           {rows.map((entry) => {
             console.log('renderdata', entry)
             return (
-              <tr className='quote-row-entry'
-              onClick={(e) => {
-                handleDupelicate(entry)
-              }}
-              >
-                <td>{entry.num}</td>
-                <td>{entry.tag}</td>
-                <td>{entry.room}</td>
-                <td>{`${entry.width}" x ${entry.height}"`}</td>
-                <td>{entry.frame}</td>
-                <td>{entry.hinge}</td>
-                <td>{`${entry.strike} ${entry.strikeHeight}"`}</td>
-                {entry.deadBolt === 'on' ? <td>Yes</td> : <td>No</td>}
-                {entry.closer === 'on' ? <td>Yes</td> : <td>No</td>}
-                {entry.fireRating === 'on' ? <td>Yes</td> : <td>No</td>}
-                <td>PH</td>
-                <td>PH</td>
-              </tr>
+              <OverlayTrigger rootClose trigger="click" placement='right' overlay={clickMenu}>
+                <tr className='quote-row-entry'
+                onClick={(e) => {
+                  rowClick(entry)
+                }}
+                >
+                  <td>{entry.num}</td>
+                  <td>{entry.tag}</td>
+                  <td>{entry.room}</td>
+                  <td>{`${entry.width}" x ${entry.height}"`}</td>
+                  <td>{entry.frame}</td>
+                  <td>{entry.hinge}</td>
+                  <td>{`${entry.strike} ${entry.strikeHeight}"`}</td>
+                  <td>{entry.handing}</td>
+                  {entry.deadBolt ? <td>Yes</td> : <td>No</td>}
+                  {entry.closer ? <td>Yes</td> : <td>No</td>}
+                  {entry.fireRating ? <td>Yes</td> : <td>No</td>}
+                  <td>PH</td>
+                  <td>PH</td>
+                </tr>
+              </OverlayTrigger>
             )
           })}
         </tbody>

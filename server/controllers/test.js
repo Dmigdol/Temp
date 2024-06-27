@@ -19,6 +19,15 @@ module.exports = {
     models.getAll(id)
       .then(results => res.send(results));
   },
+  updateQuote(req, res) {
+    console.log('Update::', req.query)
+    const payload = req.query;
+    models.updateQuote(payload)
+      .then((results) => {
+        console.log(results)
+        res.send(results);
+      })
+  },
   createQuote(req, res) {
     console.log(req.query)
     const payload = req.query;

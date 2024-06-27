@@ -22,6 +22,19 @@ module.exports = {
       temp.quotes = await module.exports.getQuotes(id)
       return temp
   },
+  async updateQuote(payload) {
+    console.log(payload)
+    const {data, error} = await db
+      .from('quotes')
+      .update(
+        {
+          items : payload.items,
+          status : payload.status
+        }
+      )
+      .eq('id', payload.id)
+      return(data);
+  },
   async createQuote(payload) {
     const {data, error} = await db
       .from('quotes')

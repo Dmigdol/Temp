@@ -1,0 +1,17 @@
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
+
+.footer-whole {
+  background-color: white;
+  border-top: 2px $vectorBlue solid
+}
+
+.new-button {
+  margin-left: auto;
+  font-size: 18px;
+  width: 10%;
+}
+
+.draft-button {
+  margin-left: 3%;
+}

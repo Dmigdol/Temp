@@ -6,6 +6,7 @@ import RenderRow from './Components/RenderRow'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import QuoteTop from './QuoteTop.jsx'
+import QuoteFooter from './Components/QuoteComponents/QuoteFooter.jsx'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -92,6 +93,7 @@ function Quote({setCurrentPage, data}) {
         inputs={inputs} setInputs={setInputs} setSlide={setSlide} inputContext={inputContext}
         setInputContext={setInputContext} setCurrEntry={setCurrEntry} currEntry={currEntry}/>
       </Container >
+      <QuoteFooter slide={slide} setSlide={setSlide} setShow={setShow}/>
     </>
   )
 

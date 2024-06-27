@@ -56,7 +56,7 @@ function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputCont
 
   return (
     <Container>
-      <Table>
+      <Table className='quote-table'>
         <thead>
           <tr>
             <th>#</th>
@@ -102,14 +102,6 @@ function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputCont
           })}
         </tbody>
       </Table>
-      <Button
-        className='new-button'
-        aria-expanded={slide}
-        onClick={()=> {
-          setSlide(!slide)
-          setShow(true)
-        }}
-      >New Row</Button>
     </Container>
   )
 }

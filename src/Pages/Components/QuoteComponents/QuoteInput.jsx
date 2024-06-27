@@ -10,7 +10,8 @@ import Hinge from './HingeConditionals.jsx'
 import Strike from './StrikeConditionals.jsx'
 import Misc from './MiscConditionals.jsx'
 
-function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs, inputContext, setInputContext}) {
+function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs,
+   quoterows, setInputs, inputContext, setInputContext, setCurrEntry, currEntry}) {
 
 
   const [checkBox, setCheckBox] = useState(false)
@@ -20,6 +21,18 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
     setSlide(false)
     setShow(false)
     returnToDefault()
+  }
+
+  const handleUpdate = (e) => {
+
+    let obj = quoterows.find((o, i) => {
+      if (o.num === currEntry.num) {
+          quoterows[i] = {...inputs};
+          return true; // stop searching
+      }
+  });
+    console.log('log', obj)
+
   }
 
   const handleInputChange = (e) => {
@@ -159,7 +172,7 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
             onClick={(e) => {
               if (checkInputs) {
                 setSlide(false)
-                submitForm(e)
+                handleUpdate(e)
                 handleClose()
               }
           }}>

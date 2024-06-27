@@ -12,10 +12,9 @@ import Popover from 'react-bootstrap/Popover'
 import Row from 'react-bootstrap/Row'
 
 
-function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputContext, setInputContext}) {
+function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputContext, setInputContext, setCurrEntry, currEntry}) {
 
 
-  const [currEntry, setCurrEntry] = useState()
 
   const handleDupelicate = (entry) => {
     setInputContext('duplicate')
@@ -27,6 +26,8 @@ function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputCont
   }
 
   const editEntry = (entry) => {
+    console.log('entry', currEntry)
+    console.log('entry input', inputs)
     setInputContext('edit')
     setInputs(currEntry)
     document.body.click()
@@ -75,7 +76,6 @@ function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputCont
         </thead>
         <tbody>
           {rows.map((entry) => {
-            console.log('renderdata', entry)
             return (
               <OverlayTrigger rootClose trigger="click" placement='right' overlay={clickMenu}>
                 <tr className='quote-row-entry'

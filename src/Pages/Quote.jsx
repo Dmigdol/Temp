@@ -21,6 +21,8 @@ function Quote({setCurrentPage, data}) {
   const [show, setShow] = useState(false)
   const [inputs, setInputs] = useState({frame: '', numDoors: 'single', strikeHeight: ''})
   const [inputContext, setInputContext] = useState('')
+  const [currEntry, setCurrEntry] = useState()
+
 
   console.log('QUOTE ROWS', quoterows)
 
@@ -78,7 +80,7 @@ function Quote({setCurrentPage, data}) {
           <QuoteInput className='input-container' data={data} setShow={setShow}
           setSlide={setSlide} slide={slide} rowObj={newRow()} addRow={addRow} quoterows={quoterows} setQuoteRows={setQuoteRows}
           show={show} inputs={inputs} setInputs={setInputs} inputContext={inputContext}
-          setInputContext={setInputContext}/>
+          setInputContext={setInputContext} setCurrEntry={setCurrEntry} currEntry={currEntry}/>
       : ''}
       <Container  className={slide ? 'full-container init' : 'full-container'}>
         <Row className='header-row'>
@@ -88,7 +90,7 @@ function Quote({setCurrentPage, data}) {
         </Row>
         <QuoteList rows={quoterows} addRow={addRow} slide={slide} setShow={setShow}
         inputs={inputs} setInputs={setInputs} setSlide={setSlide} inputContext={inputContext}
-        setInputContext={setInputContext}/>
+        setInputContext={setInputContext} setCurrEntry={setCurrEntry} currEntry={currEntry}/>
       </Container >
     </>
   )

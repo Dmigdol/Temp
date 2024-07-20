@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import '../Sass/Landing.scss'
 import axios from 'axios';
+import authFetch from '../axios/custom'
 import Row from './LandingRow'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,13 +49,18 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   const fetchData = () => {
     setIsLoading(true);
     if(tempEmployee.postion === 'admin') {
-      axios.get(`http://localhost:3000/api/test?id=${tempEmployee.id}`)
+      axios.get(`http://localhost:3000/home`, {
+        params: {
+          id: tempEmployee.id
+        }
+      })
       .then(response => {
-        setData(response.data[current])
+        console.log('response', response)
+        setData(response.data)
         setIsLoading(false)
       })
       .catch((err) => {
-        console.log('error retrieving recents ', err)
+        console.log('error retrieving history ', err)
       })
     }
   }

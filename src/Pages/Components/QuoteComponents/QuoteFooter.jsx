@@ -8,13 +8,17 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 
 
+
 function quoteFooter({slide, setShow, setSlide, data, quoterows}) {
   console.log('footer data', data)
 
+const url = 'http://localhost:3000/newQuote'
+
+
   const handleOrderUpdate = () => {
-    axios.post(`http://localhost:3000/api/updateQuote?items=${data.items}&id=${data.id}`, {
+    axios.post('http://localhost:3000/newQuote', {
       items: quoterows,
-      id: data.id
+      data: data
     })
     .then(res => {
       console.log('resolution for update', res)

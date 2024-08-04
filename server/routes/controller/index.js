@@ -13,5 +13,12 @@ module.exports = {
     .then((results) => {
       res.send(results)
     })
+  },
+  deleteQuote(req, res) {
+    console.log(req)
+    models.deleteQuote(req.query)
+    .then((results) => {
+      res.send(results)
+    })
   }
 }

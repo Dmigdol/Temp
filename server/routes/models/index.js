@@ -10,7 +10,6 @@ module.exports = {
       return(data);
   },
   async upsertQuote(payload) {
-    console.log('payload', payload)
     items = payload.items;
     data = payload.data;
     newDate = new Date().toLocaleDateString('en-CA');
@@ -25,5 +24,12 @@ module.exports = {
         customer_id: data.customer_id,
         items: items
       })
+  },
+  async deleteQuote(payload) {
+    console.log('payload', payload)
+    const response = await db
+    .from('quotes')
+    .delete()
+    .eq('id', payload.id)
   }
 }

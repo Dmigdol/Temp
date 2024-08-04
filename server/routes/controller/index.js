@@ -7,9 +7,9 @@ module.exports = {
         res.send(results)
       });
   },
-  upsertQuote(req, res) {
+  insertQuote(req, res) {
     console.log(req)
-    models.upsertQuote(req.body)
+    models.insertQuote(req.body)
     .then((results) => {
       res.send(results)
     })
@@ -17,6 +17,13 @@ module.exports = {
   deleteQuote(req, res) {
     console.log(req)
     models.deleteQuote(req.query)
+    .then((results) => {
+      res.send(results)
+    })
+  },
+  updateQuote(req, res) {
+    console.log(req)
+    models.updateQuote(req.body)
     .then((results) => {
       res.send(results)
     })

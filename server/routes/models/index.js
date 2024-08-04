@@ -9,7 +9,7 @@ module.exports = {
       .eq('employee_id', id)
       return(data);
   },
-  async upsertQuote(payload) {
+  async insertQuote(payload) {
     items = payload.items;
     data = payload.data;
     newDate = new Date().toLocaleDateString('en-CA');
@@ -26,10 +26,22 @@ module.exports = {
       })
   },
   async deleteQuote(payload) {
-    console.log('payload', payload)
     const response = await db
     .from('quotes')
     .delete()
     .eq('id', payload.id)
+  },
+  async updateQuote(payload) {
+    items = payload.items;
+    data = payload.data;
+    newDate = new Date().toLocaleDateString('en-CA');
+    console.log('payload', payload);
+    const {error} = await db
+      .from('quotes')
+      .update({
+        total_price: 0,
+        items: items
+      })
+      .eq('id', data.id)
   }
 }

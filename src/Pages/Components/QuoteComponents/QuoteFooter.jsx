@@ -12,11 +12,26 @@ import axios from 'axios';
 function quoteFooter({slide, setShow, setSlide, data, quoterows}) {
   console.log('footer data', data)
 
-const url = 'http://localhost:3000/newQuote'
+  let context = 0
+
+  const url = 'http://localhost:3000/newQuote'
 
 
-  const handleOrderUpdate = () => {
-    axios.post('http://localhost:3000/newQuote', {
+  const handleNewOrder = () => {
+    axios.patch('http://localhost:3000/newQuote', {
+      items: quoterows,
+      data: data
+    })
+    .then(res => {
+      console.log('resolution for upload', res)
+    })
+    .catch((err) => {
+      console.log('error update quote', err)
+    })
+  }
+
+  const handleUpdateOrder = () => {
+    axios.put('http://localhost:3000/update', {
       items: quoterows,
       data: data
     })
@@ -32,9 +47,15 @@ const url = 'http://localhost:3000/newQuote'
   return (
     <Navbar  expand='lg' fixed='bottom' className='footer-whole'>
       <Container className='foot-body'>
-        <Button
-          onClick={handleOrderUpdate}
-        >Submit Order</Button>
+        {context ?
+          <Button
+            onClick={handleNewOrder}
+          >Submit Order</Button>
+          :
+          <Button
+            onClick={handleUpdateOrder}
+          >Update Order</Button>
+        }
         <Button variant="outline-primary" className='draft-button'>Save Draft</Button>
         <Button className='new-button'
           aria-expanded={slide}

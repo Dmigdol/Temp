@@ -26,7 +26,7 @@ function quoteFooter({slide, setShow, setSlide, data, quoterows}) {
       console.log('resolution for upload', res)
     })
     .catch((err) => {
-      console.log('error update quote', err)
+      console.log('error upload quote', err)
     })
   }
 
@@ -43,6 +43,19 @@ function quoteFooter({slide, setShow, setSlide, data, quoterows}) {
     })
   }
 
+  const handleDraft = () => {
+    axios.post('http://localhost:3000/draft', {
+      items: quoterows,
+      data: data
+    })
+    .then(res => {
+      console.log('resolution for draft', res)
+    })
+    .catch((err) => {
+      console.log('error draft quote', err)
+    })
+  }
+
 
   return (
     <Navbar  expand='lg' fixed='bottom' className='footer-whole'>
@@ -56,7 +69,10 @@ function quoteFooter({slide, setShow, setSlide, data, quoterows}) {
             onClick={handleUpdateOrder}
           >Update Order</Button>
         }
-        <Button variant="outline-primary" className='draft-button'>Save Draft</Button>
+        <Button variant="outline-primary" className='draft-button'
+          onClick={handleDraft}
+        >
+          Save Draft</Button>
         <Button className='new-button'
           aria-expanded={slide}
           onClick={()=> {

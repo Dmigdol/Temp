@@ -24,10 +24,15 @@ $borderGray: #948f8fd3;
 
 // Variables
 
+.App {
+  margin-top: 10vh;
+}
 
 .landing {
   border: 0;
   margin-top: 2%;
+  width: 90%;
+  margin: auto;
   white-space: pre-wrap;
   justify-content: baseline;
   align-items: baseline;
@@ -42,7 +47,6 @@ $borderGray: #948f8fd3;
 
 .Landing-Logo {
   padding-left: 5%;
-  margin-top: 3vh;
   text-align: Left;
 }
 
@@ -54,11 +58,11 @@ $borderGray: #948f8fd3;
   border-width: 2px;
 }
 
-.Center {
-  min-width: 75vw;
+.center {
+  min-width: 85vw;
   display: block;
   justify-content: space-evenly;
-  border: 1px solid $borderGray;
+  border-top: 2px solid $vectorBlue;
   height: 100%;
 }
 
@@ -272,44 +276,14 @@ $borderGray: #948f8fd3;
   height: 100%;
 }
 
-.NewRow {
-  align-items: center;
-  appearance: none;
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: .375em;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #363636;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  height: 2.5em;
-  justify-content: center;
-  line-height: 1.5;
-  padding: calc(.5em - 1px) 1em;
-  position: relative;
-  text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
-  margin: auto;
-  margin-right: 1%;
-  margin-top: 1%;
-  margin-bottom: 1%;
+.new-quote-container {
+  margin-left: auto;
+  margin-top: auto;
+ justify-content: baseline;
 }
 
-.NewRow:active {
-  border-color: #4a4a4a;
-  outline: 0;
-}
-
-.NewRow:focus {
-  border-color: #485fc7;
-  outline: 0;
+.new-quote-btn {
+  text-align: right;
 }
 
 .Add-Tooltip {
@@ -341,8 +315,19 @@ $borderGray: #948f8fd3;
   }
 }
 
+// Landing List
 
 
+// Company Header
+
+.company-header {
+  margin-left: 0;
+}
+
+.company-name {
+  font-size: 40px;
+  text-align: left;
+}
 
 
 // Animations

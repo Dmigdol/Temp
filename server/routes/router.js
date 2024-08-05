@@ -6,6 +6,7 @@ router.get('/home', controllers.getHistory)
 router.post('/newQuote', controllers.insertQuote)
 router.delete('/del', controllers.deleteQuote)
 router.put('/update', controllers.updateQuote)
+router.post('/draft', controllers.newDraft)
 
 
 module.exports = router

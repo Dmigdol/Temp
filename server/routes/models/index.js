@@ -43,5 +43,21 @@ module.exports = {
         items: items
       })
       .eq('id', data.id)
-  }
+  },
+  async newDraft(payload) {
+    items = payload.items;
+    data = payload.data;
+    newDate = new Date().toLocaleDateString('en-CA');
+    const {error} = await db
+      .from('drafts')
+      .insert({
+        id: data.id,
+        created_at: newDate,
+        employee_id: data.employee_id,
+        status: 'Pending',
+        total_price: 0,
+        customer_id: data.customer_id,
+        items: items
+      })
+    }
 }

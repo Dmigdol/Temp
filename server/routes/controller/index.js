@@ -14,6 +14,13 @@ module.exports = {
       res.send(results)
     })
   },
+  newDraft(req, res) {
+    console.log(req)
+    models.newDraft(req.body)
+    .then((results) => {
+      res.send(results)
+    })
+  },
   deleteQuote(req, res) {
     console.log(req)
     models.deleteQuote(req.query)
@@ -27,5 +34,5 @@ module.exports = {
     .then((results) => {
       res.send(results)
     })
-  }
+  },
 }

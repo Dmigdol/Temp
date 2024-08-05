@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import '../Sass/Landing.scss'
 import axios from 'axios';
 import authFetch from '../axios/custom'
-import Row from './LandingRow'
+import LandingRow from './LandingRow'
 import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from 'react-bootstrap/Button'
 import CustomerInput from './Components/CustomerInput.jsx'
+import LandingFooter from './Components/LandingComponents/LandingFooter'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
@@ -33,7 +38,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
     postion: 'admin',
     company: {
       billing_address: '21542 Roadway ave. Long Beach, CA',
-      company_name: 'Legit Shoes',
+      company_name: 'Kurb Bowyerman Plumbing',
       email: 'BuymyShoes@yahoo.com',
       id: 'cc112fd3-3d27-4bfe-b3f1-fec5d3c93d79',
       phone: '555-654-6544',
@@ -124,38 +129,23 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
 
   return (
     <div className="App">
-      {/* {isLoading ? <div>Loading</div> : */}
-      {/* <CustomerInput newQuote={newQuote} setNewQuote={setNewQuote} setCurrentPage={setCurrentPage}/> */}
       <div className="landing">
-        <div className="landing Center">
-          <div className="landing-headbar">
-          <div className='search-btn-container'>
-              {/* <FontAwesomeIcon className='search-btn'
-              icon={byPrefixAndName.fass['magnifying-glass']}
-              style={{color: "#605c5c",}}
-              onClick={(() => {
-                firstCheck()
-              })}
-              /> */}
-          </div>
-          <div className='search-container'>
-              <div className={searchState}></div>
-          </div>
-
-            <div className='NewRow  button'
-              onClick={() => handleNewQuote()}
-              >+</div>
-          </div>
+        <Container>
+          <Row className='company-header'>
+            <Col className='company-name' md={6}>
+              {tempEmployee.company.company_name}
+            </Col>
+          </Row>
+        </Container>
+        <div className="landing center">
           <div className='row-container'>
             {(isLoading && data) ? <div className='loading'>Gathering Data, Please wait</div> :
-            <Row wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}
+            <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}
           </div>
           <div className='landing-footer'>
             <div className='pagenum'>
               Page {page}
             </div>
-
-
               <div className='pagechange'>
                   <div className='leftarrow'
                   onClick={(() => {
@@ -189,6 +179,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
           </div>
         </div>
       </div>
+      <LandingFooter/>
     </div>
   )
 }

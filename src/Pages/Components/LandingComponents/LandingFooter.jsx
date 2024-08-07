@@ -7,10 +7,13 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 
-function landingFooter() {
+function landingFooter({customer, setCurrentPage}) {
+
+  // Goal is to take current account info and create a new quote sheet for them
 
   const handleNewQuote = () => {
     console.log('clicked')
+    setCurrentPage(['QuoteBuilder', customer])
   }
 
   return (

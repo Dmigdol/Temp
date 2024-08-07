@@ -35,7 +35,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   const tempEmployee = {
     name: 'Paul Allor',
     id: 1000,
-    postion: 'admin',
+    position: 'admin',
     company: {
       billing_address: '21542 Roadway ave. Long Beach, CA',
       company_name: 'Kurb Bowyerman Plumbing',
@@ -53,7 +53,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
 
   const fetchData = () => {
     setIsLoading(true);
-    if(tempEmployee.postion === 'admin') {
+    if(tempEmployee.position === 'admin') {
       axios.get(`http://localhost:3000/home`, {
         params: {
           id: tempEmployee.id
@@ -130,10 +130,24 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   return (
     <div className="App">
       <div className="landing">
-        <Container>
-          <Row className='company-header'>
+        <Container className='company-header-whole'>
+          <Row className='company-header name'>
             <Col className='company-name' md={6}>
               {tempEmployee.company.company_name}
+            </Col>
+          </Row>
+          <Row className='company-header email'>
+            <Col className='company-email' md={'auto'}>
+              {tempEmployee.company.email}
+            </Col>
+            |
+            <Col className='company-phone' md={'auto'}>
+              {tempEmployee.company.phone}
+            </Col>
+          </Row>
+          <Row className='company-header address'>
+            <Col className='company-add' md={6}>
+              {tempEmployee.company.billing_address}
             </Col>
           </Row>
         </Container>
@@ -142,44 +156,9 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
             {(isLoading && data) ? <div className='loading'>Gathering Data, Please wait</div> :
             <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}
           </div>
-          <div className='landing-footer'>
-            <div className='pagenum'>
-              Page {page}
-            </div>
-              <div className='pagechange'>
-                  <div className='leftarrow'
-                  onClick={(() => {
-                    pageButtons('<')
-                  })}
-                  >{'<'}</div>
-                  <div className='firstpage'
-                  onClick={(() => {
-                    pageButtons(1)
-                  })}
-                  >1</div>
-                  <div className='secondpage'
-                  onClick={(() => {
-                    pageButtons(2)
-                  })}
-                  >2</div>
-                  <div className='thirdpage'
-                  onClick={(() => {
-                    pageButtons(3)
-                  })}>3</div>
-                  <div className='fourthpage'
-                  onClick={(() => {
-                    pageButtons(4)
-                  })}>4</div>
-                  <div className='rightarrow'
-                  onClick={(() => {
-                    pageButtons('>')
-                  })}
-                  >{'>'}</div>
-              </div>
-          </div>
         </div>
       </div>
-      <LandingFooter/>
+      <LandingFooter customer={tempEmployee} setCurrentPage={setCurrentPage}/>
     </div>
   )
 }

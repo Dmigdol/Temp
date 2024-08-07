@@ -320,12 +320,34 @@ $borderGray: #948f8fd3;
 
 // Company Header
 
+.company-header-whole {
+  margin-bottom: 2%
+}
+
 .company-header {
-  margin-left: 0;
+  &.address,.phone,.info {
+    padding-top: 0;
+    margin-left: 1%;
+  }
+}
+
+.address {
+  margin-left: 1%;
+
 }
 
 .company-name {
   font-size: 40px;
+  text-align: left;
+}
+
+.company-add,.company-email {
+  font-size: 18px;
+  text-align: left;
+}
+
+.company-phone {
+  padding-left: 10px;
   text-align: left;
 }
 

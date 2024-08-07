@@ -21,10 +21,10 @@ function RenderRecent({current, data, setCurrentPage}) {
 
     <div className='Entry' >
       <ListModal setShow={setShow} setCurrentPage={setCurrentPage} show={show} data={clicked}/>
-      <Container>
+      <Container fluid>
         <Table hover className='table-large'>
           <thead>
-            <tr style={{'text-align': 'left'}}>
+            <tr style={{'text-align': 'left', 'font-size': '25px'}}>
               <th>ID</th>
               <th>Company</th>
               <th>Advisor</th>

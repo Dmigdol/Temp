@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container'
 import Landing from './Landing';
 import QuoteBuilder from './QuoteBuilder'
 import Quote from './Quote'
+import AdminUsers from './Components/AdminComponents/AdminUsers.jsx'
 import '../Sass/App.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,7 +24,7 @@ function App() {
   const tempEmployee = {
     name: 'Paul Allor',
     id: 1000,
-    postion: 'admin'
+    position: 'admin'
   }
 
 
@@ -39,6 +40,9 @@ function App() {
         break;
       case 'QuoteBuilder' :
         return <Quote setCurrentPage={setCurrentPage} data={param[1]}/>;
+        break;
+      case 'AdminUsers' :
+        return <AdminUsers setCurrentPage={setCurrentPage} data={param[1]}/>;
         break;
       default: return <div>{`Error in Switch Statement: Trying to load ` + param}</div>
         break;

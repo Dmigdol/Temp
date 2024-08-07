@@ -9,6 +9,12 @@ module.exports = {
       .eq('employee_id', id)
       return(data);
   },
+  async getUsers() {
+    const {data, error} = await db
+      .from('customer')
+      .select('*')
+      return(data);
+  },
   async insertQuote(payload) {
     items = payload.items;
     data = payload.data;

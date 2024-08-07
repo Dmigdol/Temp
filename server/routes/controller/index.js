@@ -7,6 +7,12 @@ module.exports = {
         res.send(results)
       });
   },
+  getUsers(req,res) {
+    models.getUsers()
+    .then((results) => {
+      res.send(results)
+    });
+  },
   insertQuote(req, res) {
     console.log(req)
     models.insertQuote(req.body)

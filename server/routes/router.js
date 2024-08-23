@@ -8,5 +8,6 @@ router.delete('/del', controllers.deleteQuote)
 router.put('/update', controllers.updateQuote)
 router.post('/draft', controllers.newDraft)
 router.get('/users', controllers.getUsers)
+router.put('/updateCustomer', controllers.updateCustomer)
 
 module.exports = router

@@ -9,16 +9,15 @@ import axios from 'axios';
 
 
 
-function quoteFooter({slide, setShow, setSlide, data, quoterows}) {
+function quoteFooter({slide, setShow, setSlide, data, quoterows, quoteContext}) {
   console.log('footer data', data)
 
-  let context = 0
 
   const url = 'http://localhost:3000/newQuote'
 
 
   const handleNewOrder = () => {
-    axios.patch('http://localhost:3000/newQuote', {
+    axios.post('http://localhost:3000/newQuote', {
       items: quoterows,
       data: data
     })
@@ -60,7 +59,7 @@ function quoteFooter({slide, setShow, setSlide, data, quoterows}) {
   return (
     <Navbar  expand='lg' fixed='bottom' className='footer-whole'>
       <Container className='foot-body'>
-        {context ?
+        {quoteContext === 'new' ?
           <Button
             onClick={handleNewOrder}
           >Submit Order</Button>

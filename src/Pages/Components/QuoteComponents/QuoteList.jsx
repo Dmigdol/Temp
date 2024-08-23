@@ -12,7 +12,8 @@ import Popover from 'react-bootstrap/Popover'
 import Row from 'react-bootstrap/Row'
 
 
-function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputContext, setInputContext, setCurrEntry, currEntry}) {
+function QuoteList({rows, slide, setShow, setSlide, inputs,
+   setInputs, inputContext, setInputContext, setCurrEntry, currEntry, setQuoteContext, quoteContext}) {
 
 
 
@@ -38,6 +39,8 @@ function QuoteList({rows, slide, setShow, setSlide, inputs, setInputs, inputCont
   const rowClick = (entry) => {
     setCurrEntry(entry)
   }
+
+
 
 
   const clickMenu = (

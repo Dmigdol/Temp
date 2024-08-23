@@ -15,7 +15,7 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function Quote({setCurrentPage, data}) {
+function Quote({setCurrentPage, data, quoteContext, setQuoteContext}) {
 
   const [quoterows, setQuoteRows] = useState([])
   const [slide, setSlide] = useState(0)
@@ -26,6 +26,11 @@ function Quote({setCurrentPage, data}) {
 
 
   console.log('QUOTE ROWS', quoterows)
+
+
+  useEffect(() => {
+    data ? setQuoteRows(data.items) : setQuoteRows([])
+  },[])
 
 
   class QuoteRow {
@@ -91,9 +96,9 @@ function Quote({setCurrentPage, data}) {
         </Row>
         <QuoteList rows={quoterows} addRow={addRow} slide={slide} setShow={setShow}
         inputs={inputs} setInputs={setInputs} setSlide={setSlide} inputContext={inputContext}
-        setInputContext={setInputContext} setCurrEntry={setCurrEntry} currEntry={currEntry}/>
+        setInputContext={setInputContext} setCurrEntry={setCurrEntry} currEntry={currEntry} setQuoteContext={setQuoteContext} quoteContext={quoteContext}/>
       </Container >
-      <QuoteFooter slide={slide} setSlide={setSlide} setShow={setShow} data={data} quoterows={quoterows}/>
+      <QuoteFooter slide={slide} setSlide={setSlide} setShow={setShow} data={data} quoterows={quoterows} quoteContext={quoteContext}/>
     </>
   )
 

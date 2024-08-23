@@ -41,4 +41,11 @@ module.exports = {
       res.send(results)
     })
   },
+  updateCustomer(req, res) {
+    console.log(req)
+    models.updateCustomer(req.body)
+    .then((results) => {
+      res.send(results)
+    })
+  }
 }

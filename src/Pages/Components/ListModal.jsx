@@ -9,12 +9,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './ListModal.scss'
 import { useState } from 'react';
 
-function ListModal({setShow, show, data, setCurrentPage}) {
+function ListModal({setShow, show, data, setCurrentPage, setQuoteContext, quoteContext}) {
 
   const handleClose = () => setShow(false);
 
   const handleEdit = () => {
     console.log(data)
+    setQuoteContext('edit')
     setCurrentPage(['QuoteBuilder', data])
   }
 

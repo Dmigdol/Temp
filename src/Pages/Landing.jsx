@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
 
-function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
+function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteContext, quoteContext}) {
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -36,7 +36,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
     name: 'Paul Allor',
     id: 1000,
     position: 'admin',
-    company: {
+    customer: {
       billing_address: '21542 Roadway ave. Long Beach, CA',
       company_name: 'Kurb Bowyerman Plumbing',
       email: 'BuymyShoes@yahoo.com',
@@ -133,28 +133,29 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
         <Container className='company-header-whole'>
           <Row className='company-header name'>
             <Col className='company-name' md={6}>
-              {tempEmployee.company.company_name}
+              {tempEmployee.customer.company_name}
             </Col>
           </Row>
           <Row className='company-header email'>
             <Col className='company-email' md={'auto'}>
-              {tempEmployee.company.email}
+              {tempEmployee.customer.email}
             </Col>
             |
             <Col className='company-phone' md={'auto'}>
-              {tempEmployee.company.phone}
+              {tempEmployee.customer.phone}
             </Col>
           </Row>
           <Row className='company-header address'>
             <Col className='company-add' md={6}>
-              {tempEmployee.company.billing_address}
+              {tempEmployee.customer.billing_address}
             </Col>
           </Row>
         </Container>
         <div className="landing center">
           <div className='row-container'>
             {(isLoading && data) ? <div className='loading'>Gathering Data, Please wait</div> :
-            <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}
+            <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)}
+             setOptShow={setOptShow} optShow={optShow} setQuoteContext={setQuoteContext} quoteContext={quoteContext}/>}
           </div>
         </div>
       </div>

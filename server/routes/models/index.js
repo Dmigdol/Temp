@@ -22,12 +22,11 @@ module.exports = {
     const {error} = await db
       .from('quotes')
       .insert({
-        id: data.id,
         created_at: newDate,
-        employee_id: data.employee_id,
+        employee_id: data.id,
         status: 'Pending',
         total_price: 0,
-        customer_id: data.customer_id,
+        customer_id: data.customer.id,
         items: items
       })
   },
@@ -65,5 +64,17 @@ module.exports = {
         customer_id: data.customer_id,
         items: items
       })
-    }
+  },
+  async updateCustomer(payload) {
+    id = payload.id;
+    data = payload.data;
+    const {error} = await db
+      .from('customer')
+      .update({
+        shipping_address: data.shipping_address,
+        phone: data.phone,
+        email: data.email
+      })
+      .eq('id', id)
+  }
 }

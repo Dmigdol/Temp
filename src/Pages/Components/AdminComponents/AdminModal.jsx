@@ -3,19 +3,52 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import AdminList from './AdminList.jsx'
+import AdminEdit from './AdminEdit.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ACSCSS/AdminModal.scss'
 import { useState } from 'react';
+import axios from 'axios';
 
-function AdminModal({setShow, show, data, setCurrentPage}) {
 
-  const handleClose = () => setShow(false);
+function AdminModal({setShow, show, data, setCurrentPage, fetchUsers}) {
+
+  const [context, setContext] = useState('list');
+  const [inputs, setInputs] = useState({data})
+
+  const handleClose = () => {
+    setShow(false);
+    setTimeout(() => {
+      setContext('list')
+    }, 500)
+  }
 
   const handleEdit = () => {
+    setContext('edit')
     console.log(data)
   }
+
+  const handleEditSubmit = () => {
+    axios.put('http://localhost:3000/updateCustomer', {
+      id: data.id,
+      data: inputs
+    })
+    .then(res => {
+      console.log('resolution for update', res)
+    })
+    .catch((err) => {
+      console.log('error updating customer', err)
+    })
+
+    setShow(false);
+    setTimeout(() => {
+      setContext('list')
+      fetchUsers()
+    }, 500)
+  }
+
 
   return(
 
@@ -32,37 +65,10 @@ function AdminModal({setShow, show, data, setCurrentPage}) {
             <Modal.Title className='modal-title'>{data.company_name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Container className='modal-body'>
-              <Row className='add-header-container'>
-                <Col className='comp-add-header header'>
-                  Shipping Address
-                </Col>
-              </Row>
-              <Row>
-                <Col className='add-txt'>{data.shipping_address}</Col>
-                <Col md={1}>
-                </Col>
-              </Row>
-              <Row className='email-header-container'>
-                <Col className='comp-email-header header'>
-                  Company Email
-                </Col>
-              </Row>
-              <Row className='email-txt'>
-                <Col>{data.email}</Col>
-              </Row>
-              <Row className='phone-header-container'>
-                <Col className='comp-phone-header header'>
-                  Company Phone
-                </Col>
-              </Row>
-              <Row className='phone-txt'>
-                <Col md={9}>{data.phone}</Col>
-                <Col>Status: {data.status}</Col>
-              </Row>
-            </Container>
+            {context === 'list' ? <AdminList data={data}/> : <AdminEdit data={data} setContext={setContext} inputs={inputs} setInputs={setInputs}/>}
           </Modal.Body>
           <Modal.Footer className='modal-footer'>
+            {context === 'list' ? <></> : <Button variant='primary' className='submit-edit-btn' onClick={handleEditSubmit}>Update</Button>}
             <Button variant='outline-danger' onClick={handleClose}>Delete</Button>
           </Modal.Footer>
         </Modal>

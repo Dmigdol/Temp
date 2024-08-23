@@ -15,6 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   const [currentPage, setCurrentPage] = useState(['Login']);
+  const [quoteContext, setQuoteContext] = useState('new')
   const [slide, setSlide] = useState(0)
   const [logged, setLogged] = useState(false)
   const [optShow, setOptShow] = useState(false)
@@ -36,10 +37,10 @@ function App() {
         return <Login setCurrentPage={setCurrentPage} data={param[1]} setLogged={setLogged}/>
         break;
       case 'Landing' :
-        return <Landing ref={wrapperRef} setCurrentPage={setCurrentPage} setOptShow={setOptShow} optShow={optShow} data={param[1]}/> ;
+        return <Landing ref={wrapperRef} setCurrentPage={setCurrentPage} setOptShow={setOptShow} setQuoteContext={setQuoteContext} quoteContext={quoteContext} optShow={optShow} data={param[1]}/> ;
         break;
       case 'QuoteBuilder' :
-        return <Quote setCurrentPage={setCurrentPage} data={param[1]}/>;
+        return <Quote setCurrentPage={setCurrentPage} data={param[1]} quoteContext={quoteContext} setQuoteContext={setQuoteContext}/>;
         break;
       case 'AdminUsers' :
         return <AdminUsers setCurrentPage={setCurrentPage} data={param[1]}/>;

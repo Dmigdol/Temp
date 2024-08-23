@@ -7,7 +7,7 @@ import CustomerInput from './CustomerInput.jsx'
 
 
 
-function RenderRecent({current, data, setCurrentPage}) {
+function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteContext}) {
 
 
   const [clicked, setClicked] = useState();
@@ -20,7 +20,7 @@ function RenderRecent({current, data, setCurrentPage}) {
 
 
     <div className='Entry' >
-      <ListModal setShow={setShow} setCurrentPage={setCurrentPage} show={show} data={clicked}/>
+      <ListModal setShow={setShow} setCurrentPage={setCurrentPage} setQuoteContext={setQuoteContext} quoteContext={quoteContext} show={show} data={clicked}/>
       <Container fluid>
         <Table hover className='table-large'>
           <thead>
@@ -33,7 +33,7 @@ function RenderRecent({current, data, setCurrentPage}) {
             </tr>
           </thead>
           <tbody>
-            {data.map((entry) => {
+            {data.toReversed().map((entry) => {
               console.log('renderdata',entry)
               return (
                 <tr id={entry.reference_id} className='table-cell' onClick={((e) => {

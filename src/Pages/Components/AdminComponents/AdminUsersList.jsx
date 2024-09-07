@@ -6,7 +6,7 @@ import axios from 'axios';
 import './ACSCSS/AdminUsersList.scss'
 import { useEffect, useState } from "react";
 
-function AdminUsersList({clicked, setClicked, setShow}) {
+function AdminUsersList({clicked, setClicked, setShow, userList, fetchUsersFlag, setFetchUsersFlag}) {
 
 
 

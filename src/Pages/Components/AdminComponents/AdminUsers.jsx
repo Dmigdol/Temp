@@ -13,6 +13,7 @@ function AdminUsers() {
   const [clicked, setClicked] = useState();
   const [show, setShow] = useState(false);
   const [userList, setUserList] = useState([])
+  const [fetchUsersFlag, setFetchUsersFlag] = useState(true)
 
   const fetchUsers = () => {
     axios.get('http://localhost:3000/users', {
@@ -27,8 +28,11 @@ function AdminUsers() {
   }
 
   useEffect(() => {
-    fetchUsers()
-  }, [userList])
+    if (fetchUsersFlag) {
+      fetchUsers()
+      setFetchUsersFlag(false)
+    }
+  }, [fetchUsersFlag, setFetchUsersFlag])
 
 
   return(
@@ -37,7 +41,7 @@ function AdminUsers() {
     <Container>
       <Row className='user-list-container'>
         <Col>
-          <UsersList clicked={clicked} setClicked={setClicked} userList={userList} setShow={setShow}/>
+          <UsersList fetchUsersFlag={fetchUsersFlag} setFetchUsersFlag={setFetchUsersFlag} clicked={clicked} setClicked={setClicked} userList={userList} setShow={setShow}/>
         </Col>
       </Row>
     </Container>

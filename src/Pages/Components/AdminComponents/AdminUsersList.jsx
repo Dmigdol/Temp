@@ -8,24 +8,7 @@ import { useEffect, useState } from "react";
 
 function AdminUsersList({clicked, setClicked, setShow}) {
 
-  const [userList, setUserList] = useState([])
 
-
-  const fetchUsers = () => {
-    axios.get('http://localhost:3000/users', {
-    })
-    .then(response => {
-      console.log('response', response)
-      setUserList(response.data)
-    })
-    .catch((err) => {
-      console.log('error retrieving user list', err)
-    })
-  }
-
-  useEffect(() => {
-    fetchUsers()
-  }, [])
 
 return (
   <div>

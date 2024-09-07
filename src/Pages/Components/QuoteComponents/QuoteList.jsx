@@ -78,7 +78,7 @@ function QuoteList({rows, slide, setShow, setSlide, inputs,
           </tr>
         </thead>
         <tbody>
-          {rows.map((entry) => {
+          {rows ? rows.map((entry) => {
             return (
               <OverlayTrigger rootClose trigger="click" placement='right' overlay={clickMenu}>
                 <tr className='quote-row-entry'
@@ -102,7 +102,7 @@ function QuoteList({rows, slide, setShow, setSlide, inputs,
                 </tr>
               </OverlayTrigger>
             )
-          })}
+          }) : <></>}
         </tbody>
       </Table>
     </Container>

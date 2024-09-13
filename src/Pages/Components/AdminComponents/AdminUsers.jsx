@@ -39,6 +39,9 @@ function AdminUsers() {
   <>
   <AdminModal setShow={setShow} show={show} data={clicked} userList={userList} fetchUsers={fetchUsers}/>
     <Container>
+      <Row className='user-list-row'>
+        <Col className='user-list-title'>User List</Col>
+      </Row>
       <Row className='user-list-container'>
         <Col>
           <UsersList fetchUsersFlag={fetchUsersFlag} setFetchUsersFlag={setFetchUsersFlag} clicked={clicked} setClicked={setClicked} userList={userList} setShow={setShow}/>

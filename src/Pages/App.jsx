@@ -52,7 +52,7 @@ function App() {
 
 
   return (
-    <div className='app' ref={wrapperRef}>
+    <div className='app' id='app' ref={wrapperRef}>
       {logged ? <NavBar user={tempEmployee} setCurrentPage={setCurrentPage} setLogged={setLogged}/> : ''}
       {renderSwitch(currentPage)}
     </div>

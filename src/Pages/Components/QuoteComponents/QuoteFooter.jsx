@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 
-function quoteFooter({slide, setShow, setSlide, data, quoterows, quoteContext}) {
+function quoteFooter({slide, printDocument, setShow, setSlide, data, quoterows, quoteContext, setPdfShow}) {
   console.log('footer data', data)
 
 
@@ -79,6 +79,14 @@ function quoteFooter({slide, setShow, setSlide, data, quoterows, quoteContext}) 
             setShow(true)
           }}
         >New Row</Button>
+        <Button className='new-button'
+          aria-expanded={slide}
+          onClick={()=> {
+            printDocument()
+          }}
+          >
+          PDF
+        </Button>
       </Container>
     </Navbar>
   )

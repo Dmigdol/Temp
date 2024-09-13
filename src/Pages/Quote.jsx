@@ -1,6 +1,7 @@
 import '../Sass/Quote.scss';
 import QuoteList from './Components/QuoteComponents/QuoteList.jsx'
 import QuoteInput from './Components/QuoteComponents/QuoteInput.jsx'
+import Quote2Canvas from './PdfRender/Quote2Canvas.jsx'
 import { useEffect, useState } from "react";
 import RenderRow from './Components/RenderRow'
 import Table from 'react-bootstrap/Table';
@@ -14,8 +15,12 @@ import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf'
+
 
 function Quote({setCurrentPage, data, quoteContext, setQuoteContext}) {
+
 
   const [quoterows, setQuoteRows] = useState([])
   const [slide, setSlide] = useState(0)
@@ -23,6 +28,7 @@ function Quote({setCurrentPage, data, quoteContext, setQuoteContext}) {
   const [inputs, setInputs] = useState({frame: '', numDoors: 'single', strikeHeight: ''})
   const [inputContext, setInputContext] = useState('')
   const [currEntry, setCurrEntry] = useState()
+  const [pdfShow, setPdfShow] = useState(false)
 
 
   console.log('QUOTE ROWS', quoterows)
@@ -80,6 +86,23 @@ function Quote({setCurrentPage, data, quoteContext, setQuoteContext}) {
     }
   }
 
+  function printDocument() {
+    const input = document.getElementById('Quote');
+    html2canvas(input, {
+      width: 1980,
+      height: 1080,
+      scale: 0.8
+    })
+      .then((canvas) => {
+        const newDate = new Date().toLocaleDateString('en-CA');
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({orientation: 'l'});
+        pdf.addImage(imgData, 'JPEG', 10, 10);
+        pdf.save(`${data.customer.company_name} ${newDate}`);
+      })
+    ;
+  }
+
   return (
     <>
       {show ?
@@ -88,17 +111,17 @@ function Quote({setCurrentPage, data, quoteContext, setQuoteContext}) {
           show={show} inputs={inputs} setInputs={setInputs} inputContext={inputContext}
           setInputContext={setInputContext} setCurrEntry={setCurrEntry} currEntry={currEntry}/>
       : ''}
-      <Container  className={slide ? 'full-container init' : 'full-container'}>
+      <Container id='Quote'  className={slide ? 'full-container init' : 'full-container'}>
         <Row className='header-row'>
           <Col>
-          <QuoteTop data={data}/>
+          <QuoteTop  data={data}/>
           </Col>
         </Row>
         <QuoteList rows={quoterows} addRow={addRow} slide={slide} setShow={setShow}
         inputs={inputs} setInputs={setInputs} setSlide={setSlide} inputContext={inputContext}
         setInputContext={setInputContext} setCurrEntry={setCurrEntry} currEntry={currEntry} setQuoteContext={setQuoteContext} quoteContext={quoteContext}/>
       </Container >
-      <QuoteFooter slide={slide} setSlide={setSlide} setShow={setShow} data={data} quoterows={quoterows} quoteContext={quoteContext}/>
+      <QuoteFooter slide={slide} printDocument={printDocument} setPdfShow={setPdfShow} setSlide={setSlide} setShow={setShow} data={data} quoterows={quoterows} quoteContext={quoteContext}/>
     </>
   )
 

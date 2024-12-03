@@ -13,6 +13,7 @@ function landingFooter({customer, setCurrentPage}) {
 
   const handleNewQuote = () => {
     console.log('clicked')
+    customer.items = []
     setCurrentPage(['QuoteBuilder', customer])
   }
 

@@ -5,7 +5,6 @@ import Nav from 'react-bootstrap/Nav'
 import NavBar from './Components/NavBar.jsx'
 import Container from 'react-bootstrap/Container'
 import Landing from './Landing';
-import QuoteBuilder from './QuoteBuilder'
 import Quote from './Quote'
 import AdminUsers from './Components/AdminComponents/AdminUsers.jsx'
 import '../Sass/App.scss'

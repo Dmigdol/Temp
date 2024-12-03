@@ -35,7 +35,10 @@ function Quote({setCurrentPage, data, quoteContext, setQuoteContext}) {
 
 
   useEffect(() => {
-    data ? setQuoteRows(data.items) : setQuoteRows([])
+    console.log('UE DATA', data)
+    if (data) {
+      setQuoteRows(data.items)
+    }
   },[])
 
 

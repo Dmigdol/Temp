@@ -75,6 +75,7 @@ function quoteFooter({slide, printDocument, setShow, setSlide, data, quoterows, 
         <Button className='new-button'
           aria-expanded={slide}
           onClick={()=> {
+            console.log('New Row test', data)
             setSlide(!slide)
             setShow(true)
           }}

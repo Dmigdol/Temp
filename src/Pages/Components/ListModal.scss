@@ -1,4 +1,5 @@
-
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
 
 .modal-title {
   font-size: 30px;
@@ -16,4 +17,17 @@
 
 .row{
   padding: 8px;
+}
+
+.header {
+  background:
+    linear-gradient(
+      to right,
+      $vectorBlue 0%,
+      white 70%
+    )
+    left
+    bottom
+    no-repeat;
+    background-size: 100% 2px;
 }

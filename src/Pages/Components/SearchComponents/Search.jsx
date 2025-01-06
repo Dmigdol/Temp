@@ -20,12 +20,16 @@ function Search({data}) {
     console.log('handle search')
   }
 
+  const handleInputChange = () => {
+
+  }
+
   return (
     <Container className='search-group'>
       <Form>
         <Row className='search-row'>
           <Form.Group className='boot-search-input' as={Col} md={8}>
-              <Form.Control value={input} type='search' placeholder='Search' />
+              <Form.Control value={input} type='search' placeholder='Search' onChange={handleInputChange}/>
           </Form.Group>
           <Button className='search-btn'>
           <FontAwesomeIcon

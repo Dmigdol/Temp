@@ -99,14 +99,13 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
       var filteredList = data.filter(function(el) {
         return el.customer.company_name === tempEmployee.customer.company_name
       })
-      setFilteredData(filteredList)
+      return(filteredList)
     }
 
 
     useEffect(() => {
       fetchData()
       console.log('full data', data)
-      cutList(data)
     }, [current])
 
   const firstCheck = () => {
@@ -157,7 +156,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
         <div className="landing center">
           <div className='row-container'>
             {(isLoading && data) ? <div className='loading'>Gathering Data, Please wait</div> :
-            <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={filteredData}
+            <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)}
              setOptShow={setOptShow} optShow={optShow} setQuoteContext={setQuoteContext} quoteContext={quoteContext}/>}
           </div>
         </div>

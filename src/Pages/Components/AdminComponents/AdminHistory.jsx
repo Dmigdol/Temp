@@ -1,13 +1,10 @@
-import './infobox.scss'
 import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
-import ListModal from './ListModal.jsx'
 import { useRef, useEffect, useState } from "react";
-import CustomerInput from './CustomerInput.jsx'
 
 
 
-function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteContext}) {
+function AdminHistory({ data, setCurrentPage}) {
 
 
   const [clicked, setClicked] = useState();
@@ -20,7 +17,6 @@ function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteCont
 
 
     <div className='Entry' >
-      <ListModal setShow={setShow} setCurrentPage={setCurrentPage} setQuoteContext={setQuoteContext} quoteContext={quoteContext} show={show} data={clicked}/>
       <Container fluid>
         <Table hover className='table-large'>
           <thead>
@@ -51,9 +47,8 @@ function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteCont
           </tbody>
         </Table>
       </Container>
-
     </div>
   )
 }
 
-export default RenderRecent;
+export default AdminHistory;

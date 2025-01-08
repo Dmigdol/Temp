@@ -7,14 +7,23 @@ import CustomerInput from './CustomerInput.jsx'
 
 
 
-function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteContext}) {
+function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteContext, filteredData, keyword}) {
 
 
   const [clicked, setClicked] = useState();
   const [show, setShow] = useState(false);
+  const [currentData, setCurrentData] = useState(data)
 
   const handleShow = () => setShow(true);
 
+  const checkKeyword = () => {
+    if (keyword) {
+      return(filteredData)
+    } else {
+      return (data)
+    }
+    console.log('CHECKED', keyword)
+  }
 
   return (
 
@@ -33,7 +42,7 @@ function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteCont
             </tr>
           </thead>
           <tbody>
-            {data.toReversed().map((entry) => {
+            {checkKeyword().toReversed().map((entry) => {
               console.log('renderdata',entry)
               return (
                 <tr id={entry.reference_id} className='table-cell' onClick={((e) => {
@@ -57,3 +66,6 @@ function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteCont
 }
 
 export default RenderRecent;
+/*
+
+*/

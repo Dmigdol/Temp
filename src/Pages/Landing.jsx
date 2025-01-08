@@ -32,6 +32,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState('date');
   const [newQuote, setNewQuote] = useState(false);
+  const [keyword, setKeyword] = useState()
 
 
   const tempEmployee = {
@@ -151,12 +152,12 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
           </Row>
         </Container>
         <div className='search-container'>
-          <Search data={filteredData}/>
+          <Search data={cutList(data)} setFilteredData={setFilteredData} keyword={keyword} setKeyword={setKeyword}/>
         </div>
         <div className="landing center">
           <div className='row-container'>
-            {(isLoading && data) ? <div className='loading'>Gathering Data, Please wait</div> :
-            <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)}
+            {(isLoading && data) ? <div className='loading'>No Entries found, Please create a new Quote</div> :
+            <LandingRow className='landing-list' wrapperRef={wrapperRef} keyword={keyword} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} filteredData={filteredData}
              setOptShow={setOptShow} optShow={optShow} setQuoteContext={setQuoteContext} quoteContext={quoteContext}/>}
           </div>
         </div>

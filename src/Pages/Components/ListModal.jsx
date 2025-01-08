@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './ListModal.scss'
 import { useState } from 'react';
 
-function ListModal({setShow, show, data, setCurrentPage, setQuoteContext, quoteContext}) {
+function ListModal({setShow, keyword, show, data, setCurrentPage, setQuoteContext, quoteContext}) {
 
   const handleClose = () => setShow(false);
 

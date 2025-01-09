@@ -5,8 +5,10 @@ $vectorLightBlue: #335C9A;
 
 .input-container {
   border: 1px solid $vectorBlue;
-  height: 85%;
+  height: 83%;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 // Row
@@ -14,6 +16,14 @@ $vectorLightBlue: #335C9A;
 // Col
 
 // Text
+
+.form-exit {
+  position: absolute;
+  font-size: 35px;
+  left: 92%;
+  color:#224E90;
+  cursor: pointer;
+}
 
 .input-header {
   font-size: 27px;
@@ -24,3 +34,11 @@ $vectorLightBlue: #335C9A;
 }
 
 // Button
+
+.submit-button {
+  width: 33%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4%;
+  margin-top: 2%;
+}

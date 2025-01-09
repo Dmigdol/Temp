@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 import '../Sass/Landing.scss'
 import axios from 'axios';
-import Row from './LandingRow'
+import authFetch from '../axios/custom'
+import LandingRow from './LandingRow'
 import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from 'react-bootstrap/Button'
 import CustomerInput from './Components/CustomerInput.jsx'
+import LandingFooter from './Components/LandingComponents/LandingFooter'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
 
-function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
+function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteContext, quoteContext}) {
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -29,10 +35,10 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
   const tempEmployee = {
     name: 'Paul Allor',
     id: 1000,
-    postion: 'admin',
-    company: {
+    position: 'admin',
+    customer: {
       billing_address: '21542 Roadway ave. Long Beach, CA',
-      company_name: 'Legit Shoes',
+      company_name: 'Kurb Bowyerman Plumbing',
       email: 'BuymyShoes@yahoo.com',
       id: 'cc112fd3-3d27-4bfe-b3f1-fec5d3c93d79',
       phone: '555-654-6544',
@@ -47,14 +53,19 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
 
   const fetchData = () => {
     setIsLoading(true);
-    if(tempEmployee.postion === 'admin') {
-      axios.get(`http://localhost:3000/api/test?id=${tempEmployee.id}`)
+    if(tempEmployee.position === 'admin') {
+      axios.get(`http://localhost:3000/home`, {
+        params: {
+          id: tempEmployee.id
+        }
+      })
       .then(response => {
-        setData(response.data[current])
+        console.log('response', response)
+        setData(response.data)
         setIsLoading(false)
       })
       .catch((err) => {
-        console.log('error retrieving recents ', err)
+        console.log('error retrieving history ', err)
       })
     }
   }
@@ -118,71 +129,37 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef}) {
 
   return (
     <div className="App">
-      {/* {isLoading ? <div>Loading</div> : */}
-      {/* <CustomerInput newQuote={newQuote} setNewQuote={setNewQuote} setCurrentPage={setCurrentPage}/> */}
       <div className="landing">
-        <div className="landing Center">
-          <div className="landing-headbar">
-          <div className='search-btn-container'>
-              {/* <FontAwesomeIcon className='search-btn'
-              icon={byPrefixAndName.fass['magnifying-glass']}
-              style={{color: "#605c5c",}}
-              onClick={(() => {
-                firstCheck()
-              })}
-              /> */}
-          </div>
-          <div className='search-container'>
-              <div className={searchState}></div>
-          </div>
-
-            <div className='NewRow  button'
-              onClick={() => handleNewQuote()}
-              >+</div>
-          </div>
+        <Container className='company-header-whole'>
+          <Row className='company-header name'>
+            <Col className='company-name' md={6}>
+              {tempEmployee.customer.company_name}
+            </Col>
+          </Row>
+          <Row className='company-header email'>
+            <Col className='company-email' md={'auto'}>
+              {tempEmployee.customer.email}
+            </Col>
+            |
+            <Col className='company-phone' md={'auto'}>
+              {tempEmployee.customer.phone}
+            </Col>
+          </Row>
+          <Row className='company-header address'>
+            <Col className='company-add' md={6}>
+              {tempEmployee.customer.billing_address}
+            </Col>
+          </Row>
+        </Container>
+        <div className="landing center">
           <div className='row-container'>
             {(isLoading && data) ? <div className='loading'>Gathering Data, Please wait</div> :
-            <Row wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} setOptShow={setOptShow} optShow={optShow}/>}
-          </div>
-          <div className='landing-footer'>
-            <div className='pagenum'>
-              Page {page}
-            </div>
-
-
-              <div className='pagechange'>
-                  <div className='leftarrow'
-                  onClick={(() => {
-                    pageButtons('<')
-                  })}
-                  >{'<'}</div>
-                  <div className='firstpage'
-                  onClick={(() => {
-                    pageButtons(1)
-                  })}
-                  >1</div>
-                  <div className='secondpage'
-                  onClick={(() => {
-                    pageButtons(2)
-                  })}
-                  >2</div>
-                  <div className='thirdpage'
-                  onClick={(() => {
-                    pageButtons(3)
-                  })}>3</div>
-                  <div className='fourthpage'
-                  onClick={(() => {
-                    pageButtons(4)
-                  })}>4</div>
-                  <div className='rightarrow'
-                  onClick={(() => {
-                    pageButtons('>')
-                  })}
-                  >{'>'}</div>
-              </div>
+            <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)}
+             setOptShow={setOptShow} optShow={optShow} setQuoteContext={setQuoteContext} quoteContext={quoteContext}/>}
           </div>
         </div>
       </div>
+      <LandingFooter customer={tempEmployee} setCurrentPage={setCurrentPage}/>
     </div>
   )
 }

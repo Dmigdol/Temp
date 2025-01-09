@@ -3,18 +3,22 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import ListModalData from './ListModalData.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ListModal.scss'
 import { useState } from 'react';
 
-function ListModal({setShow, show, data, setCurrentPage}) {
+function ListModal({setShow, show, data, setCurrentPage, setQuoteContext, quoteContext}) {
 
   const handleClose = () => setShow(false);
 
+  console.log('here', data)
+
   const handleEdit = () => {
-    console.log(data)
+    console.log('HANDLE EDIT DATA', data)
+    setQuoteContext('edit')
     setCurrentPage(['QuoteBuilder', data])
   }
 
@@ -56,6 +60,26 @@ function ListModal({setShow, show, data, setCurrentPage}) {
        : <></>
       }
 
+{data ?
+        <Modal centered size='lg' show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Button variant='outline-primary' className='edit-btn'>
+              <FontAwesomeIcon
+              icon={byPrefixAndName.fas['pen-to-square']}
+              onClick={()=>{handleEdit()}}
+              />
+            </Button>
+            <Modal.Title className='modal-title'>{data.customer.company_name}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ListModalData data={data}/>
+          </Modal.Body>
+          <Modal.Footer className='modal-footer'>
+            <Button variant='outline-danger' onClick={handleClose}>Delete</Button>
+          </Modal.Footer>
+        </Modal>
+       : <></>
+      }
     </div>
   )
 

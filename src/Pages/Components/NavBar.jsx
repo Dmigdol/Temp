@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
 
 function NavBar({user, setCurrentPage, setLogged}) {
 
@@ -13,7 +15,7 @@ function NavBar({user, setCurrentPage, setLogged}) {
     setLogged(false)
     setCurrentPage(['Login', ''])
   }
-
+  console.log('user', user)
   return (
 
     <Navbar  expand='lg' fixed='top' className='nav-whole'>
@@ -27,7 +29,15 @@ function NavBar({user, setCurrentPage, setLogged}) {
             <Nav.Link
             onClick={() => setCurrentPage(['Landing'])}
             >Home</Nav.Link>
-            <Nav.Link className='link'>Link</Nav.Link>
+            {user.position === 'admin' ?
+            <NavDropdown title='Admin' className='admin-nav'>
+              <NavDropdown.Item onClick={()=>{setCurrentPage(['AdminUsers'])}}>Configure Users</NavDropdown.Item>
+              <NavDropdown.Item>Inventory *WIP*</NavDropdown.Item>
+              <NavDropdown.Item>Order History</NavDropdown.Item>
+            </NavDropdown>
+            :
+            <></>
+            }
           </Nav>
           <Nav className='user-nav'>
             <NavDropdown title={`${user.name}`}>

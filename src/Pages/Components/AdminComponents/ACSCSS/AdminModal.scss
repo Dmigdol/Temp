@@ -1,0 +1,68 @@
+$vectorBlue: #224E90;
+$vectorLightBlue: #335C9A;
+
+.edit-btn {
+  margin-left: 5%;
+  margin-right: 0;
+}
+
+.header {
+  background:
+    linear-gradient(
+      to right,
+      $vectorBlue 0%,
+      white 70%
+    )
+    left
+    bottom
+    no-repeat;
+    background-size: 100% 2px;
+}
+
+// Text ****
+
+  // Title
+  .modal-title {
+    margin-right: 5%;
+  }
+
+  // Address
+
+  .add-header-container {
+    padding-bottom: 0;
+  }
+
+  .comp-add-header {
+    font-size: 26px;
+  }
+
+  .comp-phone-header {
+    font-size: 26px;
+  }
+
+
+  .add-txt, .phone-txt, .email-txt {
+    padding-left: 3%;
+    font-size: 23px;
+  }
+
+  // Email
+  .email-header-container {
+    padding-bottom: 0;
+  }
+
+
+  .email-txt {
+    padding-left: 3%;
+  }
+
+  .comp-email-header {
+    font-size: 26px;
+  }
+
+// Buttons
+
+.submit-edit-btn {
+  margin-right: auto;
+  margin-left: 2%;
+}

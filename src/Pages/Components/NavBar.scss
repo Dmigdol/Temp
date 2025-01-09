@@ -3,11 +3,17 @@ $vectorBlue: #224E90;
 $vectorLightBlue: #335C9A;
 
 .nav-whole {
+  margin-left: 5%;
+  margin-right: 5%;
   background-color: white;
+  border-bottom: 2px solid #224E90;
+}
+
+.admin-nav {
+  margin-left: 10%;
 }
 
 .nav-body {
-  border-bottom: 2px solid #224E90;
   font-size: 16px;
 }
 

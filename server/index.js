@@ -1,26 +1,28 @@
 require ('dotenv').config();
-const express = require('express');
-const router = require('./routes');
+const fs = require("fs/promises");
+const express =  require("express");
 const createClient = require('@supabase/supabase-js')
 const supabaseClient = require('@supabase/supabase-js')
-const cors = require('cors');
-
+const cors = require("cors");
+const router = require("./routes/router")
 
 
 const app = express();
 
+
 app.use(cors());
-app.use(express.static('build'));
+app.use(express.json());
 
+app.use('/', router)
 
-app.use('/api', router.test);
+// app.get("/api", (req, res) => {
+//   res.send("API is working")
+// })
 
-
-
-// ROUTES
-
-// app.use('/api/test', router.test);
+// app.patch("/update", (req, res) => {
+//   res.post
+// })
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`Server available at http://localhost:${PORT}`));
+app.listen(PORT, () => console.log('API server is running ...'))

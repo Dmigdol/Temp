@@ -8,18 +8,31 @@ import Collapse from 'react-bootstrap/Collapse'
 import './QuoteComponentsSCSS/QuoteInput.scss'
 import Hinge from './HingeConditionals.jsx'
 import Strike from './StrikeConditionals.jsx'
+import Misc from './MiscConditionals.jsx'
 
-function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs, setInputs}) {
+function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, inputs,
+   quoterows, setInputs, inputContext, setInputContext, setCurrEntry, currEntry}) {
 
 
   const [checkBox, setCheckBox] = useState(false)
 
 
   const handleClose = () => {
-    // setShow(false)
     setSlide(false)
     setShow(false)
     returnToDefault()
+  }
+
+  const handleUpdate = (e) => {
+
+    let obj = quoterows.find((o, i) => {
+      if (o.num === currEntry.num) {
+          quoterows[i] = {...inputs};
+          return true; // stop searching
+      }
+  });
+    console.log('log', obj)
+
   }
 
   const handleInputChange = (e) => {
@@ -27,14 +40,16 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
     setInputs({...inputs, [name]: value})
   }
 
-  const handleCheckBox = () => {
-    setCheckBox(!checkBox)
-    {checkBox ? setInputs({...inputs, 'numDoors': 'single'}) : setInputs({...inputs, 'numDoors': 'double'})}
+  const handleCheckChange = (e) => {
+    const { name, checked } = e.target
+    setInputs({...inputs, [name]: checked})
   }
 
   const returnToDefault = () => {
     setCheckBox('');
-    setInputs({frame: '', numDoors: 'single', strikeHeight: ''});
+    setInputContext('')
+    setInputs({frame: '', strikeHeight: ''});
+    setSlide(false)
   }
 
   const checkInputs = () => {
@@ -52,17 +67,20 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
     payload.num = rowObj.num;
     // payload.checkBox = checkBox;
     // payload.hinge = 'PH';
-    payload.handling = 'LH-r'
 
     console.log(payload)
-
-
     addRow(payload)
     returnToDefault();
-    setSlide(false)
   }
+
   return (
     <Container className='input-container'>
+      <div className="form-exit" onClick={() => {
+        returnToDefault();
+        setShow(!show)
+      }}>
+        &#x2715;
+      </div>
       <Form onSubmit={submitForm}>
       <Row>
         <Col md={8} className='input-header'>
@@ -106,7 +124,8 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Form.Label className='double-box-text'>Double Door</Form.Label>
           <Form.Check
             inline
-            onChange={handleCheckBox}
+            defaultChecked={inputs.numDoors}
+            onChange={handleCheckChange}
             name='numDoors'
             id='double'
           />
@@ -126,16 +145,40 @@ function QuoteInput({show, setShow, setSlide, slide, data, rowObj, addRow, input
         <Col md={4}/>
         <Strike inputs={inputs} setInputs={setInputs}/>
       </Row>
+        <Row>
+          <Col md={8} className='input-header'>
+            Misc
+          </Col>
+          <Col md={4}/>
+        <Misc inputs={inputs} setInputs={setInputs}/>
+        </Row>
       </Form>
-      <Button onClick={(e) => {
-        if (checkInputs) {
-          setSlide(false)
-          submitForm(e)
-          handleClose()
-        }
-      }}>
-        Add Row
-      </Button>
+      {
+        inputContext !== 'edit' ?
+          <Button
+            className='submit-button'
+            onClick={(e) => {
+              if (checkInputs) {
+                setSlide(false)
+                submitForm(e)
+                handleClose()
+              }
+          }}>
+            Add Row
+          </Button>
+          :
+          <Button
+            className='submit-button'
+            onClick={(e) => {
+              if (checkInputs) {
+                setSlide(false)
+                handleUpdate(e)
+                handleClose()
+              }
+          }}>
+            Update
+          </Button>
+      }
     </Container>
   )
 }

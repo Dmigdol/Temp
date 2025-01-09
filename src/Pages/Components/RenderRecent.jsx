@@ -7,7 +7,7 @@ import CustomerInput from './CustomerInput.jsx'
 
 
 
-function RenderRecent({current, data, setCurrentPage}) {
+function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteContext}) {
 
 
   const [clicked, setClicked] = useState();
@@ -20,19 +20,20 @@ function RenderRecent({current, data, setCurrentPage}) {
 
 
     <div className='Entry' >
-      <ListModal setShow={setShow} setCurrentPage={setCurrentPage} show={show} data={clicked}/>
-      <Container className='mx-2'>
+      <ListModal setShow={setShow} setCurrentPage={setCurrentPage} setQuoteContext={setQuoteContext} quoteContext={quoteContext} show={show} data={clicked}/>
+      <Container fluid>
         <Table hover className='table-large'>
           <thead>
-            <tr style={{'text-align': 'left'}}>
+            <tr style={{'text-align': 'left', 'font-size': '25px'}}>
               <th>ID</th>
-              <th>Client</th>
-              <th>Employee</th>
+              <th>Company</th>
+              <th>Advisor</th>
               <th>Date</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {data.map((entry) => {
+            {data.toReversed().map((entry) => {
               console.log('renderdata',entry)
               return (
                 <tr id={entry.reference_id} className='table-cell' onClick={((e) => {
@@ -43,6 +44,7 @@ function RenderRecent({current, data, setCurrentPage}) {
                     <td className='col-4'>{entry.customer.company_name}</td>
                     <td >{entry.employee.employee_name}</td>
                     <td>{entry.created_at}</td>
+                    <td>{entry.status}</td>
                 </tr>
               )
             })}

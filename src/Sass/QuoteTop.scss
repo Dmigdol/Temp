@@ -11,6 +11,8 @@ span {
 .Quote-top {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 1%;
+  border-bottom: 2px solid $vectorBlue;
 }
 
 .Company-info {

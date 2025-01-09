@@ -12,7 +12,7 @@ function StrikeRender({inputs, setInputs}) {
   const handleInputChange = (e) => {
     if(e.target === 'NS') {
       console.log(e.target)
-      setInputs({...inputs, 'strikeHeight': undefined})
+      setInputs({...inputs, 'strikeHeight': ''})
     }
     const { name, value } = e.target
     setInputs({...inputs, [name]: value})
@@ -24,23 +24,27 @@ function StrikeRender({inputs, setInputs}) {
         <Row>
           <Form.Group as={Col} md={5}>
             <Form.Label className='input-label'>Strike Type</Form.Label>
-            {inputs.numDoors === 'single' ?
-            <Form.Select name='strike' onChange={handleInputChange}>
+            {!inputs.numDoors ?
+            <Form.Select name='strike' onChange={handleInputChange}
+            defaultValue={inputs.strike}
+            >
               <option hidden value/>
-              <option value='ASA'>ASA Strike</option>
-              <option value='T'>T-Strike</option>
-              <option value='LIP'>Lip Strike</option>
-              <option value='NS'>No Strike</option>
+              <option value='ASA Strike'>ASA Strike</option>
+              <option value='T-Strike'>T-Strike</option>
+              <option value='Lip-Strike'>Lip Strike</option>
+              <option value='No Strike'>No Strike</option>
             </Form.Select>
             :
-            <Form.Select name='strike' onChange={handleInputChange}>
+            <Form.Select name='strike' onChange={handleInputChange}
+            defaultValue={inputs.strike}
+            >
               <option hidden value/>
-              <option value='RHS'>Roller Head</option>
-              <option value='NS'>No Strike</option>
+              <option value='Roller Head'>Roller Head</option>
+              <option value='No Strike'>No Strike</option>
             </Form.Select>
             }
           </Form.Group>
-          {inputs.strike !== 'NS' ?
+          {inputs.strike !== 'No Strike' ?
           <Form.Group as={Col} md={4}>
             <Form.Label className='input-label' >{'Strike Height (in)'}</Form.Label>
             <Form.Control name='strikeHeight' value={inputs.strikeHeight} placeholder='Strike Height' onChange={handleInputChange}/>

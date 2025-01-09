@@ -46,7 +46,7 @@ function App() {
         return <AdminUsers setCurrentPage={setCurrentPage} data={param[1]}/>;
         break;
       case 'AdminHistory' :
-        return <AdminHistory setCurrentPage={setCurrentPage} data={param[1]}/>;
+        return <AdminHistory setCurrentPage={setCurrentPage} data={param[1]} quoteContext={quoteContext} setQuoteContext={setQuoteContext}/>;
         break;
       default: return <div>{`Error in Switch Statement: Trying to load ` + param}</div>
         break;

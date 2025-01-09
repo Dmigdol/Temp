@@ -146,10 +146,6 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
               {tempEmployee.customer.billing_address}
             </Col>
           </Row>
-          <Row>
-            <Col className='search-container' md={7}>
-            </Col>
-          </Row>
         </Container>
         <div className='search-container'>
           <Search data={cutList(data)} setFilteredData={setFilteredData} keyword={keyword} setKeyword={setKeyword}/>

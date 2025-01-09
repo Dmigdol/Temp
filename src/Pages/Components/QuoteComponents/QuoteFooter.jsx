@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 
-function quoteFooter({slide, printDocument, setShow, setSlide, data, quoterows, quoteContext, setPdfShow}) {
+function quoteFooter({slide, printDocument, setShow, setSlide, data, quoterows, quoteContext, setPdfShow, setCurrentPage}) {
   console.log('footer data', data)
 
 
@@ -27,6 +27,7 @@ function quoteFooter({slide, printDocument, setShow, setSlide, data, quoterows, 
     .catch((err) => {
       console.log('error upload quote', err)
     })
+    setCurrentPage(['Landing'])
   }
 
   const handleUpdateOrder = () => {
@@ -40,6 +41,7 @@ function quoteFooter({slide, printDocument, setShow, setSlide, data, quoterows, 
     .catch((err) => {
       console.log('error update quote', err)
     })
+    setCurrentPage(['Landing'])
   }
 
   const handleDraft = () => {

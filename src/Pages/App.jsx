@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container'
 import Landing from './Landing';
 import Quote from './Quote'
 import AdminUsers from './Components/AdminComponents/AdminUsers.jsx'
+import AdminHistory from './Components/AdminComponents/AdminHistory.jsx'
 import '../Sass/App.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -43,6 +44,9 @@ function App() {
         break;
       case 'AdminUsers' :
         return <AdminUsers setCurrentPage={setCurrentPage} data={param[1]}/>;
+        break;
+      case 'AdminHistory' :
+        return <AdminHistory setCurrentPage={setCurrentPage} data={param[1]} quoteContext={quoteContext} setQuoteContext={setQuoteContext}/>;
         break;
       default: return <div>{`Error in Switch Statement: Trying to load ` + param}</div>
         break;

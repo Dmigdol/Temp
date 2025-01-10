@@ -124,7 +124,7 @@ function Quote({setCurrentPage, data, quoteContext, setQuoteContext}) {
         inputs={inputs} setInputs={setInputs} setSlide={setSlide} inputContext={inputContext}
         setInputContext={setInputContext} setCurrEntry={setCurrEntry} currEntry={currEntry} setQuoteContext={setQuoteContext} quoteContext={quoteContext}/>
       </Container >
-      <QuoteFooter slide={slide} printDocument={printDocument} setPdfShow={setPdfShow} setSlide={setSlide} setShow={setShow} data={data} quoterows={quoterows} quoteContext={quoteContext}/>
+      <QuoteFooter slide={slide} setCurrentPage={setCurrentPage} printDocument={printDocument} setPdfShow={setPdfShow} setSlide={setSlide} setShow={setShow} data={data} quoterows={quoterows} quoteContext={quoteContext}/>
     </>
   )
 

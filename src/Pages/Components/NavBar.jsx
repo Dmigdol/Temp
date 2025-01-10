@@ -33,7 +33,7 @@ function NavBar({user, setCurrentPage, setLogged}) {
             <NavDropdown title='Admin' className='admin-nav'>
               <NavDropdown.Item onClick={()=>{setCurrentPage(['AdminUsers'])}}>Configure Users</NavDropdown.Item>
               <NavDropdown.Item>Inventory *WIP*</NavDropdown.Item>
-              <NavDropdown.Item>Order History</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{setCurrentPage(['AdminHistory'])}}>Order History</NavDropdown.Item>
             </NavDropdown>
             :
             <></>

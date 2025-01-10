@@ -14,6 +14,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button'
 import CustomerInput from './Components/CustomerInput.jsx'
 import LandingFooter from './Components/LandingComponents/LandingFooter'
+import Search from './Components/SearchComponents/Search'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
@@ -24,12 +25,14 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
 
   const [recent, setRecent] = useState([]);
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([])
   const [current, setCurrent] = useState('quotes');
   const [filter, setFilter] = useState([0,9]);
   const [searchState, setSearchState] = useState('search-input first');
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState('date');
   const [newQuote, setNewQuote] = useState(false);
+  const [keyword, setKeyword] = useState()
 
 
   const tempEmployee = {
@@ -94,18 +97,10 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
   }
 
   const cutList = (data) => {
-    if(data) {
-      if (page === 1) {
-        return(
-          data.slice(0,9)
-        )
-      } else {
-        console.log('filter', filter)
-        return(
-          data.slice(filter[0], filter[1])
-        )
-        }
-      }
+      var filteredList = data.filter(function(el) {
+        return el.customer.company_name === tempEmployee.customer.company_name
+      })
+      return(filteredList)
     }
 
 
@@ -126,6 +121,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
   /*
     USE CUSTOMER INPUT ON ADMIN PAGE SO PAUL CAN CREATE NEW USERS FROM THERE
   */
+
 
   return (
     <div className="App">
@@ -151,10 +147,13 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
             </Col>
           </Row>
         </Container>
+        <div className='search-container'>
+          <Search data={cutList(data)} setFilteredData={setFilteredData} keyword={keyword} setKeyword={setKeyword}/>
+        </div>
         <div className="landing center">
           <div className='row-container'>
-            {(isLoading && data) ? <div className='loading'>Gathering Data, Please wait</div> :
-            <LandingRow className='landing-list' wrapperRef={wrapperRef} context={current} setCurrentPage={setCurrentPage} data={cutList(data)}
+            {(isLoading && data) ? <div className='loading'>No Entries found, Please create a new Quote</div> :
+            <LandingRow className='landing-list' wrapperRef={wrapperRef} keyword={keyword} context={current} setCurrentPage={setCurrentPage} data={cutList(data)} filteredData={filteredData}
              setOptShow={setOptShow} optShow={optShow} setQuoteContext={setQuoteContext} quoteContext={quoteContext}/>}
           </div>
         </div>

@@ -58,7 +58,7 @@ function QuoteList({rows, slide, setShow, setSlide, inputs,
 
 
   return (
-    <Container>
+    <Container className='quote-list-container'>
       <Table className='quote-table'>
         <thead>
           <tr>

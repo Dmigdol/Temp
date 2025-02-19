@@ -15,7 +15,7 @@ function Search({data, setFilteredData, keyword, setKeyword}) {
   const [input, setInput] = useState()
 
   useEffect(() => {
-    const filtered = data.filter(entry => Object.values(entry).some(val => typeof val === 'string' && val.includes(keyword)));
+    const filtered = data.filter(entry => Object.values(entry).some(val => typeof val === 'string' && val.toLowerCase().includes(keyword.toLowerCase())));
     if(keyword === '') {
       setFilteredData(data);
     } else {

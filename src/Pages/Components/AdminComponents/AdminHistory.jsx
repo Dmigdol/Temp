@@ -4,15 +4,17 @@ import Container from 'react-bootstrap/Container'
 import { useRef, useEffect, useState } from "react";
 import axios from 'axios';
 import ListModal from '../ListModal.jsx'
-
+import Search from '../SearchComponents/Search'
 
 
 function AdminHistory({data, setCurrentPage, setQuoteContext, quoteContext}) {
 
-
   const [clicked, setClicked] = useState();
   const [show, setShow] = useState(false);
   const [list, setList] = useState([])
+  const [filteredData, setFilteredData] = useState([])
+  const [keyword, setKeyword] = useState()
+
 
   const handleShow = () => setShow(true);
 
@@ -47,6 +49,15 @@ function AdminHistory({data, setCurrentPage, setQuoteContext, quoteContext}) {
     }
   }
 
+  const checkKeyword = () => {
+    if (keyword) {
+      return(filteredData)
+    } else {
+      return (list)
+    }
+    console.log('CHECKED', keyword)
+  }
+
   useEffect(() => {
     fetchData()
     console.log('full data', data)
@@ -56,6 +67,9 @@ function AdminHistory({data, setCurrentPage, setQuoteContext, quoteContext}) {
 
 
     <div className='tester' >
+      <div className='search-container'>
+        <Search data={list} setFilteredData={setFilteredData} keyword={keyword} setKeyword={setKeyword}/>
+      </div>
       <ListModal setShow={setShow} setCurrentPage={setCurrentPage} setQuoteContext={setQuoteContext} quoteContext={quoteContext} show={show} data={clicked}/>
       <Container fluid>
         <Table hover className='table-large'>
@@ -69,7 +83,7 @@ function AdminHistory({data, setCurrentPage, setQuoteContext, quoteContext}) {
             </tr>
           </thead>
           <tbody>
-            {list.toReversed().map((entry) => {
+            {checkKeyword().toReversed().map((entry) => {
               console.log('renderdata',entry)
               return (
                 <tr id={entry.reference_id} className='table-cell' onClick={((e) => {

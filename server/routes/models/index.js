@@ -62,7 +62,8 @@ module.exports = {
         status: 'Pending',
         total_price: 0,
         customer_id: data.customer_id,
-        items: items
+        items: items,
+        customer_name: data.customer_name
       })
   },
   async updateCustomer(payload) {

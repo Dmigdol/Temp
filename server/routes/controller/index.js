@@ -48,6 +48,7 @@ module.exports = {
       res.send(results)
     })
   },
+  // INVENTTORY
   getInventory(req, res) {
     models.getInventory()
     .then((results) => {
@@ -57,6 +58,12 @@ module.exports = {
   updateInventory(req, res) {
     console.log(req)
     models.updateInventory(req.body)
+    .then((results) => {
+      res.send(results)
+    })
+  },
+  newInventory(req,res) {
+    models.newInventory(req.body)
     .then((results) => {
       res.send(results)
     })

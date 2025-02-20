@@ -2,8 +2,13 @@ import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
 import { useRef, useEffect, useState } from "react";
 import axios from 'axios';
+import './ICSCSS/Inventory.scss'
 import InventoryModal from './InventoryModal.jsx'
+import NewInventoryModal from './NewInventoryModal.jsx'
 import Search from '../SearchComponents/Search'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function Inventory({data, setCurrentPage, setQuoteContext, quoteContext}) {
 
@@ -13,9 +18,12 @@ function Inventory({data, setCurrentPage, setQuoteContext, quoteContext}) {
   const [filteredData, setFilteredData] = useState([])
   const [keyword, setKeyword] = useState()
   const [fetchInventoryFlag, setFetchInventoryFlag] = useState(true)
+  const [showNew, setShowNew] = useState(false);
 
 
   const handleShow = () => setShow(true);
+
+  const handleNewShow = () => setShowNew(true);
 
 
   const tempEmployee = {
@@ -43,6 +51,7 @@ function Inventory({data, setCurrentPage, setQuoteContext, quoteContext}) {
 
   const fetchInventory = () => {
       axios.get(`http://localhost:3000/inventory`, {
+
       })
       .then(response => {
         console.log('inventory', response)
@@ -64,10 +73,14 @@ function Inventory({data, setCurrentPage, setQuoteContext, quoteContext}) {
 
 
     <div className='tester' >
+        <Button variant='primary' className='add-inventory-btn'
+        onClick={handleNewShow}
+        >New Part</Button>
       <div className='search-container'>
         <Search data={list} setFilteredData={setFilteredData} keyword={keyword} setKeyword={setKeyword}/>
       </div>
       <InventoryModal setShow={setShow} fetchInventory={fetchInventory} setCurrentPage={setCurrentPage} setQuoteContext={setQuoteContext} quoteContext={quoteContext} show={show} data={clicked}/>
+      <NewInventoryModal setShowNew={setShowNew} showNew={showNew} fetchInventory={fetchInventory} list={list}/>
       <Container fluid>
         <Table hover className='table-large'>
           <thead>

@@ -77,5 +77,23 @@ module.exports = {
         email: data.email
       })
       .eq('id', id)
+  },
+  async getInventory() {
+    const {data, error} = await db
+    .from('inventory')
+    .select('*')
+    return(data);
+  },
+  async updateInventory(payload) {
+    id = payload.id;
+    data = payload.data;
+    const {error} = await db
+      .from('inventory')
+      .update({
+        serial: data.serial,
+        amount: data.amount,
+        ppu: data.ppu
+      })
+      .eq('id', id)
   }
 }

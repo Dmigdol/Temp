@@ -11,5 +11,6 @@ router.get('/users', controllers.getUsers)
 router.put('/updateCustomer', controllers.updateCustomer)
 router.get('/inventory', controllers.getInventory)
 router.put('/updateInventory', controllers.updateInventory)
+router.post('/newInventory', controllers.newInventory)
 
 module.exports = router

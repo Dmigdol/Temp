@@ -45,6 +45,7 @@ function AdminModal({setShow, show, data, setCurrentPage, fetchUsers}) {
     setShow(false);
     setTimeout(() => {
       setContext('list')
+      fetchUsers()
     }, 500)
   }
 

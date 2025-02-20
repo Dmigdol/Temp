@@ -78,6 +78,7 @@ module.exports = {
       })
       .eq('id', id)
   },
+  // INVENTORY
   async getInventory() {
     const {data, error} = await db
     .from('inventory')
@@ -95,5 +96,18 @@ module.exports = {
         ppu: data.ppu
       })
       .eq('id', id)
+  },
+  async newInventory(payload) {
+    id = payload.id;
+    inputs = payload.inputs;
+    const {error} = await db
+    .from('inventory')
+    .insert({
+      id: id,
+      name: inputs.name,
+      amount: inputs.amount,
+      serial: inputs.serial,
+      ppu: inputs.ppu
+    })
   }
 }

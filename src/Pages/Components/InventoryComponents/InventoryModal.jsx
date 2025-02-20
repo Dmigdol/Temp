@@ -3,17 +3,15 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import AdminList from './AdminList.jsx'
-import AdminEdit from './AdminEdit.jsx'
+import InventoryList from './InventoryList.jsx'
+import InventoryEdit from './InventoryEdit.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './ACSCSS/AdminModal.scss'
 import { useState } from 'react';
 import axios from 'axios';
 
-
-function AdminModal({setShow, show, data, setCurrentPage, fetchUsers}) {
+function InventoryModal({setShow, show, data, setCurrentPage, setQuoteContext, quoteContext, fetchInventory}) {
 
   const [context, setContext] = useState('list');
   const [inputs, setInputs] = useState({data})
@@ -31,7 +29,7 @@ function AdminModal({setShow, show, data, setCurrentPage, fetchUsers}) {
   }
 
   const handleEditSubmit = () => {
-    axios.put('http://localhost:3000/updateCustomer', {
+    axios.put('http://localhost:3000/updateInventory', {
       id: data.id,
       data: inputs
     })
@@ -39,12 +37,13 @@ function AdminModal({setShow, show, data, setCurrentPage, fetchUsers}) {
       console.log('resolution for update', res)
     })
     .catch((err) => {
-      console.log('error updating customer', err)
+      console.log('error updating inventory', err)
     })
 
     setShow(false);
     setTimeout(() => {
       setContext('list')
+      fetchInventory()
     }, 500)
   }
 
@@ -61,10 +60,10 @@ function AdminModal({setShow, show, data, setCurrentPage, fetchUsers}) {
               onClick={()=>{handleEdit()}}
               />
             </Button>
-            <Modal.Title className='modal-title'>{data.company_name}</Modal.Title>
+            <Modal.Title className='modal-title'>{data.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {context === 'list' ? <AdminList data={data}/> : <AdminEdit data={data} setContext={setContext} inputs={inputs} setInputs={setInputs}/>}
+            {context === 'list' ? <InventoryList data={data}/> : <InventoryEdit data={data} setContext={setContext} inputs={inputs} setInputs={setInputs}/>}
           </Modal.Body>
           <Modal.Footer className='modal-footer'>
             {context === 'list' ? <></> : <Button variant='primary' className='submit-edit-btn' onClick={handleEditSubmit}>Update</Button>}
@@ -77,6 +76,7 @@ function AdminModal({setShow, show, data, setCurrentPage, fetchUsers}) {
     </div>
   )
 
+
 }
 
-export default AdminModal;
+export default InventoryModal;

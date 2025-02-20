@@ -47,5 +47,18 @@ module.exports = {
     .then((results) => {
       res.send(results)
     })
+  },
+  getInventory(req, res) {
+    models.getInventory()
+    .then((results) => {
+      res.send(results)
+    });
+  },
+  updateInventory(req, res) {
+    console.log(req)
+    models.updateInventory(req.body)
+    .then((results) => {
+      res.send(results)
+    })
   }
 }

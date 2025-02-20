@@ -32,7 +32,7 @@ function NavBar({user, setCurrentPage, setLogged}) {
             {user.position === 'admin' ?
             <NavDropdown title='Admin' className='admin-nav'>
               <NavDropdown.Item onClick={()=>{setCurrentPage(['AdminUsers'])}}>Configure Users</NavDropdown.Item>
-              <NavDropdown.Item>Inventory *WIP*</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{setCurrentPage(['Inventory'])}}>Inventory</NavDropdown.Item>
               <NavDropdown.Item onClick={()=>{setCurrentPage(['AdminHistory'])}}>Order History</NavDropdown.Item>
             </NavDropdown>
             :
@@ -57,4 +57,5 @@ function NavBar({user, setCurrentPage, setLogged}) {
   )
 }
 
+export default NavBar;
 export default NavBar;

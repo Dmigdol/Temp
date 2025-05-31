@@ -15,8 +15,6 @@ import Button from 'react-bootstrap/Button'
 import CustomerInput from './Components/CustomerInput.jsx'
 import LandingFooter from './Components/LandingComponents/LandingFooter'
 import Search from './Components/SearchComponents/Search'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 
 
 function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteContext, quoteContext}) {

@@ -5,8 +5,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import InventoryList from './InventoryList.jsx'
 import InventoryEdit from './InventoryEdit.jsx'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import axios from 'axios';
@@ -54,11 +52,11 @@ function InventoryModal({setShow, show, data, setCurrentPage, setQuoteContext, q
       {data ?
         <Modal centered size='lg' show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Button variant='outline-primary' className='edit-btn'>
-              <FontAwesomeIcon
-              icon={byPrefixAndName.fas['pen-to-square']}
-              onClick={()=>{handleEdit()}}
-              />
+          <Button variant='outline-primary' className='edit-btn'>
+                <img className='Editimg'
+                src='edit.png'
+                onClick={()=>{handleEdit()}}
+                />
             </Button>
             <Modal.Title className='modal-title'>{data.name}</Modal.Title>
           </Modal.Header>

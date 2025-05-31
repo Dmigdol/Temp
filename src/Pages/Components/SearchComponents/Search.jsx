@@ -6,9 +6,6 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
-
 
 function Search({data, setFilteredData, keyword, setKeyword}) {
 
@@ -41,8 +38,7 @@ function Search({data, setFilteredData, keyword, setKeyword}) {
               <Form.Control name='search' placeholder='Search...' onChange={handleInputChange}/>
           </Form.Group>
           <Button className='search-btn'>
-          <FontAwesomeIcon
-              icon={byPrefixAndName.fas['magnifying-glass']}
+          <img className='searchimg' src='search.png'
               />
           </Button>
         </Row>

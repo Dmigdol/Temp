@@ -5,8 +5,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import AdminList from './AdminList.jsx'
 import AdminEdit from './AdminEdit.jsx'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ACSCSS/AdminModal.scss'
 import { useState } from 'react';
@@ -56,9 +54,9 @@ function AdminModal({setShow, show, data, setCurrentPage, fetchUsers}) {
       {data ?
         <Modal centered size='lg' show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Button variant='outline-primary' className='edit-btn'>
-              <FontAwesomeIcon
-              icon={byPrefixAndName.fas['pen-to-square']}
+          <Button variant='outline-primary' className='edit-btn'>
+              <img className='Editimg'
+              src='edit.png'
               onClick={()=>{handleEdit()}}
               />
             </Button>

@@ -4,8 +4,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ListModalData from './ListModalData.jsx'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { byPrefixAndName } from '@awesome.me/kit-275899ac10/icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ListModal.scss'
 import { useState } from 'react';
@@ -88,10 +86,10 @@ function ListModal({setShow, show, data, setCurrentPage, setQuoteContext, quoteC
           </Modal.Body>
           <Modal.Footer className='modal-footer'>
             <Button variant='outline-primary' className='edit-btn'>
-                    <FontAwesomeIcon
-                    icon={byPrefixAndName.fas['pen-to-square']}
-                    onClick={()=>{handleEdit()}}
-                    />
+                <img className='Editimg'
+                src='edit.png'
+                onClick={()=>{handleEdit()}}
+                />
             </Button>
             <Button onClick={handleClose}>Order</Button>
           </Modal.Footer>
@@ -102,11 +100,11 @@ function ListModal({setShow, show, data, setCurrentPage, setQuoteContext, quoteC
 {data ?
         <Modal centered size='lg' show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Button variant='outline-primary' className='edit-btn'>
-              <FontAwesomeIcon
-              icon={byPrefixAndName.fas['pen-to-square']}
-              onClick={()=>{handleEdit()}}
-              />
+          <Button variant='outline-primary' className='edit-btn'>
+                <img className='Editimg'
+                src='edit.png'
+                onClick={()=>{handleEdit()}}
+                />
             </Button>
             <Modal.Title className='modal-title'>{data.company_name}</Modal.Title>
           </Modal.Header>

@@ -117,7 +117,7 @@ function Quote({setCurrentPage, data, quoteContext, setQuoteContext}) {
       <Container id='Quote'  className={slide ? 'full-container init' : 'full-container'}>
         <Row className='header-row'>
           <Col>
-          <QuoteTop  data={data}/>
+          <QuoteTop  data={data} quoteContext={quoteContext}/>
           </Col>
         </Row>
         <QuoteList rows={quoterows} addRow={addRow} slide={slide} setShow={setShow}

@@ -41,9 +41,9 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
     position: 'admin',
     customer: {
       billing_address: '21542 Roadway ave. Long Beach, CA',
-      company_name: 'Kurb Bowyerman Plumbing',
+      company_name: `Dillon's Moving`,
       email: 'BuymyShoes@yahoo.com',
-      id: 'cc112fd3-3d27-4bfe-b3f1-fec5d3c93d79',
+      id: 'f7595862-ebe3-4930-9feb-d65bcac9bea9',
       phone: '555-654-6544',
       shipping_address: '21542 Roadway ave. Long Beach, CA'
     }
@@ -58,9 +58,6 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
     setIsLoading(true);
     if(tempEmployee.position === 'admin') {
       axios.get(`http://localhost:3000/home`, {
-        params: {
-          id: tempEmployee.id
-        }
       })
       .then(response => {
         console.log('response', response)
@@ -72,6 +69,9 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
       })
     }
   }
+
+
+
 
 
   const pageButtons = (context) => {
@@ -98,7 +98,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
 
   const cutList = (data) => {
       var filteredList = data.filter(function(el) {
-        return el.customer.company_name === tempEmployee.customer.company_name
+        return el.company_name === tempEmployee.customer.company_name
       })
       return(filteredList)
     }
@@ -145,6 +145,7 @@ function Landing({setCurrentPage, optShow, setOptShow, wrapperRef, setQuoteConte
             <Col className='company-add' md={6}>
               {tempEmployee.customer.billing_address}
             </Col>
+            <Col className='search-container' md={7}/>
           </Row>
         </Container>
         <div className='search-container'>

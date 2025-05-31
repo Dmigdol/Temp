@@ -12,11 +12,33 @@ function Login({setCurrentPage, setLogged}) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [db, setDB] = useState([])
 
   const handleLogin = () => {
     setLogged(true)
     setCurrentPage(['Landing'])
   }
+
+
+  const testDB = async () => {
+    axios.get('http://localhost:3000/test',{
+    })
+    .then(response => {
+      console.log(response)
+      setDB(response.data)
+    })
+    .catch((err) => {
+      console.log('err ', err)
+    })
+
+    console.log('db here ', db)
+  }
+
+  useEffect(() => {
+    testDB();
+  }, []);
+
+  console.log('db here ', db)
 
   return (
     <div className="App">

@@ -43,15 +43,14 @@ function RenderRecent({current, data, setCurrentPage, setQuoteContext, quoteCont
           </thead>
           <tbody>
             {checkKeyword().toReversed().map((entry) => {
-              console.log('renderdata',entry)
               return (
                 <tr id={entry.reference_id} className='table-cell' onClick={((e) => {
                   setClicked(entry)
                   handleShow()
                 })}>
                     <td>{entry.quote_id.slice(0,5)}</td>
-                    <td className='col-4'>{entry.customer.company_name}</td>
-                    <td >{entry.employee.employee_name}</td>
+                    <td className='col-4'>{entry.company_name}</td>
+                    <td >{entry.employee_name}</td>
                     <td>{entry.created_at}</td>
                     <td>{entry.status}</td>
                 </tr>

@@ -23,16 +23,16 @@ function InventoryEdit({data, inputs, setInputs}) {
   return(
     <Container className='modal-body'>
       <Form onSubmit={submitForm}>
-        <Row className='add-header-container'>
+        {/* <Row className='add-header-container'>
           <Col className='comp-add-header header'>
             Serial
           </Col>
         </Row>
         <Row>
           <Form.Group as={Col} md={8}>
-            <Form.Control value={inputs.serial} placeholder={data.serial} name='serial' onChange={handleInputChange}/>
+            <Form.Control value={inputs.serial} defaultValue={data.serial} placeholder={data.serial} name='serial' onChange={handleInputChange}/>
           </Form.Group>
-        </Row>
+        </Row> */}
         <Row className='email-header-container'>
           <Col className='comp-email-header header'>
             Total amount
@@ -40,7 +40,7 @@ function InventoryEdit({data, inputs, setInputs}) {
         </Row>
         <Row>
           <Form.Group as={Col} md={1}>
-            <Form.Control value={inputs.amount} placeholder={data.amount} name='amount' onChange={handleInputChange}/>
+            <Form.Control value={inputs.amount} defaultValue={data.amount} placeholder={data.amount} name='amount' onChange={handleInputChange}/>
           </Form.Group>
         </Row>
         <Row className='phone-header-container'>
@@ -50,7 +50,7 @@ function InventoryEdit({data, inputs, setInputs}) {
         </Row>
         <Row>
           <Form.Group as={Col} md={2}>
-            <Form.Control value={inputs.ppu} placeholder={data.ppu} name='ppu' onChange={handleInputChange}/>
+            <Form.Control value={inputs.ppu} defaultValue={data.ppu} placeholder={data.ppu} name='ppu' onChange={handleInputChange}/>
           </Form.Group>
         </Row>
       </Form>

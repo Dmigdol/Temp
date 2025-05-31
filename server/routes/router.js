@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const controllers  = require('./controller/index')
+const controllers  = require('./controller/controllers')
 
-router.get('/home', controllers.getHistory)
+router.get('/home', controllers.getDB)
 router.post('/newQuote', controllers.insertQuote)
 router.delete('/del', controllers.deleteQuote)
 router.put('/update', controllers.updateQuote)

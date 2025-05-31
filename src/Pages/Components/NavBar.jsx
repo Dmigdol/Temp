@@ -58,4 +58,3 @@ function NavBar({user, setCurrentPage, setLogged}) {
 }
 
 export default NavBar;
-export default NavBar;

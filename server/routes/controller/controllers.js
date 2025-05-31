@@ -1,6 +1,13 @@
-models = require('../models/index')
+models = require('../models/models')
 
 module.exports = {
+
+  getDB(req,res) {
+    models.testDB(req)
+    .then((results) => {
+      res.send(results)
+    });
+  },
   getHistory(req, res) {
     models.getHistory(req.query.id)
       .then((results) => {
@@ -14,7 +21,7 @@ module.exports = {
     });
   },
   insertQuote(req, res) {
-    console.log(req)
+    console.log('HERE IS REQ BODY', req.body)
     models.insertQuote(req.body)
     .then((results) => {
       res.send(results)
@@ -28,7 +35,7 @@ module.exports = {
     })
   },
   deleteQuote(req, res) {
-    console.log(req)
+    console.log('req here', req)
     models.deleteQuote(req.query)
     .then((results) => {
       res.send(results)

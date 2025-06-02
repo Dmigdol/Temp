@@ -1,9 +1,8 @@
-const db = require('../supabase');
 const { Client } = require('pg')
 
 const client = new Client({
   user: process.env.UN,
-  host: process.env.HOST,
+  host: process.env.DBHOST,
   database: process.env.DBNAME,
   password: process.env.PW,
   port: 5432,
@@ -20,13 +19,13 @@ module.exports = {
     const result = await client.query('select * from quotes')
     return (result.rows)
   },
-  async getHistory(id) {
-    const {data, error} = await db
-      .from('quotes')
-      .select(`*`)
-      .eq('employee_id', id)
-      return(data);
-  },
+  // async getHistory(id) {
+  //   const {data, error} = await db
+  //     .from('quotes')
+  //     .select(`*`)
+  //     .eq('employee_id', id)
+  //     return(data);
+  // },
   async getUsers() {
     const result = await client.query('select * from customer')
       return(result.rows);
@@ -55,48 +54,48 @@ module.exports = {
     console.log('payload quote_id ', payload)
     const result = await client.query(text, values)
   },
-  async updateQuote(payload) {
-    items = payload.items;
-    data = payload.data;
-    newDate = new Date().toLocaleDateString('en-CA');
-    console.log('payload', payload);
-    const {error} = await db
-      .from('quotes')
-      .update({
-        total_price: 0,
-        items: items
-      })
-      .eq('id', data.id)
-  },
-  async newDraft(payload) {
-    items = payload.items;
-    data = payload.data;
-    newDate = new Date().toLocaleDateString('en-CA');
-    const {error} = await db
-      .from('drafts')
-      .insert({
-        id: data.id,
-        created_at: newDate,
-        employee_id: data.employee_id,
-        status: 'Pending',
-        total_price: 0,
-        customer_id: data.customer_id,
-        items: items,
-        customer_name: data.customer_name
-      })
-  },
-  async updateCustomer(payload) {
-    id = payload.id;
-    data = payload.data;
-    const {error} = await db
-      .from('customer')
-      .update({
-        shipping_address: data.shipping_address,
-        phone: data.phone,
-        email: data.email
-      })
-      .eq('id', id)
-  },
+  // async updateQuote(payload) {
+  //   items = payload.items;
+  //   data = payload.data;
+  //   newDate = new Date().toLocaleDateString('en-CA');
+  //   console.log('payload', payload);
+  //   const {error} = await db
+  //     .from('quotes')
+  //     .update({
+  //       total_price: 0,
+  //       items: items
+  //     })
+  //     .eq('id', data.id)
+  // },
+  // async newDraft(payload) {
+  //   items = payload.items;
+  //   data = payload.data;
+  //   newDate = new Date().toLocaleDateString('en-CA');
+  //   const {error} = await db
+  //     .from('drafts')
+  //     .insert({
+  //       id: data.id,
+  //       created_at: newDate,
+  //       employee_id: data.employee_id,
+  //       status: 'Pending',
+  //       total_price: 0,
+  //       customer_id: data.customer_id,
+  //       items: items,
+  //       customer_name: data.customer_name
+  //     })
+  // },
+  // async updateCustomer(payload) {
+  //   id = payload.id;
+  //   data = payload.data;
+  //   const {error} = await db
+  //     .from('customer')
+  //     .update({
+  //       shipping_address: data.shipping_address,
+  //       phone: data.phone,
+  //       email: data.email
+  //     })
+  //     .eq('id', id)
+  // },
   // INVENTORY
   async getInventory() {
     const result = await client.query('select * from inventory')
@@ -126,17 +125,17 @@ module.exports = {
   //     })
   //     .eq('id', id)
   // },
-  async newInventory(payload) {
-    id = payload.id;
-    inputs = payload.inputs;
-    const {error} = await db
-    .from('inventory')
-    .insert({
-      id: id,
-      name: inputs.name,
-      amount: inputs.amount,
-      serial: inputs.serial,
-      ppu: inputs.ppu
-    })
-  }
+  // async newInventory(payload) {
+  //   id = payload.id;
+  //   inputs = payload.inputs;
+  //   const {error} = await db
+  //   .from('inventory')
+  //   .insert({
+  //     id: id,
+  //     name: inputs.name,
+  //     amount: inputs.amount,
+  //     serial: inputs.serial,
+  //     ppu: inputs.ppu
+  //   })
+  // }
 }
